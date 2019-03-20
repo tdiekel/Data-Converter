@@ -1,0 +1,828 @@
+{
+  "classes": {
+    "item": {
+      "id": 1,
+      "name": "speed limit 20 (prohibitory)"
+    },
+    "item": {
+      "id": 2,
+      "name": "speed limit 30 (prohibitory)"
+    },
+    "item": {
+      "id": 3,
+      "name": "speed limit 50 (prohibitory)"
+    },
+    "item": {
+      "id": 4,
+      "name": "speed limit 60 (prohibitory)"
+    },
+    "item": {
+      "id": 5,
+      "name": "speed limit 70 (prohibitory)"
+    },
+    "item": {
+      "id": 6,
+      "name": "speed limit 80 (prohibitory)"
+    },
+    "item": {
+      "id": 7,
+      "name": "restriction ends 80 (other)"
+    },
+    "item": {
+      "id": 8,
+      "name": "speed limit 100 (prohibitory)"
+    },
+    "item": {
+      "id": 9,
+      "name": "speed limit 120 (prohibitory)"
+    },
+    "item": {
+      "id": 10,
+      "name": "no overtaking (prohibitory)"
+    },
+    "item": {
+      "id": 11,
+      "name": "no overtaking (trucks) (prohibitory)"
+    },
+    "item": {
+      "id": 12,
+      "name": "priority at next intersection (danger)"
+    },
+    "item": {
+      "id": 13,
+      "name": "priority road (other)"
+    },
+    "item": {
+      "id": 14,
+      "name": "give way (other)"
+    },
+    "item": {
+      "id": 15,
+      "name": "stop (other)"
+    },
+    "item": {
+      "id": 16,
+      "name": "no traffic both ways (prohibitory)"
+    },
+    "item": {
+      "id": 17,
+      "name": "no trucks (prohibitory)"
+    },
+    "item": {
+      "id": 18,
+      "name": "no entry (other)"
+    },
+    "item": {
+      "id": 19,
+      "name": "danger (danger)"
+    },
+    "item": {
+      "id": 20,
+      "name": "bend left (danger)"
+    },
+    "item": {
+      "id": 21,
+      "name": "bend right (danger)"
+    },
+    "item": {
+      "id": 22,
+      "name": "bend double left (danger)"
+    },
+    "item": {
+      "id": 23,
+      "name": "uneven road (danger)"
+    },
+    "item": {
+      "id": 24,
+      "name": "slippery road (danger)"
+    },
+    "item": {
+      "id": 25,
+      "name": "road narrows (danger)"
+    },
+    "item": {
+      "id": 26,
+      "name": "construction (danger)"
+    },
+    "item": {
+      "id": 27,
+      "name": "traffic signal (danger)"
+    },
+    "item": {
+      "id": 28,
+      "name": "pedestrian crossing (danger)"
+    },
+    "item": {
+      "id": 29,
+      "name": "school crossing (danger)"
+    },
+    "item": {
+      "id": 30,
+      "name": "cycles crossing (danger)"
+    },
+    "item": {
+      "id": 31,
+      "name": "snow (danger)"
+    },
+    "item": {
+      "id": 32,
+      "name": "animals (danger)"
+    },
+    "item": {
+      "id": 33,
+      "name": "restriction ends (other)"
+    },
+    "item": {
+      "id": 34,
+      "name": "go right (mandatory)"
+    },
+    "item": {
+      "id": 35,
+      "name": "go left (mandatory)"
+    },
+    "item": {
+      "id": 36,
+      "name": "go straight (mandatory)"
+    },
+    "item": {
+      "id": 37,
+      "name": "go right or straight (mandatory)"
+    },
+    "item": {
+      "id": 38,
+      "name": "go left or straight (mandatory)"
+    },
+    "item": {
+      "id": 39,
+      "name": "keep right (mandatory)"
+    },
+    "item": {
+      "id": 40,
+      "name": "keep left (mandatory)"
+    },
+    "item": {
+      "id": 41,
+      "name": "roundabout (mandatory)"
+    },
+    "item": {
+      "id": 42,
+      "name": "restriction ends (overtaking) (other)"
+    },
+    "item": {
+      "id": 43,
+      "name": "restriction ends (overtaking (trucks)) (other)"
+    },
+    "item": {
+      "id": 44,
+      "name": "restriction ends 60 (other)"
+    },
+    "item": {
+      "id": 45,
+      "name": "restriction ends 70 (other)"
+    },
+    "item": {
+      "id": 46,
+      "name": "speed limit 90 (prohibitory)"
+    },
+    "item": {
+      "id": 47,
+      "name": "restriction ends 90 (other)"
+    },
+    "item": {
+      "id": 48,
+      "name": "speed limit 110 (prohibitory)"
+    },
+    "item": {
+      "id": 49,
+      "name": "restriction ends 110 (other)"
+    },
+    "item": {
+      "id": 50,
+      "name": "restriction ends 120 (other)"
+    },
+    "item": {
+      "id": 51,
+      "name": "speed limit 130 (prohibitory)"
+    },
+    "item": {
+      "id": 52,
+      "name": "restriction ends 130 (other)"
+    },
+    "item": {
+      "id": 53,
+      "name": "bend double right (danger)"
+    },
+    "item": {
+      "id": 54,
+      "name": "highway turn (left) (other)"
+    },
+    "item": {
+      "id": 55,
+      "name": "maximum width (prohibitory)"
+    },
+    "item": {
+      "id": 56,
+      "name": "maximum height (prohibitory)"
+    },
+    "item": {
+      "id": 57,
+      "name": "minimum truck distance (prohibitory)"
+    },
+    "item": {
+      "id": 58,
+      "name": "highway exit 200 (other)"
+    },
+    "item": {
+      "id": 59,
+      "name": "highway exit 100 (other)"
+    },
+    "item": {
+      "id": 60,
+      "name": "right lane merging (other)"
+    },
+    "item": {
+      "id": 61,
+      "name": "warning beacon roadwork (other)"
+    },
+    "item": {
+      "id": 62,
+      "name": "speed limit 60 (digital) (prohibitory)"
+    },
+    "item": {
+      "id": 63,
+      "name": "restriction ends 60 (digital) (other)"
+    },
+    "item": {
+      "id": 64,
+      "name": "speed limit 70 (digital) (prohibitory)"
+    },
+    "item": {
+      "id": 65,
+      "name": "restriction ends 70 (digital) (other)"
+    },
+    "item": {
+      "id": 66,
+      "name": "speed limit 80 (digital) (prohibitory)"
+    },
+    "item": {
+      "id": 67,
+      "name": "restriction ends 80 (digital) (other)"
+    },
+    "item": {
+      "id": 68,
+      "name": "speed limit 90 (digital) (prohibitory)"
+    },
+    "item": {
+      "id": 69,
+      "name": "restriction ends 90 (digital) (other)"
+    },
+    "item": {
+      "id": 70,
+      "name": "speed limit 100 (digital) (prohibitory)"
+    },
+    "item": {
+      "id": 71,
+      "name": "restriction ends 100 (digital) (other)"
+    },
+    "item": {
+      "id": 72,
+      "name": "speed limit 110 (digital) (prohibitory)"
+    },
+    "item": {
+      "id": 73,
+      "name": "restriction ends 110 (digital) (other)"
+    },
+    "item": {
+      "id": 74,
+      "name": "left lane merging (other)"
+    },
+    "item": {
+      "id": 75,
+      "name": "speed limit 120 (digital) (prohibitory)"
+    },
+    "item": {
+      "id": 76,
+      "name": "restriction ends 120 (digital) (other)"
+    },
+    "item": {
+      "id": 77,
+      "name": "speed limit 130 (digital) (prohibitory)"
+    },
+    "item": {
+      "id": 78,
+      "name": "restriction ends 130 (digital) (other)"
+    },
+    "item": {
+      "id": 79,
+      "name": "no overtaking (digital) (prohibitory)"
+    },
+    "item": {
+      "id": 80,
+      "name": "restriction ends 130 (digital) (other)"
+    },
+    "item": {
+      "id": 81,
+      "name": "no overtaking (trucks) (digital) (prohibitory)"
+    },
+    "item": {
+      "id": 82,
+      "name": "restriction ends (overtaking (trucks)) (digital) (other)"
+    },
+    "item": {
+      "id": 83,
+      "name": "construction (digital) (danger)"
+    },
+    "item": {
+      "id": 84,
+      "name": "traffic jam (digital) (danger)"
+    },
+    "item": {
+      "id": 85,
+      "name": "highway exit (other)"
+    },
+    "item": {
+      "id": 86,
+      "name": "traffic jam (other)"
+    },
+    "item": {
+      "id": 87,
+      "name": "restriction distance (other)"
+    },
+    "item": {
+      "id": 88,
+      "name": "restriction time (other)"
+    },
+    "item": {
+      "id": 89,
+      "name": "highway exit 300m (other)"
+    },
+    "item": {
+      "id": 90,
+      "name": "restriction ends 100 (other)"
+    },
+    "item": {
+      "id": 91,
+      "name": "andreaskreuz (other)"
+    },
+    "item": {
+      "id": 92,
+      "name": "one way street (left) (other)"
+    },
+    "item": {
+      "id": 93,
+      "name": "one way street (right) (other)"
+    },
+    "item": {
+      "id": 94,
+      "name": "beginning of highway (other)"
+    },
+    "item": {
+      "id": 95,
+      "name": "end of highway (other)"
+    },
+    "item": {
+      "id": 96,
+      "name": "busstop (other)"
+    },
+    "item": {
+      "id": 97,
+      "name": "tunnel (other)"
+    },
+    "item": {
+      "id": 98,
+      "name": "no cars (prohibitory)"
+    },
+    "item": {
+      "id": 99,
+      "name": "train crossing (danger)"
+    },
+    "item": {
+      "id": 100,
+      "name": "no bicycles (prohibitory)"
+    },
+    "item": {
+      "id": 101,
+      "name": "no motorbikes (prohibitory)"
+    },
+    "item": {
+      "id": 102,
+      "name": "no mopeds (prohibitory)"
+    },
+    "item": {
+      "id": 103,
+      "name": "no horses (prohibitory)"
+    },
+    "item": {
+      "id": 104,
+      "name": "no cars & motorbikes (prohibitory)"
+    },
+    "item": {
+      "id": 105,
+      "name": "busses only (mandatory)"
+    },
+    "item": {
+      "id": 106,
+      "name": "pedestrian zone (mandatory)"
+    },
+    "item": {
+      "id": 107,
+      "name": "bicycle boulevard (mandatory)"
+    },
+    "item": {
+      "id": 108,
+      "name": "end of bicycle boulevard (mandatory)"
+    },
+    "item": {
+      "id": 109,
+      "name": "bicycle path (mandatory)"
+    },
+    "item": {
+      "id": 110,
+      "name": "pedestrian path (mandatory)"
+    },
+    "item": {
+      "id": 111,
+      "name": "pedestrian and bicycle path (mandatory)"
+    },
+    "item": {
+      "id": 112,
+      "name": "separated path for bicycles and and pedestrians (right) (mandatory)"
+    },
+    "item": {
+      "id": 113,
+      "name": "separated path for bicycles and and pedestrians (left) (mandatory)"
+    },
+    "item": {
+      "id": 114,
+      "name": "play street (other)"
+    },
+    "item": {
+      "id": 115,
+      "name": "end of play street (other)"
+    },
+    "item": {
+      "id": 116,
+      "name": "beginning of motorway (other)"
+    },
+    "item": {
+      "id": 117,
+      "name": "end of motorway (other)"
+    },
+    "item": {
+      "id": 118,
+      "name": "crosswalk (zebra) (other)"
+    },
+    "item": {
+      "id": 119,
+      "name": "dead-end street (other)"
+    },
+    "item": {
+      "id": 120,
+      "name": "one way street (straight) (other)"
+    },
+    "item": {
+      "id": 121,
+      "name": "priority road (other)"
+    },
+    "item": {
+      "id": 122,
+      "name": "no stopping (prohibitory)"
+    },
+    "item": {
+      "id": 123,
+      "name": "no stopping (beginning) (prohibitory)"
+    },
+    "item": {
+      "id": 124,
+      "name": "no stopping (middle) (prohibitory)"
+    },
+    "item": {
+      "id": 125,
+      "name": "no stopping (end) (prohibitory)"
+    },
+    "item": {
+      "id": 126,
+      "name": "no parking (beginning) (prohibitory)"
+    },
+    "item": {
+      "id": 127,
+      "name": "no parking (end) (prohibitory)"
+    },
+    "item": {
+      "id": 128,
+      "name": "no parking (middle) (prohibitory)"
+    },
+    "item": {
+      "id": 129,
+      "name": "no parking (prohibitory)"
+    },
+    "item": {
+      "id": 130,
+      "name": "no parking zone (prohibitory)"
+    },
+    "item": {
+      "id": 131,
+      "name": "end of no parking zone (prohibitory)"
+    },
+    "item": {
+      "id": 132,
+      "name": "city limit (in) (other)"
+    },
+    "item": {
+      "id": 133,
+      "name": "city limit (out) (other)"
+    },
+    "item": {
+      "id": 134,
+      "name": "direction to village (other)"
+    },
+    "item": {
+      "id": 135,
+      "name": "rural road exit (other)"
+    },
+    "item": {
+      "id": 136,
+      "name": "speed limit 20 zone (prohibitory)"
+    },
+    "item": {
+      "id": 137,
+      "name": "end speed limit 20 zone (prohibitory)"
+    },
+    "item": {
+      "id": 138,
+      "name": "speed limit 30 zone (prohibitory)"
+    },
+    "item": {
+      "id": 139,
+      "name": "end speed limit 30 zone (prohibitory)"
+    },
+    "item": {
+      "id": 140,
+      "name": "speed limit 5 (prohibitory)"
+    },
+    "item": {
+      "id": 141,
+      "name": "speed limit 10 (prohibitory)"
+    },
+    "item": {
+      "id": 142,
+      "name": "restriction ends 10 (other)"
+    },
+    "item": {
+      "id": 143,
+      "name": "restriction ends 20 (other)"
+    },
+    "item": {
+      "id": 144,
+      "name": "restriction ends 30 (other)"
+    },
+    "item": {
+      "id": 145,
+      "name": "speed limit 40 (prohibitory)"
+    },
+    "item": {
+      "id": 146,
+      "name": "restriction ends 40 (other)"
+    },
+    "item": {
+      "id": 147,
+      "name": "restriction ends 50 (other)"
+    },
+    "item": {
+      "id": 148,
+      "name": "go left (now) (mandatory)"
+    },
+    "item": {
+      "id": 149,
+      "name": "go right (now) (mandatory)"
+    },
+    "item": {
+      "id": 150,
+      "name": "train crossing in 300m (other)"
+    },
+    "item": {
+      "id": 151,
+      "name": "train crossing in 200m (other)"
+    },
+    "item": {
+      "id": 152,
+      "name": "train crossing in 100m (other)"
+    },
+    "item": {
+      "id": 153,
+      "name": "danger (digital) (danger)"
+    },
+    "item": {
+      "id": 154,
+      "name": "restriction ends 100 (other)"
+    },
+    "item": {
+      "id": 155,
+      "name": "highway turn (right) (other)"
+    },
+    "item": {
+      "id": 156,
+      "name": "green arrow right (traffic signal)"
+    },
+    "item": {
+      "id": 157,
+      "name": "other traffic signals (traffic signal)"
+    },
+    "item": {
+      "id": 158,
+      "name": "red and yellow (traffic signal)"
+    },
+    "item": {
+      "id": 159,
+      "name": "red (traffic signal)"
+    },
+    "item": {
+      "id": 160,
+      "name": "green (traffic signal)"
+    },
+    "item": {
+      "id": 161,
+      "name": "yellow (traffic signal)"
+    },
+    "item": {
+      "id": 162,
+      "name": "red and yellow (right) (traffic signal)"
+    },
+    "item": {
+      "id": 163,
+      "name": "red (right) (traffic signal)"
+    },
+    "item": {
+      "id": 164,
+      "name": "green (right) (traffic signal)"
+    },
+    "item": {
+      "id": 165,
+      "name": "yellow (right) (traffic signal)"
+    },
+    "item": {
+      "id": 166,
+      "name": "red and yellow (left) (traffic signal)"
+    },
+    "item": {
+      "id": 167,
+      "name": "red (left) (traffic signal)"
+    },
+    "item": {
+      "id": 168,
+      "name": "green (left) (traffic signal)"
+    },
+    "item": {
+      "id": 169,
+      "name": "yellow (left) (traffic signal)"
+    },
+    "item": {
+      "id": 170,
+      "name": "red and yellow (straight) (traffic signal)"
+    },
+    "item": {
+      "id": 171,
+      "name": "red (straight) (traffic signal)"
+    },
+    "item": {
+      "id": 172,
+      "name": "green (straight) (traffic signal)"
+    },
+    "item": {
+      "id": 173,
+      "name": "yellow (straight) (traffic signal)"
+    },
+    "item": {
+      "id": 174,
+      "name": "highway sign (other)"
+    },
+    "item": {
+      "id": 175,
+      "name": "state road (other)"
+    },
+    "item": {
+      "id": 176,
+      "name": "right of way (oncoming) (prohibitory)"
+    },
+    "item": {
+      "id": 177,
+      "name": "right of way (self) (prohibitory)"
+    },
+    "item": {
+      "id": 178,
+      "name": "truck small (object)"
+    },
+    "item": {
+      "id": 179,
+      "name": "truck large (object)"
+    },
+    "item": {
+      "id": 180,
+      "name": "transporter (object)"
+    },
+    "item": {
+      "id": 181,
+      "name": "car (object)"
+    },
+    "item": {
+      "id": 182,
+      "name": "pick-up (object)"
+    },
+    "item": {
+      "id": 183,
+      "name": "bus (object)"
+    },
+    "item": {
+      "id": 184,
+      "name": "trailer (object)"
+    },
+    "item": {
+      "id": 185,
+      "name": "metal in road (structure)"
+    },
+    "item": {
+      "id": 186,
+      "name": "scooter (object)"
+    },
+    "item": {
+      "id": 187,
+      "name": "cyclist (object)"
+    },
+    "item": {
+      "id": 188,
+      "name": "pedestrian (object)"
+    },
+    "item": {
+      "id": 189,
+      "name": "motorbike (object)"
+    },
+    "item": {
+      "id": 190,
+      "name": "bridge (structure)"
+    },
+    "item": {
+      "id": 191,
+      "name": "tunnel (structure)"
+    },
+    "item": {
+      "id": 192,
+      "name": "zebra (roadsurface)"
+    },
+    "item": {
+      "id": 193,
+      "name": "arrow straight (roadsurface)"
+    },
+    "item": {
+      "id": 194,
+      "name": "arrow left (roadsurface)"
+    },
+    "item": {
+      "id": 195,
+      "name": "arrow right (roadsurface)"
+    },
+    "item": {
+      "id": 196,
+      "name": "arrow left and right (roadsurface)"
+    },
+    "item": {
+      "id": 197,
+      "name": "arrow turn (roadsurface)"
+    },
+    "item": {
+      "id": 198,
+      "name": "arrow oncoming (roadsurface)"
+    },
+    "item": {
+      "id": 199,
+      "name": "arrow straight and left (roadsurface)"
+    },
+    "item": {
+      "id": 200,
+      "name": "arrow straight and right (roadsurface)"
+    },
+    "item": {
+      "id": 201,
+      "name": "arrow all directions(roadsurface)"
+    },
+    "item": {
+      "id": 202,
+      "name": "arrow double left and right (roadsurface)"
+    },
+    "item": {
+      "id": 203,
+      "name": "bicycle (roadsurface)"
+    },
+    "item": {
+      "id": 204,
+      "name": "speed limit 30 (roadsurface)"
+    },
+    "item": {
+      "id": 205,
+      "name": "speed limit 50 (roadsurface)"
+    },
+    "item": {
+      "id": 206,
+      "name": "speed limit other (roadsurface)"
+    }
+  }
+}
