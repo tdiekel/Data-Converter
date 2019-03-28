@@ -7,32 +7,29 @@ from utils.generate_tfrecord import generate_tfrecord
 
 class TFRecordConverter(BaseConverter):
 
-    def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, output_path,
-                 create_csv=False):
-        super().__init__(image_path, image_src_type, image_dest_type, label_path, label_map, output_path)
+    def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
+                 excluded_classes):
+        super().__init__(image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
+                         excluded_classes)
 
-        self.create_csv = create_csv
-
-        if self.create_csv:
-            self.csv_converter = CSVConverter(image_path, image_src_type, image_dest_type, label_path, label_map,
-                                              output_path)
+        self.csv_converter = CSVConverter(image_path, image_src_type, image_dest_type, label_path, label_map,
+                                          file_lists, output_path, excluded_classes)
 
     def convert(self):
-        print('\nConverting ...')
-        if self.create_csv:
-            self._copy_values_to_csv_converter()
-            self.csv_converter.convert('\t')
+        time.sleep(0.1)
+        self._copy_values_to_csv_converter()
+        self.csv_converter.convert()
+        self._copy_values_from_csv_converter()
 
         time.sleep(0.1)
         for image_set in self.image_sets:
-            print('\n\tCreating tfrecord files for {} ...'.format(image_set))
-
-            csv_path = os.path.join(self.output_path, '{}_labels.csv'.format(image_set))
-            tfrecord_file = os.path.join(self.output_path, '{}.record'.format(image_set))
-
-            generate_tfrecord(self.image_path, csv_path, self.id2cat, tfrecord_file)
+            print('\nCreating tfrecord files for {} ...'.format(image_set))
+            self.gt_boxes = generate_tfrecord(self.image_path, self.output_path, image_set, self.id2cat, self.gt_boxes)
 
         self._create_label_map_pbtxt()
+
+        if not self.images_copied:
+            self._copy_all_images()
 
     def _copy_values_to_csv_converter(self):
         self.csv_converter.images_copied = self.images_copied
@@ -43,9 +40,16 @@ class TFRecordConverter(BaseConverter):
 
         self.csv_converter.image_sets = self.image_sets
 
-    def _create_label_map_pbtxt(self):
-        print('\nCreating label map file ...')
+    def _copy_values_from_csv_converter(self):
+        self.images_copied = self.csv_converter.images_copied
+        self.images_split = self.csv_converter.images_split
 
+        self.images = self.csv_converter.images
+        self.label = self.csv_converter.label
+
+        self.image_sets = self.csv_converter.image_sets
+
+    def _create_label_map_pbtxt(self):
         label_map_file = os.path.join(self.output_path, 'label_map.pbtxt')
         item = 'item {{\n' \
                '  id: {}\n' \
@@ -56,4 +60,4 @@ class TFRecordConverter(BaseConverter):
         with open(label_map_file, 'w') as f:
             for cat_id in self.id2cat:
                 f.write(item.format(cat_id, self.id2cat[cat_id]))
-
+        print('\nCreated label map file.')

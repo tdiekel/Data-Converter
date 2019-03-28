@@ -11,9 +11,10 @@ from utils.BaseConverter import BaseConverter
 
 
 class COCOConverter(BaseConverter):
-    def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, output_path):
-        super().__init__(image_path, image_src_type, image_dest_type, label_path, label_map,
-                         output_path)
+    def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
+                 excluded_classes):
+        super().__init__(image_path, image_src_type, image_dest_type, label_path, label_map, file_lists,
+                         output_path, excluded_classes)
 
         self.licenses = [{'id': 1,
                           'name': 'IfF',
@@ -30,23 +31,19 @@ class COCOConverter(BaseConverter):
     def convert(self):
         time.sleep(0.1)
         print("\nCreating dataset...")
+
         # Make annotations output dir
         annotations_dir = os.path.join(self.output_path, "annotations")
-        if not os.path.exists(annotations_dir):
-            os.makedirs(annotations_dir)
-        else:
-            UserWarning("Annotations output directory already exists: {}".format(annotations_dir))
+        self._create_dir(annotations_dir)
 
         for image_set in self.image_sets:
             time.sleep(0.1)
             print("\tCreating {} set...".format(image_set))
             time.sleep(0.1)
+
             # Make image_set output dir
             image_set_dir = os.path.join(self.output_path, image_set)
-            if not os.path.exists(image_set_dir):
-                os.makedirs(image_set_dir)
-            else:
-                UserWarning("{} output directory already exists: {}".format(image_set, image_set_dir))
+            self._create_dir(image_set_dir)
 
             images, annotations = self._get_images_and_annotations(image_set)
 
@@ -79,19 +76,13 @@ class COCOConverter(BaseConverter):
             label_path = os.path.join(self.label_path, image_filename.replace('.' + self.image_src_type, '.xml'))
             assert os.path.isfile(label_path), "File not found: {}".format(label_path)
 
-            annotation_list, im_width, im_height = self._get_annotations(image_id=image_id, label_path=label_path)
+            annotation_list, im_width, im_height = self._get_annotations(image_set=image_set, image_id=image_id,
+                                                                         label_path=label_path)
             for annotation in annotation_list:
                 annotations.append(annotation)
 
-            if self.images_split:
-                image_path = os.path.join(self.output_path, image_set,
-                                          image_filename.replace('.' + self.image_src_type, '.' + self.image_dest_type))
-            else:
-                image_path = os.path.join(self.image_path, image_filename)
-            assert os.path.isfile(image_path), "File not found: {}".format(image_path)
-
             if not self.images_copied:
-                self._save_image(image_path, image_set)
+                self._save_image(image_id, image_set)
 
             images.append({
                 "license": 1,
@@ -103,7 +94,7 @@ class COCOConverter(BaseConverter):
 
         return images, annotations
 
-    def _get_annotations(self, image_id, label_path):
+    def _get_annotations(self, image_set, image_id, label_path):
         xml_tree = ET.parse(label_path).getroot()
 
         if "verified" not in xml_tree.attrib:
@@ -114,7 +105,11 @@ class COCOConverter(BaseConverter):
         height = int(xml_tree.find('size')[1].text)
 
         for member in xml_tree.findall('object'):
-            category_id = member[0].text,
+            category_id = int(member[0].text)
+
+            if category_id in self.excluded_classes:
+                continue
+
             xmin = int(member[4][0].text)
             ymin = int(member[4][1].text)
             xmax = int(member[4][2].text)
@@ -130,9 +125,15 @@ class COCOConverter(BaseConverter):
                 "iscrowd": 0,
                 "image_id": image_id + 1,
                 "bbox": bbox,
-                "category_id": category_id[0],
+                "category_id": category_id,
                 "id": self.annotation_id
             })
+
+            if category_id in self.gt_boxes:
+                if image_set in self.gt_boxes[category_id]['num_gt_boxes']:
+                    self.gt_boxes[category_id]['num_gt_boxes'][image_set] += 1
+                else:
+                    self.gt_boxes[category_id]['num_gt_boxes'][image_set] = 1
 
             self.annotation_id += 1
 
