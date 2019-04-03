@@ -127,17 +127,18 @@ class DarknetConverter(BaseConverter):
         # .data file
         data_str = "classes = {class_num}\n" \
                    "{sets}" \
-                   "names = {dataset_name}.names\n" \
-                   "backup = {dataset_name}/"
+                   "names = {rel_path}/{dataset_name}.names\n" \
+                   "backup = ./training/{dataset_name}/"
 
         if len(self.image_sets) == 1:
-            image_sets = "train = {set}.txt\n".format(set=self.image_sets[0])
+            image_sets = "train = {rel_path}/{set}.txt\n".format(rel_path=self.rel_output_path, set=self.image_sets[0])
         else:
-            image_sets = "train = {set1}.txt\n" \
-                         "valid = {set2}.txt\n".format(set1=self.image_sets[0], set2=self.image_sets[1])
+            image_sets = "train = {rel_path}/{set1}.txt\n" \
+                         "valid = {rel_path}/{set2}.txt\n".format(rel_path=self.rel_output_path, set1=self.image_sets[0], set2=self.image_sets[1])
 
         data_str = data_str.format(class_num=len(self.included_ids) - 1,
                                    sets=image_sets,
+                                   rel_path=self.rel_output_path,
                                    dataset_name=self.dataset_name)
 
         data_file = os.path.join(self.output_path, self.dataset_name + '.data')
