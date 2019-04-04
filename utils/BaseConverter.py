@@ -38,6 +38,10 @@ class BaseConverter:
 
         self.categories = json.load(open(label_map, 'r')).get('classes')
 
+        self.categories = [{'id': cat['id'] + 1,
+                            'name': cat['name']
+                            } for cat in self.categories]
+
         self._check_for_excluded_classes()
 
         self.cat2id = {cat['name']: cat['id'] for cat in self.categories}

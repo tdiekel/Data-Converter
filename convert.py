@@ -64,6 +64,9 @@ def check_args(args):
                 except ValueError:
                     RuntimeError('ValueError while parsing IDs to exclude. Unknown value in: {}'.format(item))
 
+        if not args.exclude_starts_at_one:
+            exclude = [excluded_id + 1 for excluded_id in exclude]
+
         args.exclude = exclude
     else:
         args.exclude = []
@@ -114,6 +117,9 @@ def parse_args(args):
                                           '(e.g. "--exclude 1 2 3" or "--exclude 1-3" or "--exclude 1 2-3")'
                                           ' (default: None)',
                         type=str, nargs='*', default=None)
+    parser.add_argument('--exclude-starts-at-one', help='When set the script counts the class IDs starting at 1, '
+                                                        'when not set counter starts at 0.',
+                        action='store_const', const=True, default=False)
     parser.add_argument('--stats', help='Calculate image statistics when set.',
                         action='store_const', const=True, default=False)
 
