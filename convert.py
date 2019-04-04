@@ -60,7 +60,7 @@ def check_args(args):
                     RuntimeError('ValueError while parsing IDs to exclude. Unknown value in: {}'.format(item))
             else:
                 try:
-                    exclude.append(item)
+                    exclude.append(int(item))
                 except ValueError:
                     RuntimeError('ValueError while parsing IDs to exclude. Unknown value in: {}'.format(item))
 
