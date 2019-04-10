@@ -46,7 +46,7 @@ class CSVConverter(BaseConverter):
             height = int(xml_tree.find('size')[1].text)
 
             for member in xml_tree.findall('object'):
-                class_id = int(member[0].text)
+                class_id = int(member[0].text) + 1
                 xmin = int(member[4][0].text)
                 ymin = int(member[4][1].text)
                 xmax = int(member[4][2].text)

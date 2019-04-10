@@ -66,7 +66,7 @@ class DarknetConverter(BaseConverter):
                 height = int(xml_tree.find('size')[1].text)
 
                 for member in xml_tree.findall('object'):
-                    class_id = int(member[0].text)
+                    class_id = int(member[0].text) + 1
                     x_min = int(member[4][0].text)
                     y_min = int(member[4][1].text)
                     x_max = int(member[4][2].text)

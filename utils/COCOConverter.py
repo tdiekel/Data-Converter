@@ -105,7 +105,7 @@ class COCOConverter(BaseConverter):
         height = int(xml_tree.find('size')[1].text)
 
         for member in xml_tree.findall('object'):
-            category_id = int(member[0].text)
+            category_id = int(member[0].text) + 1
 
             if category_id in self.excluded_classes:
                 continue
