@@ -136,7 +136,7 @@ class DarknetConverter(BaseConverter):
             image_sets = "train = {rel_path}/{set1}.txt\n" \
                          "valid = {rel_path}/{set2}.txt\n".format(rel_path=self.rel_output_path, set1=self.image_sets[0], set2=self.image_sets[1])
 
-        data_str = data_str.format(class_num=len(self.included_ids) - 1,
+        data_str = data_str.format(class_num=len(self.included_ids),
                                    sets=image_sets,
                                    rel_path=self.rel_output_path,
                                    dataset_name=self.dataset_name)
