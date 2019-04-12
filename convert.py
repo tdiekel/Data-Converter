@@ -120,7 +120,11 @@ def parse_args(args):
     parser.add_argument('--exclude-starts-at-one', help='When set the script counts the class IDs starting at 1, '
                                                         'when not set counter starts at 0.',
                         action='store_const', const=True, default=False)
-    parser.add_argument('--stats', help='Calculate image statistics when set.',
+    parser.add_argument('--stats', help='Calculate image and label statistics when set.',
+                        action='store_const', const=True, default=False)
+    parser.add_argument('--stats-img', help='Calculate image statistics when set.',
+                        action='store_const', const=True, default=False)
+    parser.add_argument('--stats-label', help='Calculate label statistics when set.',
                         action='store_const', const=True, default=False)
 
     return check_args(parser.parse_args(args))
@@ -190,8 +194,10 @@ def main(args=None):
     converter.convert()
     converter.print_class_distribution()
 
-    if args.stats:
-        converter.calc_statistics()
+    if args.stats or args.stats_label:
+        converter.calc_label_statistics()
+    if args.stats or args.stats_img:
+        converter.calc_img_statistics()
 
 
 if __name__ == '__main__':

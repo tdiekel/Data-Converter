@@ -33,6 +33,9 @@ class CSVConverter(BaseConverter):
         if not self.images_copied:
             self._copy_all_images()
 
+    def get_dataframe(self, image_set):
+        return self._xml_to_dataframe(image_set)
+
     def _xml_to_dataframe(self, image_set):
         xml_list = []
 

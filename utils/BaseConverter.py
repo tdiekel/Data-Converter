@@ -4,13 +4,16 @@ import random
 import shutil
 import time
 from datetime import datetime
-from tabulate import tabulate
+from tempfile import mkdtemp
 
 import cv2
 import numpy as np
-from PIL import Image
-from tqdm import tqdm
 import pandas as pd
+from PIL import Image
+from tabulate import tabulate
+from tqdm import tqdm
+
+from utils.CSVConverter import CSVConverter
 
 
 class BaseConverter:
@@ -29,6 +32,7 @@ class BaseConverter:
         self.image_src_type = image_src_type
         self.image_dest_type = image_dest_type
         self.label_path = label_path
+        self.label_map = label_map
         self.file_lists = file_lists
         self.output_path = output_path
         self.excluded_classes = excluded_classes
@@ -36,7 +40,7 @@ class BaseConverter:
         self.images_copied = False
         self.images_split = False
 
-        self.categories = json.load(open(label_map, 'r')).get('classes')
+        self.categories = json.load(open(self.label_map, 'r')).get('classes')
 
         self.categories = [{'id': cat['id'] + 1,
                             'name': cat['name']
@@ -118,8 +122,8 @@ class BaseConverter:
 
         return valid
 
-    def calc_statistics(self):
-        print("Calculating dataset statistics ...")
+    def calc_img_statistics(self):
+        print("Calculating image statistics ...")
 
         mean_per_image = []
 
@@ -139,14 +143,119 @@ class BaseConverter:
         self.img_std = np.sqrt(np.divide(np.sum(self.img_var, axis=0), i))
         print("Mean (RGB) = {}, {}, {}\nStandard deviation = {}, {}, {}".format(self.img_mean[0], self.img_mean[1],
                                                                                 self.img_mean[2], self.img_std[0],
-                                                                                self.img_std[1],
-                                                                                self.img_std[2]))
+                                                                                self.img_std[1], self.img_std[2]))
 
         self._create_dir(self.output_path)
         with open(os.path.join(self.output_path, "image_stats.txt")) as file:
             file.write("Image statistics per RGB Channel")
             file.write("mean = [{}, {}, {}]\n".format(self.img_mean[0], self.img_mean[1], self.img_mean[2]))
             file.write("std = [{}, {}, {}]\n".format(self.img_std[0], self.img_std[1], self.img_std[2]))
+
+    def calc_label_statistics(self):
+        print("Creating dummy csv dataset ...")
+
+        converter = CSVConverter(self.image_path, self.image_src_type, self.image_dest_type, self.label_path,
+                                 self.label_map, self.file_lists, mkdtemp(), self.excluded_classes)
+
+        print("Calculating label statistics ...")
+        dataframes = []
+
+        for i, s in enumerate(self.image_sets):
+            time.sleep(0.1)
+            print("\tCalculating for images in {} ...".format(s))
+            time.sleep(0.1)
+
+            dataframes.append(converter.get_dataframe(s))
+            self._print_label_stats(dataframes[i], s)
+
+        if len(dataframes) != 1:
+            df = pd.concat(dataframes)
+            self._print_label_stats(df, set_title='full')
+
+    def _print_label_stats(self, df, set_title):
+        time.sleep(0.1)
+
+        # General stats
+        print('\nGeneral stats for \'{}\' set.'.format(set_title))
+
+        df_general = self._get_general_stats(df)
+        df_general.to_csv(os.path.join(self.output_path, '{}_general_stats.csv'.format(set_title)), index=None)
+
+        print(tabulate(df_general, headers='keys', tablefmt='psql', showindex=False))
+
+        # Class stats
+        print('\nClass stats for \'{}\' set.'.format(set_title))
+
+        df_class = self._get_class_stats(df)
+        df_class.to_csv(os.path.join(self.output_path, '{}_class_stats.csv'.format(set_title)), index=None)
+
+        columns_to_print = ['class_id', 'class', 'examples',
+                            'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h']
+
+        print(tabulate(df_class[columns_to_print], headers='keys', tablefmt='psql', showindex=False, floatfmt=".2f"))
+
+    def _get_general_stats(self, df):
+        general_stats = ['images',
+                         'avg. width', 'min. width', 'max. width',
+                         'avg. height', 'min. height', 'max. height']
+
+        data = [(df['filename'].count(),
+                 df['width'].mean(), df['width'].min(), df['width'].max(),
+                 df['height'].mean(), df['height'].min(), df['height'].max())]
+
+        return pd.DataFrame(data, columns=general_stats)
+
+    def _get_class_stats(self, df):
+        class_stats = ['class_id', 'class', 'examples',
+                       'avg_xmin', 'avg_ymin', 'avg_xmax', 'avg_ymax',
+                       'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h',
+                       'avg_rel_x_center', 'avg_rel_y_center', 'avg_rel_bbox_w', 'avg_rel_bbox_h'
+                       ]
+
+        class_list = []
+
+        for class_id in sorted(df['class'].unique()):
+            if class_id in self.excluded_classes:
+                continue
+
+            filtered_df = df[df['class'] == class_id]
+
+            # Convert to center values
+            x_center = filtered_df['xmax'] - (filtered_df['xmax'] - filtered_df['xmin']) / 2
+            y_center = filtered_df['ymax'] - (filtered_df['ymax'] - filtered_df['ymin']) / 2
+            bbox_w = filtered_df['xmax'] - filtered_df['xmin']
+            bbox_h = filtered_df['ymax'] - filtered_df['ymin']
+
+            # Convert to relative values
+            rel_x_center = x_center / filtered_df['width'].mean()
+            rel_y_center = y_center / filtered_df['height'].mean()
+            rel_bbox_w = bbox_w / filtered_df['width'].mean()
+            rel_bbox_h = bbox_h / filtered_df['height'].mean()
+
+            class_name = self.id2cat[class_id]
+
+            avg_xmin = filtered_df['xmin'].mean()
+            avg_ymin = filtered_df['ymin'].mean()
+            avg_xmax = filtered_df['xmax'].mean()
+            avg_ymax = filtered_df['ymax'].mean()
+
+            avg_x_center = x_center.mean()
+            avg_y_center = y_center.mean()
+            avg_bbox_width = bbox_w.mean()
+            avg_bbox_height = bbox_h.mean()
+
+            avg_rel_x_center = rel_x_center.mean() * 100
+            avg_rel_y_center = rel_y_center.mean() * 100
+            avg_rel_bbox_w = rel_bbox_w.mean() * 100
+            avg_rel_bbox_h = rel_bbox_h.mean() * 100
+
+            class_list.append((class_id, class_name, filtered_df['class'].count(),
+                               avg_xmin, avg_ymin, avg_xmax, avg_ymax,
+                               avg_x_center, avg_y_center, avg_bbox_width, avg_bbox_height,
+                               avg_rel_x_center, avg_rel_y_center, avg_rel_bbox_w, avg_rel_bbox_h
+                               ))
+
+        return pd.DataFrame(class_list, columns=class_stats)
 
     def split(self, sets, set_sizes, shuffle):
         if self.images_split:
