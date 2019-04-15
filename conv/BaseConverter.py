@@ -189,7 +189,7 @@ class BaseConverter:
         df_class = self._get_class_stats(df)
         df_class.to_csv(os.path.join(self.output_path, '{}_class_stats.csv'.format(set_title)), index=None)
 
-        columns_to_print = ['class_id', 'class', 'examples', 'num_bboxes_greater_than_32px',
+        columns_to_print = ['class_id', 'class', 'examples',
                             'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h',
                             'min_bbox_w', 'min_bbox_h', 'max_bbox_w', 'max_bbox_h']
 
@@ -208,13 +208,14 @@ class BaseConverter:
 
     def _get_class_stats(self, df):
         class_stats = ['class_id', 'class', 'examples',
+                       'num_bboxes_greater_than_32px', 'num_bboxes_smaller_than_32px',
+                       'num_bboxes_greater_than_16px', 'num_bboxes_smaller_than_16px',
                        'avg_xmin', 'avg_ymin', 'avg_xmax', 'avg_ymax',
                        'min_x_center', 'min_y_center', 'min_bbox_w', 'min_bbox_h',
                        'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h',
                        'max_x_center', 'max_y_center', 'max_bbox_w', 'max_bbox_h',
-                       'num_bboxes_greater_than_32px',
-                       'avg_rel_x_center', 'avg_rel_y_center', 'avg_rel_bbox_w', 'avg_rel_bbox_h'
-                       ]
+                       'avg_bbox_area', 'min_bbox_area', 'max_bbox_area',
+                       'avg_rel_x_center', 'avg_rel_y_center', 'avg_rel_bbox_w', 'avg_rel_bbox_h']
 
         class_list = []
 
@@ -223,6 +224,8 @@ class BaseConverter:
                 continue
 
             filtered_df = df[df['class'] == class_id]
+            class_name = self.id2cat[class_id]
+            examples = filtered_df['class'].count()
 
             # Convert to center values
             x_center = filtered_df['xmax'] - (filtered_df['xmax'] - filtered_df['xmin']) / 2
@@ -235,8 +238,6 @@ class BaseConverter:
             rel_y_center = y_center / filtered_df['height'].mean()
             rel_bbox_w = bbox_w / filtered_df['width'].mean()
             rel_bbox_h = bbox_h / filtered_df['height'].mean()
-
-            class_name = self.id2cat[class_id]
 
             avg_xmin = filtered_df['xmin'].mean()
             avg_ymin = filtered_df['ymin'].mean()
@@ -258,23 +259,33 @@ class BaseConverter:
             max_bbox_width = bbox_w.max()
             max_bbox_height = bbox_h.max()
 
-            bbox_area = pd.DataFrame({'bbox_w': bbox_w, 'bbox_h': bbox_h})
+            bbox_area = pd.DataFrame({'bbox_w': bbox_w, 'bbox_h': bbox_h, 'area': bbox_w * bbox_h})
+            avg_bbox_area = bbox_area['area'].mean()
+            min_bbox_area = bbox_area['area'].min()
+            max_bbox_area = bbox_area['area'].max()
+
             bboxes_greater_than_32px = bbox_area[(bbox_area['bbox_w'] >= 32) & (bbox_area['bbox_h'] >= 32)]
             num_bboxes_greater_than_32px = bboxes_greater_than_32px.count()['bbox_h']
+            num_bboxes_smaller_than_32px = examples - num_bboxes_greater_than_32px
+
+            bboxes_greater_than_16px = bbox_area[(bbox_area['bbox_w'] >= 16) & (bbox_area['bbox_h'] >= 16)]
+            num_bboxes_greater_than_16px = bboxes_greater_than_16px.count()['bbox_h']
+            num_bboxes_smaller_than_16px = examples - num_bboxes_greater_than_16px
 
             avg_rel_x_center = rel_x_center.mean() * 100
             avg_rel_y_center = rel_y_center.mean() * 100
             avg_rel_bbox_w = rel_bbox_w.mean() * 100
             avg_rel_bbox_h = rel_bbox_h.mean() * 100
 
-            class_list.append((class_id, class_name, filtered_df['class'].count(),
+            class_list.append((class_id, class_name, examples,
+                               num_bboxes_greater_than_32px, num_bboxes_smaller_than_32px,
+                               num_bboxes_greater_than_16px, num_bboxes_smaller_than_16px,
                                avg_xmin, avg_ymin, avg_xmax, avg_ymax,
                                min_x_center, min_y_center, min_bbox_width, min_bbox_height,
                                avg_x_center, avg_y_center, avg_bbox_width, avg_bbox_height,
                                max_x_center, max_y_center, max_bbox_width, max_bbox_height,
-                               num_bboxes_greater_than_32px,
-                               avg_rel_x_center, avg_rel_y_center, avg_rel_bbox_w, avg_rel_bbox_h
-                               ))
+                               avg_bbox_area, min_bbox_area, max_bbox_area,
+                               avg_rel_x_center, avg_rel_y_center, avg_rel_bbox_w, avg_rel_bbox_h))
 
         return pd.DataFrame(class_list, columns=class_stats)
 
