@@ -13,7 +13,7 @@ from PIL import Image
 from tabulate import tabulate
 from tqdm import tqdm
 
-from utils.CSVConverter import CSVConverter
+import conv
 
 
 class BaseConverter:
@@ -154,8 +154,8 @@ class BaseConverter:
     def calc_label_statistics(self):
         print("Creating dummy csv dataset ...")
 
-        converter = CSVConverter(self.image_path, self.image_src_type, self.image_dest_type, self.label_path,
-                                 self.label_map, self.file_lists, mkdtemp(), self.excluded_classes)
+        converter = conv.CSVConverter(self.image_path, self.image_src_type, self.image_dest_type, self.label_path,
+                                      self.label_map, self.file_lists, mkdtemp(), self.excluded_classes)
 
         print("Calculating label statistics ...")
         dataframes = []
@@ -189,8 +189,9 @@ class BaseConverter:
         df_class = self._get_class_stats(df)
         df_class.to_csv(os.path.join(self.output_path, '{}_class_stats.csv'.format(set_title)), index=None)
 
-        columns_to_print = ['class_id', 'class', 'examples',
-                            'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h']
+        columns_to_print = ['class_id', 'class', 'examples', 'num_bboxes_greater_than_32px',
+                            'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h',
+                            'min_bbox_w', 'min_bbox_h', 'max_bbox_w', 'max_bbox_h']
 
         print(tabulate(df_class[columns_to_print], headers='keys', tablefmt='psql', showindex=False, floatfmt=".2f"))
 
@@ -208,7 +209,10 @@ class BaseConverter:
     def _get_class_stats(self, df):
         class_stats = ['class_id', 'class', 'examples',
                        'avg_xmin', 'avg_ymin', 'avg_xmax', 'avg_ymax',
+                       'min_x_center', 'min_y_center', 'min_bbox_w', 'min_bbox_h',
                        'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h',
+                       'max_x_center', 'max_y_center', 'max_bbox_w', 'max_bbox_h',
+                       'num_bboxes_greater_than_32px',
                        'avg_rel_x_center', 'avg_rel_y_center', 'avg_rel_bbox_w', 'avg_rel_bbox_h'
                        ]
 
@@ -239,10 +243,24 @@ class BaseConverter:
             avg_xmax = filtered_df['xmax'].mean()
             avg_ymax = filtered_df['ymax'].mean()
 
+            min_x_center = x_center.min()
+            min_y_center = y_center.min()
+            min_bbox_width = bbox_w.min()
+            min_bbox_height = bbox_h.min()
+
             avg_x_center = x_center.mean()
             avg_y_center = y_center.mean()
             avg_bbox_width = bbox_w.mean()
             avg_bbox_height = bbox_h.mean()
+
+            max_x_center = x_center.max()
+            max_y_center = y_center.max()
+            max_bbox_width = bbox_w.max()
+            max_bbox_height = bbox_h.max()
+
+            bbox_area = pd.DataFrame({'bbox_w': bbox_w, 'bbox_h': bbox_h})
+            bboxes_greater_than_32px = bbox_area[(bbox_area['bbox_w'] >= 32) & (bbox_area['bbox_h'] >= 32)]
+            num_bboxes_greater_than_32px = bboxes_greater_than_32px.count()['bbox_h']
 
             avg_rel_x_center = rel_x_center.mean() * 100
             avg_rel_y_center = rel_y_center.mean() * 100
@@ -251,7 +269,10 @@ class BaseConverter:
 
             class_list.append((class_id, class_name, filtered_df['class'].count(),
                                avg_xmin, avg_ymin, avg_xmax, avg_ymax,
+                               min_x_center, min_y_center, min_bbox_width, min_bbox_height,
                                avg_x_center, avg_y_center, avg_bbox_width, avg_bbox_height,
+                               max_x_center, max_y_center, max_bbox_width, max_bbox_height,
+                               num_bboxes_greater_than_32px,
                                avg_rel_x_center, avg_rel_y_center, avg_rel_bbox_w, avg_rel_bbox_h
                                ))
 

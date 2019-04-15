@@ -7,10 +7,10 @@ import numpy as np
 from pycocotools import coco as cocoapi
 from tqdm import tqdm
 
-from utils.BaseConverter import BaseConverter
+import conv
 
 
-class COCOConverter(BaseConverter):
+class COCOConverter(conv.BaseConverter):
     def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
                  excluded_classes):
         super().__init__(image_path, image_src_type, image_dest_type, label_path, label_map, file_lists,

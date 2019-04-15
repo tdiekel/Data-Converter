@@ -6,10 +6,10 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 from tqdm import tqdm
 
-from utils.BaseConverter import BaseConverter
+import conv
 
 
-class CSVConverter(BaseConverter):
+class CSVConverter(conv.BaseConverter):
 
     def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
                  excluded_classes):

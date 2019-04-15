@@ -1,19 +1,18 @@
-import time
 import os
-from utils.BaseConverter import BaseConverter
-from utils.CSVConverter import CSVConverter
-from utils.generate_tfrecord import generate_tfrecord
+import time
+
+import conv
 
 
-class TFRecordConverter(BaseConverter):
+class TFRecordConverter(conv.BaseConverter):
 
     def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
                  excluded_classes):
         super().__init__(image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
                          excluded_classes)
 
-        self.csv_converter = CSVConverter(image_path, image_src_type, image_dest_type, label_path, label_map,
-                                          file_lists, output_path, excluded_classes)
+        self.csv_converter = conv.CSVConverter(image_path, image_src_type, image_dest_type, label_path, label_map,
+                                               file_lists, output_path, excluded_classes)
 
     def convert(self):
         time.sleep(0.1)
@@ -24,7 +23,7 @@ class TFRecordConverter(BaseConverter):
         time.sleep(0.1)
         for image_set in self.image_sets:
             print('\nCreating tfrecord files for {} ...'.format(image_set))
-            self.gt_boxes = generate_tfrecord(self.image_path, self.output_path, image_set, self.id2cat, self.gt_boxes)
+            self.gt_boxes = conv.generate_tfrecord(self.image_path, self.output_path, image_set, self.id2cat, self.gt_boxes)
 
         self._create_label_map_pbtxt()
 

@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 
 from tqdm import tqdm
 
-from utils.BaseConverter import BaseConverter
+from conv.BaseConverter import BaseConverter
 
 
 class DarknetConverter(BaseConverter):

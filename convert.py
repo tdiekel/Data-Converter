@@ -2,10 +2,7 @@ import argparse
 import os
 import sys
 
-from utils.COCOConverter import COCOConverter
-from utils.CSVConverter import CSVConverter
-from utils.TFRecordConverter import TFRecordConverter
-from utils.DarknetConverter import DarknetConverter
+import conv
 
 
 def check_args(args):
@@ -137,7 +134,7 @@ def main(args=None):
     args = parse_args(args)
 
     if args.target_format == 'coco':
-        converter = COCOConverter(
+        converter = conv.COCOConverter(
             image_path=args.image_path,
             image_src_type=args.image_src_filetype,
             image_dest_type=args.image_dest_filetype,
@@ -148,7 +145,7 @@ def main(args=None):
             excluded_classes=args.exclude
         )
     elif args.target_format == 'csv':
-        converter = CSVConverter(
+        converter = conv.CSVConverter(
             image_path=args.image_path,
             image_src_type=args.image_src_filetype,
             image_dest_type=args.image_dest_filetype,
@@ -159,7 +156,7 @@ def main(args=None):
             excluded_classes=args.exclude
         )
     elif args.target_format == 'tfrecord':
-        converter = TFRecordConverter(
+        converter = conv.TFRecordConverter(
             image_path=args.image_path,
             image_src_type=args.image_src_filetype,
             image_dest_type=args.image_dest_filetype,
@@ -170,7 +167,7 @@ def main(args=None):
             excluded_classes=args.exclude
         )
     elif args.target_format == 'darknet':
-        converter = DarknetConverter(
+        converter = conv.DarknetConverter(
             image_path=args.image_path,
             image_src_type=args.image_src_filetype,
             image_dest_type=args.image_dest_filetype,
