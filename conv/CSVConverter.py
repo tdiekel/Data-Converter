@@ -12,9 +12,9 @@ import conv
 class CSVConverter(conv.BaseConverter):
 
     def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
-                 excluded_classes):
+                 excluded_classes, included_classes):
         super().__init__(image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
-                         excluded_classes)
+                         excluded_classes, included_classes)
 
         self.column_names = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
 

@@ -11,9 +11,9 @@ from conv.BaseConverter import BaseConverter
 class DarknetConverter(BaseConverter):
 
     def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
-                 rel_output_path, dataset_name, excluded_classes):
+                 rel_output_path, dataset_name, excluded_classes, included_classes):
         super().__init__(image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
-                         excluded_classes)
+                         excluded_classes, included_classes)
 
         self.rel_output_path = rel_output_path
         self.dataset_name = dataset_name

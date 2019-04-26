@@ -43,6 +43,9 @@ def check_args(args):
         assert (len(args.sets) == len(args.set_sizes)
                 ), 'Number of set sizes does not fit the number of sets.'
 
+    assert not (args.exclude is not None
+                and args.include is not None), "Please don't use the flags --exclude and --include at the same time."
+
     if args.exclude is not None:
         exclude = []
 
@@ -67,6 +70,29 @@ def check_args(args):
         args.exclude = exclude
     else:
         args.exclude = []
+
+    if args.include is not None:
+        include = []
+
+        for item in args.include:
+            if "-" in item:
+                start, end = item.split('-')
+
+                try:
+                    for i in range(int(start), int(end) + 1):
+                        include.append(i)
+                except ValueError:
+                    RuntimeError('ValueError while parsing IDs to include. Unknown value in: {}'.format(item))
+            else:
+                try:
+                    include.append(int(item))
+                except ValueError:
+                    RuntimeError('ValueError while parsing IDs to include. Unknown value in: {}'.format(item))
+
+        if not args.include_starts_at_one:
+            include = [included_id + 1 for included_id in include]
+
+        args.include = include
 
     return args
 
@@ -117,6 +143,13 @@ def parse_args(args):
     parser.add_argument('--exclude-starts-at-one', help='When set the script counts the class IDs starting at 1, '
                                                         'when not set counter starts at 0.',
                         action='store_const', const=True, default=False)
+    parser.add_argument('--include', help='List of class IDs to include from label file.'
+                                          '(e.g. "--include 1 2 3" or "--include 1-3" or "--include 1 2-3")'
+                                          ' (default: None)',
+                        type=str, nargs='*', default=None)
+    parser.add_argument('--include-starts-at-one', help='When set the script counts the class IDs starting at 1, '
+                                                        'when not set counter starts at 0.',
+                        action='store_const', const=True, default=False)
     parser.add_argument('--stats', help='Calculate image and label statistics when set.',
                         action='store_const', const=True, default=False)
     parser.add_argument('--stats-img', help='Calculate image statistics when set.',
@@ -142,7 +175,8 @@ def main(args=None):
             label_map=args.label_map,
             file_lists=args.file_lists,
             output_path=args.output_path,
-            excluded_classes=args.exclude
+            excluded_classes=args.exclude,
+            included_classes=args.include
         )
     elif args.target_format == 'csv':
         converter = conv.CSVConverter(
@@ -153,7 +187,8 @@ def main(args=None):
             label_map=args.label_map,
             file_lists=args.file_lists,
             output_path=args.output_path,
-            excluded_classes=args.exclude
+            excluded_classes=args.exclude,
+            included_classes=args.include
         )
     elif args.target_format == 'tfrecord':
         converter = conv.TFRecordConverter(
@@ -164,7 +199,8 @@ def main(args=None):
             label_map=args.label_map,
             file_lists=args.file_lists,
             output_path=args.output_path,
-            excluded_classes=args.exclude
+            excluded_classes=args.exclude,
+            included_classes=args.include
         )
     elif args.target_format == 'darknet':
         converter = conv.DarknetConverter(
@@ -177,7 +213,8 @@ def main(args=None):
             output_path=args.output_path,
             rel_output_path=args.rel_output_path,
             dataset_name=args.dataset_name,
-            excluded_classes=args.exclude
+            excluded_classes=args.exclude,
+            included_classes=args.include
         )
     else:
         sys.exit(-1)

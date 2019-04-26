@@ -18,7 +18,7 @@ import conv
 
 class BaseConverter:
     def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
-                 excluded_classes):
+                 excluded_classes, included_classes):
         self.info = {
             'description': 'IfF 2018 Dataset',
             'url': 'http://www.iff.tu-bs.de',
@@ -36,6 +36,7 @@ class BaseConverter:
         self.file_lists = file_lists
         self.output_path = output_path
         self.excluded_classes = excluded_classes
+        self.included_classes = included_classes
 
         self.images_copied = False
         self.images_split = False
@@ -46,7 +47,10 @@ class BaseConverter:
                             'name': cat['name']
                             } for cat in self.categories]
 
-        self._check_for_excluded_classes()
+        if self.included_classes is None:
+            self._check_for_excluded_classes()
+        else:
+            self._check_for_included_classes()
 
         self.cat2id = {cat['name']: cat['id'] for cat in self.categories}
         self.id2cat = {cat['id']: cat['name'] for cat in self.categories}
@@ -87,6 +91,27 @@ class BaseConverter:
                         file.write("{}\t: {}\n".format(cat['id'], cat['name']))
 
             self.categories = remaining_categories
+
+        with open(os.path.join(self.output_path, "included_classes.txt"), 'w') as file:
+            for cat in self.categories:
+                file.write("{}\t: {}\n".format(cat['id'], cat['name']))
+
+    def _check_for_included_classes(self):
+        self._create_dir(self.output_path)
+
+        self.excluded_classes = []
+
+        with open(os.path.join(self.output_path, "excluded_classes.txt"), 'w') as file:
+            remaining_categories = []
+
+            for cat in self.categories:
+                if cat['id'] in self.included_classes:
+                    remaining_categories.append(cat)
+                else:
+                    self.excluded_classes.append(cat['id'])
+                    file.write("{}\t: {}\n".format(cat['id'], cat['name']))
+
+        self.categories = remaining_categories
 
         with open(os.path.join(self.output_path, "included_classes.txt"), 'w') as file:
             for cat in self.categories:
@@ -155,7 +180,7 @@ class BaseConverter:
         print("Creating dummy csv dataset ...")
 
         converter = conv.CSVConverter(self.image_path, self.image_src_type, self.image_dest_type, self.label_path,
-                                      self.label_map, self.file_lists, mkdtemp(), self.excluded_classes)
+                                      self.label_map, self.file_lists, mkdtemp(), self.excluded_classes, self.included_classes)
 
         print("Calculating label statistics ...")
         dataframes = []
@@ -200,7 +225,7 @@ class BaseConverter:
                          'avg. width', 'min. width', 'max. width',
                          'avg. height', 'min. height', 'max. height']
 
-        data = [(df['filename'].count(),
+        data = [(len(df['filename'].unique()),
                  df['width'].mean(), df['width'].min(), df['width'].max(),
                  df['height'].mean(), df['height'].min(), df['height'].max())]
 

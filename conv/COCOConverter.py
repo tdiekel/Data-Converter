@@ -12,9 +12,9 @@ import conv
 
 class COCOConverter(conv.BaseConverter):
     def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
-                 excluded_classes):
+                 excluded_classes, included_classes):
         super().__init__(image_path, image_src_type, image_dest_type, label_path, label_map, file_lists,
-                         output_path, excluded_classes)
+                         output_path, excluded_classes, included_classes)
 
         self.licenses = [{'id': 1,
                           'name': 'IfF',
