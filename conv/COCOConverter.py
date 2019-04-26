@@ -82,7 +82,11 @@ class COCOConverter(conv.BaseConverter):
                 annotations.append(annotation)
 
             if not self.images_copied:
-                self._save_image(image_id, image_set)
+                if self.skip_images_without_label:
+                    if len(annotation_list) > 0:
+                        self._save_image(image_id, image_set)
+                else:
+                    self._save_image(image_id, image_set)
 
             images.append({
                 "license": 1,

@@ -40,6 +40,7 @@ class BaseConverter:
 
         self.images_copied = False
         self.images_split = False
+        self.skip_images_without_label = False
 
         self.categories = json.load(open(self.label_map, 'r')).get('classes')
 

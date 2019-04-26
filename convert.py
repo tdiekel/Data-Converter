@@ -94,6 +94,9 @@ def check_args(args):
 
         args.include = include
 
+    if args.skip_images_without_label and args.target_format == 'coco':
+        print('Skipping images without labels works only for COCO datsets.')
+
     return args
 
 
@@ -127,6 +130,9 @@ def parse_args(args):
     parser.add_argument('--label-map', help='Path to label map json file.',
                         type=str, default='./label_map.json')
     parser.add_argument('--no-copy', help='Do not copy the images when set',
+                        action='store_const', const=True, default=False)
+    parser.add_argument('--skip-images-without-label',
+                        help='Do not copy the images without label when set. (COCO only)',
                         action='store_const', const=True, default=False)
     parser.add_argument('--sets', help='List of subsets to create (e.g. "--sets train val").',
                         type=str, nargs='*', default=['train', 'val'])
@@ -221,6 +227,8 @@ def main(args=None):
 
     if args.no_copy:
         converter.images_copied = True
+
+    converter.skip_images_without_label = args.skip_images_without_label
 
     if args.sets or args.file_lists:
         converter.split(args.sets, args.set_sizes, args.shuffle)
