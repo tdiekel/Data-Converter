@@ -59,7 +59,7 @@ class CSVConverter(conv.BaseConverter):
                     continue
 
                 if not class_id in self.included_ids:
-                    UserWarning(
+                    print(
                         'Error: Class ID {} not in label map or not included. Found in label file: {}'.format(
                             str(class_id), xml_file))
                     sys.exit(-1)

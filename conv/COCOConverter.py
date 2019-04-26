@@ -98,7 +98,7 @@ class COCOConverter(conv.BaseConverter):
         xml_tree = ET.parse(label_path).getroot()
 
         if "verified" not in xml_tree.attrib:
-            UserWarning("Label file not verified: {}".format(label_path))
+            print("Label file not verified: {}".format(label_path))
 
         annotation_list = []
         width = int(xml_tree.find('size')[0].text)
