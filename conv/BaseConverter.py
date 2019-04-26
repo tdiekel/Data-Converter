@@ -215,8 +215,11 @@ class BaseConverter:
         df_class.to_csv(os.path.join(self.output_path, '{}_class_stats.csv'.format(set_title)), index=None)
 
         columns_to_print = ['class_id', 'class', 'examples',
-                            'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h',
-                            'min_bbox_w', 'min_bbox_h', 'max_bbox_w', 'max_bbox_h']
+                            'bbox_area_tiny', 'fraction_tiny_bbox',
+                            'bbox_area_small', 'fraction_small_bbox',
+                            'bbox_area_medium', 'fraction_medium_bbox',
+                            'bbox_area_large', 'fraction_large_bbox',
+                            'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h']
 
         print(tabulate(df_class[columns_to_print], headers='keys', tablefmt='psql', showindex=False, floatfmt=".2f"))
 
@@ -233,8 +236,10 @@ class BaseConverter:
 
     def _get_class_stats(self, df):
         class_stats = ['class_id', 'class', 'examples',
-                       'num_bboxes_greater_than_32px', 'num_bboxes_smaller_than_32px',
-                       'num_bboxes_greater_than_16px', 'num_bboxes_smaller_than_16px',
+                       'bbox_area_tiny', 'fraction_tiny_bbox',
+                       'bbox_area_small', 'fraction_small_bbox',
+                       'bbox_area_medium', 'fraction_medium_bbox',
+                       'bbox_area_large', 'fraction_large_bbox',
                        'avg_xmin', 'avg_ymin', 'avg_xmax', 'avg_ymax',
                        'min_x_center', 'min_y_center', 'min_bbox_w', 'min_bbox_h',
                        'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h',
@@ -289,13 +294,15 @@ class BaseConverter:
             min_bbox_area = bbox_area['area'].min()
             max_bbox_area = bbox_area['area'].max()
 
-            bboxes_greater_than_32px = bbox_area[(bbox_area['bbox_w'] >= 32) & (bbox_area['bbox_h'] >= 32)]
-            num_bboxes_greater_than_32px = bboxes_greater_than_32px.count()['bbox_h']
-            num_bboxes_smaller_than_32px = examples - num_bboxes_greater_than_32px
+            bbox_area_tiny = bbox_area['area'][(bbox_area['area'] <= 16 * 16)].count()
+            bbox_area_small = bbox_area['area'][(bbox_area['area'] > 16 * 16) & (bbox_area['area'] <= 32 * 32)].count()
+            bbox_area_medium = bbox_area['area'][(bbox_area['area'] > 32 * 32) & (bbox_area['area'] <= 96 * 96)].count()
+            bbox_area_large = bbox_area['area'][(bbox_area['area'] > 96 * 96)].count()
 
-            bboxes_greater_than_16px = bbox_area[(bbox_area['bbox_w'] >= 16) & (bbox_area['bbox_h'] >= 16)]
-            num_bboxes_greater_than_16px = bboxes_greater_than_16px.count()['bbox_h']
-            num_bboxes_smaller_than_16px = examples - num_bboxes_greater_than_16px
+            fraction_tiny_bbox = bbox_area_tiny / examples
+            fraction_small_bbox = bbox_area_small / examples
+            fraction_medium_bbox = bbox_area_medium / examples
+            fraction_large_bbox = bbox_area_large / examples
 
             avg_rel_x_center = rel_x_center.mean() * 100
             avg_rel_y_center = rel_y_center.mean() * 100
@@ -303,8 +310,10 @@ class BaseConverter:
             avg_rel_bbox_h = rel_bbox_h.mean() * 100
 
             class_list.append((class_id, class_name, examples,
-                               num_bboxes_greater_than_32px, num_bboxes_smaller_than_32px,
-                               num_bboxes_greater_than_16px, num_bboxes_smaller_than_16px,
+                               bbox_area_tiny, fraction_tiny_bbox,
+                               bbox_area_small, fraction_small_bbox,
+                               bbox_area_medium, fraction_medium_bbox,
+                               bbox_area_large, fraction_large_bbox,
                                avg_xmin, avg_ymin, avg_xmax, avg_ymax,
                                min_x_center, min_y_center, min_bbox_width, min_bbox_height,
                                avg_x_center, avg_y_center, avg_bbox_width, avg_bbox_height,
