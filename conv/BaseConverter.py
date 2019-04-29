@@ -44,9 +44,17 @@ class BaseConverter:
 
         self.categories = json.load(open(self.label_map, 'r')).get('classes')
 
-        self.categories = [{'id': cat['id'] + 1,
-                            'name': cat['name']
-                            } for cat in self.categories]
+        # Labels to replace (increased by one!)
+        self.label_id_patches = {154: 90}
+
+        categories = []
+        for cat in self.categories:
+            cat_id = cat['id'] + 1
+
+            if cat_id not in self.label_id_patches:
+                categories.append({'id': cat_id, 'name': cat['name']})
+
+        self.categories = categories
 
         if self.included_classes is None:
             self._check_for_excluded_classes()

@@ -55,19 +55,23 @@ class CSVConverter(conv.BaseConverter):
 
             for member in xml_tree.findall('object'):
                 class_id = int(member[0].text) + 1
-                xmin = int(member[4][0].text)
-                ymin = int(member[4][1].text)
-                xmax = int(member[4][2].text)
-                ymax = int(member[4][3].text)
 
                 if class_id in self.excluded_classes:
                     continue
 
-                if not class_id in self.included_ids:
+                if class_id in self.label_id_patches:
+                    class_id = self.label_id_patches[class_id]
+
+                if class_id not in self.included_ids:
                     print(
                         'Error: Class ID {} not in label map or not included. Found in label file: {}'.format(
                             str(class_id), xml_file))
                     sys.exit(-1)
+
+                xmin = int(member[4][0].text)
+                ymin = int(member[4][1].text)
+                xmax = int(member[4][2].text)
+                ymax = int(member[4][3].text)
 
                 if class_id in self.gt_boxes:
                     if image_set in self.gt_boxes[class_id]['num_gt_boxes']:

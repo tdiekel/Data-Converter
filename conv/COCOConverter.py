@@ -1,6 +1,7 @@
 import json
 import os
 import time
+import sys
 import xml.etree.ElementTree as ET
 
 import numpy as np
@@ -115,6 +116,15 @@ class COCOConverter(conv.BaseConverter):
 
             if category_id in self.excluded_classes:
                 continue
+
+            if category_id in self.label_id_patches:
+                category_id = self.label_id_patches[category_id]
+
+            if category_id not in self.included_ids:
+                print(
+                    'Error: Class ID {} not in label map or not included. Found in label file: {}'.format(
+                        str(category_id), label_path))
+                sys.exit(-1)
 
             xmin = int(member[4][0].text)
             ymin = int(member[4][1].text)
