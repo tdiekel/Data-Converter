@@ -33,6 +33,8 @@ class CSVConverter(conv.BaseConverter):
         if not self.images_copied:
             self._copy_all_images()
 
+        self._warning_not_verfied_label_files()
+
     def get_dataframe(self, image_set):
         return self._xml_to_dataframe(image_set)
 
@@ -43,6 +45,9 @@ class CSVConverter(conv.BaseConverter):
             xml_file = os.path.join(self.label_path, xml_filename)
 
             xml_tree = ET.parse(xml_file).getroot()
+
+            if "verified" not in xml_tree.attrib:
+                self.not_verified_label_files.append(xml_file)
 
             filename = xml_tree.find('filename').text
             width = int(xml_tree.find('size')[0].text)

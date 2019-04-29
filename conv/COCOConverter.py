@@ -65,6 +65,8 @@ class COCOConverter(conv.BaseConverter):
             annotation_file = os.path.join(self.output_path, "annotations", "instances_" + image_set + ".json")
             self._test_dataset(annotation_file)
 
+        self._warning_not_verfied_label_files()
+
     def _test_dataset(self, annotation_file):
         c = cocoapi.COCO(annotation_file)
 
@@ -102,7 +104,7 @@ class COCOConverter(conv.BaseConverter):
         xml_tree = ET.parse(label_path).getroot()
 
         if "verified" not in xml_tree.attrib:
-            print("Label file not verified: {}".format(label_path))
+            self.not_verified_label_files.append(label_path)
 
         annotation_list = []
         width = int(xml_tree.find('size')[0].text)

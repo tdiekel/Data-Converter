@@ -67,6 +67,8 @@ class BaseConverter:
         self.label = {}
         self.image_sets = []
 
+        self.not_verified_label_files = []
+
         self._fill_lists()
 
         assert self._validate_match(), 'Image and label files do not match.'
@@ -469,3 +471,12 @@ class BaseConverter:
                 emtpy_classes.append(str(data['class id'][i]))
 
         print('Recommended to exclude the following class ids with 0 bboxes: {}'.format(' '.join(emtpy_classes)))
+
+    def _warning_not_verfied_label_files(self):
+        if len(self.not_verified_label_files) > 0:
+            print('\nNot verified label files found in folder {}.'.format(
+                os.path.dirname(self.not_verified_label_files[0])))
+
+            print('\tFile list:')
+            for label_file in self.not_verified_label_files:
+                print('\t' + os.path.basename(label_file))

@@ -49,6 +49,8 @@ class DarknetConverter(BaseConverter):
         if not self.images_copied:
             self._copy_all_images()
 
+        self._warning_not_verfied_label_files()
+
     def _create_label_files(self, image_set):
         label_target_folder = self._create_dir(os.path.join(self.output_path, image_set))
         set_file_list = []
@@ -57,6 +59,9 @@ class DarknetConverter(BaseConverter):
             xml_file = os.path.join(self.label_path, xml_filename)
 
             xml_tree = ET.parse(xml_file).getroot()
+
+            if "verified" not in xml_tree.attrib:
+                self.not_verified_label_files.append(xml_file)
 
             label_file = os.path.join(label_target_folder, xml_filename.replace('.xml', '.txt'))
             with open(label_file, 'w') as file:

@@ -30,6 +30,8 @@ class TFRecordConverter(conv.BaseConverter):
         if not self.images_copied:
             self._copy_all_images()
 
+        self._warning_not_verfied_label_files()
+
     def _copy_values_to_csv_converter(self):
         self.csv_converter.images_copied = self.images_copied
         self.csv_converter.images_split = self.images_split
