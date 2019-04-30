@@ -58,14 +58,14 @@ class CSVConverter(conv.BaseConverter):
                 if class_id in self.excluded_classes:
                     continue
 
-                if class_id in self.label_id_patches:
-                    class_id = self.label_id_patches[class_id]
-
                 if class_id not in self.included_ids:
                     print(
                         'Error: Class ID {} not in label map or not included. Found in label file: {}'.format(
                             str(class_id), xml_file))
                     sys.exit(-1)
+
+                if class_id in self.label_id_mapping:
+                    class_id = self.label_id_mapping[class_id]
 
                 xmin = int(member[4][0].text)
                 ymin = int(member[4][1].text)

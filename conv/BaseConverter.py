@@ -16,6 +16,7 @@ from tqdm import tqdm
 import conv
 from conv.util import create_dir, validate_match, print_label_stats, print_warning_for_empty_classes, write_label_map, \
     check_label_names_for_duplicates
+from label_mapping import mapping_settings
 
 
 class BaseConverter:
@@ -51,33 +52,40 @@ class BaseConverter:
         create_dir(self.output_path)
 
         self.categories = json.load(open(self.label_map, 'r')).get('classes')
-
-        # Labels to replace (increased by one!)
-        self.label_id_patches = {154: 90}
-
-        categories = []
-        for cat in self.categories:
-            cat_id = cat['id'] + 1
-
-            if cat_id not in self.label_id_patches:
-                categories.append({'id': cat_id, 'name': cat['name']})
-
-        self.categories = categories
+        self.categories = [{'id': cat['id'] + 1, 'name': cat['name']} for cat in self.categories]
 
         if self.included_classes is None:
             self._check_for_excluded_classes()
         else:
             self._check_for_included_classes()
 
+        # Get included ids
+        self.included_ids = [cat['id'] for cat in self.categories]
+
+        if self.remap_labels:
+            self._remap_labels()
+
+        if check_label_names_for_duplicates(self.categories):
+            print('\nExiting! Please fix label map.')
+            sys.exit(-1)
+
+        # Replacing one single label, quick and dirty version
+        # # Labels to replace (increased by one!)
+        # self.label_id_patches = {154: 90}
+        #
+        # categories = []
+        # for cat in self.categories:
+        #     cat_id = cat['id'] + 1
+        #
+        #     if cat_id not in self.label_id_patches:
+        #         categories.append({'id': cat_id, 'name': cat['name']})
+        #
+        # self.categories = categories
+
         self.cat2id = {cat['name']: cat['id'] for cat in self.categories}
         self.id2cat = {cat['id']: cat['name'] for cat in self.categories}
 
         self.gt_boxes = {cat['id']: {'name': cat['name'], 'num_gt_boxes': {}} for cat in self.categories}
-
-        # Get included ids
-        self.included_ids = []
-        for cat_id in self.id2cat:
-            self.included_ids.append(cat_id)
 
         self.images = {}
         self.label = {}
@@ -132,6 +140,100 @@ class BaseConverter:
         with open(os.path.join(self.output_path, "included_classes.txt"), 'w') as file:
             for cat in self.categories:
                 file.write("{}\t: {}\n".format(cat['id'], cat['name']))
+
+    def _remap_labels(self):
+        print('Remapping labels ...')
+        self.label_id_mapping = {}
+        new_categories = []
+        new_id2new_cat = {}
+        labels_merged_per_id = {}
+
+        if 'combine_by_id' in mapping_settings and mapping_settings['combine_by_id']:
+            if 'ids_from_org_list' not in mapping_settings:
+                use_org_ids = True
+            else:
+                use_org_ids = mapping_settings['ids_from_org_list']
+
+            for old_cat in self.categories:
+                old_id = old_cat['id']
+                old_name = old_cat['name']
+
+                for new_cat in mapping_settings['new_labels']:
+                    if use_org_ids:
+                        new_id = new_cat['new_id'] + 1
+                        new_old_id = new_cat['old_id'] + 1
+                    else:
+                        new_id = new_cat['new_id']
+                        new_old_id = new_cat['old_id']
+
+                    if 'name' in new_cat:
+                        new_name = new_cat['name']
+                    else:
+                        new_name = old_name
+
+                    if old_id == new_old_id:
+                        if len(list(filter(lambda cat: cat['id'] == new_id, new_categories))) == 0:
+                            new_categories.append({'id': new_id, 'name': new_name})
+
+                        self.label_id_mapping[old_id] = new_id
+
+                        if new_id in labels_merged_per_id:
+                            labels_merged_per_id[new_id] += 1
+                        else:
+                            labels_merged_per_id[new_id] = 1
+                    else:
+                        new_categories.append(old_cat)
+
+            new_id2new_cat = {cat['id']: cat['name'] for cat in new_categories}
+
+        elif 'combine_by_substring' in mapping_settings and mapping_settings['combine_by_substring']:
+            new_categories = [{'id': new_label['new_id'],
+                               'name': new_label['new_name'],
+                               'supercategory': new_label['substring'].replace('(', '').replace(')', '')}
+                              for new_label in mapping_settings['new_labels']]
+            new_id2new_cat = {cat['id']: cat['name'] for cat in new_categories}
+
+            labels_merged_per_id = {new_cat['id']: 0 for new_cat in new_categories}
+
+            for old_cat in self.categories:
+                old_id = old_cat['id']
+                old_name = old_cat['name']
+
+                for new_cat in mapping_settings['new_labels']:
+                    new_id = new_cat['new_id']
+                    substring = new_cat['substring']
+
+                    exclude = None
+                    if 'exclude' in new_cat:
+                        exclude = new_cat['exclude']
+
+                    if substring in old_name:
+                        if exclude is not None and exclude in old_cat['name']:
+                            continue
+
+                        self.label_id_mapping[old_id] = new_id
+                        labels_merged_per_id[new_id] += 1
+
+        print('\tReduced from {} to {} class(es).'.format(len(self.categories), len(new_categories)))
+        for label_id in labels_merged_per_id:
+            if labels_merged_per_id[label_id] == 0:
+                print('\tNo matching classes found for class {} with id {}. Ignoring class.'.format(
+                    new_id2new_cat[label_id], label_id))
+
+                i = len(new_categories) - 1
+                while i >= 0:
+                    if new_categories[i]['id'] == label_id:
+                        del new_categories[i]
+                        break
+                    i -= 1
+
+            else:
+                print('\tMapped {} classes to {} with id {}.'.format(labels_merged_per_id[label_id],
+                                                                     new_id2new_cat[label_id], label_id))
+
+        self.categories = new_categories
+
+        write_label_map(self.output_path, self.categories, self.label_id_mapping)
 
     def _fill_lists(self):
         if self.file_lists is not None:
@@ -210,11 +312,17 @@ class BaseConverter:
         print('\nSplitting data...')
 
         sets = [s + str(self.info['year']) for s in sets]
-        images_per_set = [int(len(self.images['images']) * size / sum(set_sizes)) for size in set_sizes]
+        num_images = len(self.images['images'])
+        images_per_set = [int(num_images * size / sum(set_sizes)) for size in set_sizes]
 
         # Add remainder to first set
-        while sum(images_per_set) < len(self.images['images']):
+        while sum(images_per_set) < num_images:
             images_per_set[0] += 1
+
+        print('Resulting distribution:', '\n' + tabulate(
+            tabular_data=[{'Set': s, 'Fraction [%]': images_per_set[i] / num_images * 100} for i, s in enumerate(sets)],
+            headers='keys', tablefmt='psql', showindex=False, floatfmt=".3f"
+        ))
 
         if shuffle:
             self._shuffle()
@@ -305,8 +413,9 @@ class BaseConverter:
                 shutil.copyfile(image_path, image_out_path)
 
     def print_class_distribution(self):
-        data = dict()
+        print('\nPrinting class distribution for image sets...')
 
+        data = dict()
         data['class id'] = [class_id for class_id in self.gt_boxes]
         data['class'] = [self.gt_boxes[class_id]['name'] for class_id in self.gt_boxes]
         data['#bbox'] = [0 for class_id in self.gt_boxes]
@@ -316,13 +425,13 @@ class BaseConverter:
         for image_set in self.image_sets:
             column = '#bbox in {}'.format(image_set)
             columns.append(column)
-            # data[column] = []
+            data[column] = []
 
             for i, class_id in enumerate(self.gt_boxes):
                 num = self.gt_boxes[class_id]['num_gt_boxes'].get(image_set, 0)
 
-                # data[column].append(num)
                 data['#bbox'][i] += num
+                data[column].append(num)
 
         df = pd.DataFrame(data=data)
         df.to_csv(os.path.join(self.output_path, 'class_distribution.csv'), index=None)

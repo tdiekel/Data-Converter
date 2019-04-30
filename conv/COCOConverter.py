@@ -21,10 +21,11 @@ class COCOConverter(conv.BaseConverter):
                           'url': 'http://www.iff.tu-bs.de'
                           }]
 
-        for item in self.categories:
-            name = item.get('name')
-            idx = name.rfind('(')
-            item['supercategory'] = name[idx + 1:-1]
+        if 'supercategory' not in self.categories[0]:
+            for item in self.categories:
+                name = item.get('name')
+                idx = name.rfind('(')
+                item['supercategory'] = name[idx + 1:-1]
 
         self.annotation_id = 1
 
@@ -55,9 +56,13 @@ class COCOConverter(conv.BaseConverter):
                 "categories": self.categories
             }
 
+            time.sleep(0.1)
+            print('\tWriting annotations to disk...\n')
+            time.sleep(0.1)
+
             annotation_file = os.path.join(self.output_path, "annotations", "instances_" + image_set + ".json")
             with open(annotation_file, "w") as jsonfile:
-                json.dump(json_data, jsonfile, sort_keys=True, indent=4)
+                json.dump(json_data, jsonfile, indent=4)
 
         for image_set in self.image_sets:
             print('\nTesting dataset {} ...'.format(image_set))
@@ -126,14 +131,14 @@ class COCOConverter(conv.BaseConverter):
             if category_id in self.excluded_classes:
                 continue
 
-            if category_id in self.label_id_patches:
-                category_id = self.label_id_patches[category_id]
-
             if category_id not in self.included_ids:
                 print(
                     'Error: Class ID {} not in label map or not included. Found in label file: {}'.format(
                         str(category_id), label_path))
                 sys.exit(-1)
+
+            if category_id in self.label_id_mapping:
+                category_id = self.label_id_mapping[category_id]
 
             xmin = int(member[4][0].text)
             ymin = int(member[4][1].text)

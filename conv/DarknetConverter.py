@@ -75,14 +75,14 @@ class DarknetConverter(BaseConverter):
                     if class_id in self.excluded_classes:
                         continue
 
-                    if class_id in self.label_id_patches:
-                        class_id = self.label_id_patches[class_id]
-
                     if class_id not in self.included_ids:
                         print(
                             'Error: Class ID {} not in label map or not included. Found in label file: {}'.format(
                                 str(class_id), xml_file))
                         sys.exit(-1)
+
+                    if class_id in self.label_id_mapping:
+                        class_id = self.label_id_mapping[class_id]
 
                     x_min = int(member[4][0].text)
                     y_min = int(member[4][1].text)
@@ -155,7 +155,7 @@ class DarknetConverter(BaseConverter):
             f.write(data_str)
 
         # .names file
-        name_str = '\n'.join([self.id2cat[cat_id] for cat_id in self.included_ids])
+        name_str = '\n'.join([cat['name'] for cat in self.categories])
 
         name_file = os.path.join(self.output_path, self.dataset_name + '.names')
 

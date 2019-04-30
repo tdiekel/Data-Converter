@@ -4,6 +4,7 @@ import sys
 
 import conv
 from conv.util import create_dir, validate_match, print_label_stats, print_warning_for_empty_classes
+from label_mapping import mapping_settings
 
 
 def check_args(args):
@@ -95,6 +96,15 @@ def check_args(args):
 
         args.include = include
 
+    if args.remap_labels:
+        if 'combine_by_id' in mapping_settings and 'combine_by_substring' in mapping_settings:
+            assert mapping_settings['combine_by_id'] \
+                   is not mapping_settings['combine_by_substring'], 'Please check remap settings' \
+                                                                  ' in \'label_mapping.py\' file.' \
+                                                                  ' It\'s not possible to activate' \
+                                                                  ' combine_by_substring and combine_by_id.'
+        assert 'new_labels' in mapping_settings, 'No new labels defined in \'label_mapping.py\' file.'
+
     if args.skip_images_without_label and args.target_format == 'coco':
         print('Skipping images without labels works only for COCO datsets.')
 
@@ -156,6 +166,9 @@ def parse_args(args):
                         type=str, nargs='*', default=None)
     parser.add_argument('--include-starts-at-one', help='When set the script counts the class IDs starting at 1, '
                                                         'when not set counter starts at 0.',
+                        action='store_const', const=True, default=False)
+    parser.add_argument('--remap-labels', help='When set the script will lookup the \'label_mapping.py\' file'
+                                               ' and remap the labels accordingly.',
                         action='store_const', const=True, default=False)
     parser.add_argument('--stats', help='Calculate image and label statistics when set.',
                         action='store_const', const=True, default=False)
