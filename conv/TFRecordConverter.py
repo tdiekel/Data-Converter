@@ -6,13 +6,10 @@ import conv
 
 class TFRecordConverter(conv.BaseConverter):
 
-    def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
-                 excluded_classes, included_classes):
-        super().__init__(image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
-                         excluded_classes, included_classes)
+    def __init__(self, args):
+        super().__init__(args)
 
-        self.csv_converter = conv.CSVConverter(image_path, image_src_type, image_dest_type, label_path, label_map,
-                                               file_lists, output_path, excluded_classes)
+        self.csv_converter = conv.CSVConverter(args)
 
     def convert(self):
         time.sleep(0.1)

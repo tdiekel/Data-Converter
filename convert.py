@@ -173,62 +173,15 @@ def main(args=None):
     args = parse_args(args)
 
     if args.target_format == 'coco':
-        converter = conv.COCOConverter(
-            image_path=args.image_path,
-            image_src_type=args.image_src_filetype,
-            image_dest_type=args.image_dest_filetype,
-            label_path=args.label_path,
-            label_map=args.label_map,
-            file_lists=args.file_lists,
-            output_path=args.output_path,
-            excluded_classes=args.exclude,
-            included_classes=args.include
-        )
+        converter = conv.COCOConverter(args)
     elif args.target_format == 'csv':
-        converter = conv.CSVConverter(
-            image_path=args.image_path,
-            image_src_type=args.image_src_filetype,
-            image_dest_type=args.image_dest_filetype,
-            label_path=args.label_path,
-            label_map=args.label_map,
-            file_lists=args.file_lists,
-            output_path=args.output_path,
-            excluded_classes=args.exclude,
-            included_classes=args.include
-        )
+        converter = conv.CSVConverter(args)
     elif args.target_format == 'tfrecord':
-        converter = conv.TFRecordConverter(
-            image_path=args.image_path,
-            image_src_type=args.image_src_filetype,
-            image_dest_type=args.image_dest_filetype,
-            label_path=args.label_path,
-            label_map=args.label_map,
-            file_lists=args.file_lists,
-            output_path=args.output_path,
-            excluded_classes=args.exclude,
-            included_classes=args.include
-        )
+        converter = conv.TFRecordConverter(args)
     elif args.target_format == 'darknet':
-        converter = conv.DarknetConverter(
-            image_path=args.image_path,
-            image_src_type=args.image_src_filetype,
-            image_dest_type=args.image_dest_filetype,
-            label_path=args.label_path,
-            label_map=args.label_map,
-            file_lists=args.file_lists,
-            output_path=args.output_path,
-            rel_output_path=args.rel_output_path,
-            dataset_name=args.dataset_name,
-            excluded_classes=args.exclude,
-            included_classes=args.include
-        )
+        converter = conv.DarknetConverter(args)
     else:
         sys.exit(-1)
-
-    if args.no_copy:
-        converter.images_copied = True
-
-    converter.skip_images_without_label = args.skip_images_without_label
 
     if args.sets or args.file_lists:
         converter.split(args.sets, args.set_sizes, args.shuffle)

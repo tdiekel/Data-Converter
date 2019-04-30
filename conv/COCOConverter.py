@@ -12,10 +12,8 @@ import conv
 
 
 class COCOConverter(conv.BaseConverter):
-    def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
-                 excluded_classes, included_classes):
-        super().__init__(image_path, image_src_type, image_dest_type, label_path, label_map, file_lists,
-                         output_path, excluded_classes, included_classes)
+    def __init__(self, args):
+        super().__init__(args)
 
         self.licenses = [{'id': 1,
                           'name': 'IfF',
@@ -76,7 +74,7 @@ class COCOConverter(conv.BaseConverter):
         annotations = []
 
         for image_id, image_filename in enumerate(tqdm(self.images[image_set], desc='\tProgress', unit='files')):
-            label_path = os.path.join(self.label_path, image_filename.replace('.' + self.image_src_type, '.xml'))
+            label_path = os.path.join(self.label_path, image_filename.replace('.' + self.image_src_filetype, '.xml'))
             assert os.path.isfile(label_path), "File not found: {}".format(label_path)
 
             annotation_list, im_width, im_height = self._get_annotations(image_set=image_set, image_id=image_id,

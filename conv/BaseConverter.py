@@ -17,8 +17,7 @@ import conv
 
 
 class BaseConverter:
-    def __init__(self, image_path, image_src_type, image_dest_type, label_path, label_map, file_lists, output_path,
-                 excluded_classes, included_classes):
+    def __init__(self, args):
         self.info = {
             'description': 'IfF 2018 Dataset',
             'url': 'http://www.iff.tu-bs.de',
@@ -28,19 +27,23 @@ class BaseConverter:
             'date_created': datetime.today().strftime('%Y/%m/%d')
         }
 
-        self.image_path = image_path
-        self.image_src_type = image_src_type
-        self.image_dest_type = image_dest_type
-        self.label_path = label_path
-        self.label_map = label_map
-        self.file_lists = file_lists
-        self.output_path = output_path
-        self.excluded_classes = excluded_classes
-        self.included_classes = included_classes
+        self.args = args
+        self.image_path = args.image_path
+        self.image_src_filetype = args.image_src_filetype
+        self.image_dest_filetype = args.image_dest_filetype
+        self.label_path = args.label_path
+        self.label_map = args.label_map
+        self.file_lists = args.file_lists
+        self.output_path = args.output_path
+        if 'exclude' in args:
+            self.excluded_classes = args.exclude
+        if 'include' in args:
+            self.included_classes = args.include
+        self.remap_labels = args.remap_labels
 
-        self.images_copied = False
+        self.images_copied = args.no_copy
         self.images_split = False
-        self.skip_images_without_label = False
+        self.skip_images_without_label = args.skip_images_without_label
 
         self.categories = json.load(open(self.label_map, 'r')).get('classes')
 
@@ -136,7 +139,8 @@ class BaseConverter:
                 set_name = lines.pop(0).split('=')[1].rstrip("\n\r")
                 self.image_sets.append(set_name)
 
-                self.images[set_name] = ['{}.{}'.format(filename.rstrip("\n\r"), self.image_src_type) for filename in
+                self.images[set_name] = ['{}.{}'.format(filename.rstrip("\n\r"), self.image_src_filetype) for filename
+                                         in
                                          lines]
                 self.label[set_name] = ['{}.xml'.format(filename.rstrip("\n\r")) for filename in lines]
 
@@ -144,7 +148,8 @@ class BaseConverter:
         else:
             self.image_sets = ['images']
 
-            self.images['images'] = [file for file in os.listdir(self.image_path) if file.endswith(self.image_src_type)]
+            self.images['images'] = [file for file in os.listdir(self.image_path) if
+                                     file.endswith(self.image_src_filetype)]
             self.label['images'] = [file for file in os.listdir(self.label_path) if file.endswith('.xml')]
 
     def _validate_match(self):
@@ -190,8 +195,7 @@ class BaseConverter:
     def calc_label_statistics(self):
         print("Creating dummy csv dataset ...")
 
-        converter = conv.CSVConverter(self.image_path, self.image_src_type, self.image_dest_type, self.label_path,
-                                      self.label_map, self.file_lists, mkdtemp(), self.excluded_classes, self.included_classes)
+        converter = conv.CSVConverter(self.args)
 
         print("Calculating label statistics ...")
         dataframes = []
@@ -384,7 +388,7 @@ class BaseConverter:
 
         self.images_copied = True
         self.images_split = True
-        self.image_src_type = self.image_dest_type
+        self.image_src_filetype = self.image_dest_filetype
 
     def _shuffle(self):
         zipped = list(zip(self.images['images'], self.label['label']))
@@ -422,10 +426,10 @@ class BaseConverter:
 
         output_path = self._create_dir(os.path.join(self.output_path, image_set))
 
-        if not self.image_src_type == self.image_dest_type:
+        if not self.image_src_filetype == self.image_dest_filetype:
             image = Image.open(image_path).convert('RGB')
-            self.images[image_set][idx] = os.path.basename(image_path).replace('.' + self.image_src_type,
-                                                                               '.' + self.image_dest_type)
+            self.images[image_set][idx] = os.path.basename(image_path).replace('.' + self.image_src_filetype,
+                                                                               '.' + self.image_dest_filetype)
 
             image_out_path = os.path.join(output_path, self.images[image_set][idx])
             image.save(image_out_path)
