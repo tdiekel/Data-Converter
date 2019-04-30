@@ -6,6 +6,7 @@ import xml.etree.ElementTree as ET
 from tqdm import tqdm
 
 from conv.BaseConverter import BaseConverter
+from conv.util import create_dir, warning_not_verified_label_files
 
 
 class DarknetConverter(BaseConverter):
@@ -47,10 +48,10 @@ class DarknetConverter(BaseConverter):
         if not self.images_copied:
             self._copy_all_images()
 
-        self._warning_not_verfied_label_files()
+        warning_not_verified_label_files(self.not_verified_label_files)
 
     def _create_label_files(self, image_set):
-        label_target_folder = self._create_dir(os.path.join(self.output_path, image_set))
+        label_target_folder = create_dir(os.path.join(self.output_path, image_set))
         set_file_list = []
 
         for xml_filename in tqdm(self.label[image_set], unit="files", desc='\t\tProgress:'):

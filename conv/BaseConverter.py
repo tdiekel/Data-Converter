@@ -2,9 +2,9 @@ import json
 import os
 import random
 import shutil
+import sys
 import time
 from datetime import datetime
-from tempfile import mkdtemp
 
 import cv2
 import numpy as np
@@ -14,6 +14,8 @@ from tabulate import tabulate
 from tqdm import tqdm
 
 import conv
+from conv.util import create_dir, validate_match, print_label_stats, print_warning_for_empty_classes, write_label_map, \
+    check_label_names_for_duplicates
 
 
 class BaseConverter:
@@ -44,6 +46,9 @@ class BaseConverter:
         self.images_copied = args.no_copy
         self.images_split = False
         self.skip_images_without_label = args.skip_images_without_label
+
+        # Create output folder
+        create_dir(self.output_path)
 
         self.categories = json.load(open(self.label_map, 'r')).get('classes')
 
@@ -82,17 +87,14 @@ class BaseConverter:
 
         self._fill_lists()
 
-        assert self._validate_match(), 'Image and label files do not match.'
+        assert validate_match(self.image_sets, self.images, self.label), 'Image and label files do not match.'
 
         self.img_mean = []
         self.img_var = []
         self.img_std = []
 
-        # Create output folder
-        self._create_dir(self.output_path)
-
     def _check_for_excluded_classes(self):
-        self._create_dir(self.output_path)
+        create_dir(self.output_path)
 
         if not len(self.excluded_classes) == 0:
             with open(os.path.join(self.output_path, "excluded_classes.txt"), 'w') as file:
@@ -111,7 +113,7 @@ class BaseConverter:
                 file.write("{}\t: {}\n".format(cat['id'], cat['name']))
 
     def _check_for_included_classes(self):
-        self._create_dir(self.output_path)
+        create_dir(self.output_path)
 
         self.excluded_classes = []
 
@@ -152,17 +154,6 @@ class BaseConverter:
                                      file.endswith(self.image_src_filetype)]
             self.label['images'] = [file for file in os.listdir(self.label_path) if file.endswith('.xml')]
 
-    def _validate_match(self):
-        valid = True
-
-        for s in self.image_sets:
-            image_list = [file[:-4] for file in self.images[s]]
-            label_list = [file[:-4] for file in self.label[s]]
-
-            valid = valid and sorted(image_list) == sorted(label_list)
-
-        return valid
-
     def calc_img_statistics(self):
         print("Calculating image statistics ...")
 
@@ -186,7 +177,7 @@ class BaseConverter:
                                                                                 self.img_mean[2], self.img_std[0],
                                                                                 self.img_std[1], self.img_std[2]))
 
-        self._create_dir(self.output_path)
+        create_dir(self.output_path)
         with open(os.path.join(self.output_path, "image_stats.txt")) as file:
             file.write("Image statistics per RGB Channel")
             file.write("mean = [{}, {}, {}]\n".format(self.img_mean[0], self.img_mean[1], self.img_mean[2]))
@@ -206,137 +197,11 @@ class BaseConverter:
             time.sleep(0.1)
 
             dataframes.append(converter.get_dataframe(s))
-            self._print_label_stats(dataframes[i], s)
+            print_label_stats(self.output_path, self.id2cat, self.excluded_classes, dataframes[i], s)
 
         if len(dataframes) != 1:
             df = pd.concat(dataframes)
-            self._print_label_stats(df, set_title='full')
-
-    def _print_label_stats(self, df, set_title):
-        time.sleep(0.1)
-
-        # General stats
-        print('\nGeneral stats for \'{}\' set.'.format(set_title))
-
-        df_general = self._get_general_stats(df)
-        df_general.to_csv(os.path.join(self.output_path, '{}_general_stats.csv'.format(set_title)), index=None)
-
-        print(tabulate(df_general, headers='keys', tablefmt='psql', showindex=False))
-
-        # Class stats
-        print('\nClass stats for \'{}\' set.'.format(set_title))
-
-        df_class = self._get_class_stats(df)
-        df_class.to_csv(os.path.join(self.output_path, '{}_class_stats.csv'.format(set_title)), index=None)
-
-        columns_to_print = ['class_id', 'class', 'examples',
-                            'bbox_area_tiny', 'fraction_tiny_bbox',
-                            'bbox_area_small', 'fraction_small_bbox',
-                            'bbox_area_medium', 'fraction_medium_bbox',
-                            'bbox_area_large', 'fraction_large_bbox',
-                            'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h']
-
-        print(tabulate(df_class[columns_to_print], headers='keys', tablefmt='psql', showindex=False, floatfmt=".2f"))
-
-    def _get_general_stats(self, df):
-        general_stats = ['images',
-                         'avg. width', 'min. width', 'max. width',
-                         'avg. height', 'min. height', 'max. height']
-
-        data = [(len(df['filename'].unique()),
-                 df['width'].mean(), df['width'].min(), df['width'].max(),
-                 df['height'].mean(), df['height'].min(), df['height'].max())]
-
-        return pd.DataFrame(data, columns=general_stats)
-
-    def _get_class_stats(self, df):
-        class_stats = ['class_id', 'class', 'examples',
-                       'bbox_area_tiny', 'fraction_tiny_bbox',
-                       'bbox_area_small', 'fraction_small_bbox',
-                       'bbox_area_medium', 'fraction_medium_bbox',
-                       'bbox_area_large', 'fraction_large_bbox',
-                       'avg_xmin', 'avg_ymin', 'avg_xmax', 'avg_ymax',
-                       'min_x_center', 'min_y_center', 'min_bbox_w', 'min_bbox_h',
-                       'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h',
-                       'max_x_center', 'max_y_center', 'max_bbox_w', 'max_bbox_h',
-                       'avg_bbox_area', 'min_bbox_area', 'max_bbox_area',
-                       'avg_rel_x_center', 'avg_rel_y_center', 'avg_rel_bbox_w', 'avg_rel_bbox_h']
-
-        class_list = []
-
-        for class_id in sorted(df['class'].unique()):
-            if class_id in self.excluded_classes:
-                continue
-
-            filtered_df = df[df['class'] == class_id]
-            class_name = self.id2cat[class_id]
-            examples = filtered_df['class'].count()
-
-            # Convert to center values
-            x_center = filtered_df['xmax'] - (filtered_df['xmax'] - filtered_df['xmin']) / 2
-            y_center = filtered_df['ymax'] - (filtered_df['ymax'] - filtered_df['ymin']) / 2
-            bbox_w = filtered_df['xmax'] - filtered_df['xmin']
-            bbox_h = filtered_df['ymax'] - filtered_df['ymin']
-
-            # Convert to relative values
-            rel_x_center = x_center / filtered_df['width'].mean()
-            rel_y_center = y_center / filtered_df['height'].mean()
-            rel_bbox_w = bbox_w / filtered_df['width'].mean()
-            rel_bbox_h = bbox_h / filtered_df['height'].mean()
-
-            avg_xmin = filtered_df['xmin'].mean()
-            avg_ymin = filtered_df['ymin'].mean()
-            avg_xmax = filtered_df['xmax'].mean()
-            avg_ymax = filtered_df['ymax'].mean()
-
-            min_x_center = x_center.min()
-            min_y_center = y_center.min()
-            min_bbox_width = bbox_w.min()
-            min_bbox_height = bbox_h.min()
-
-            avg_x_center = x_center.mean()
-            avg_y_center = y_center.mean()
-            avg_bbox_width = bbox_w.mean()
-            avg_bbox_height = bbox_h.mean()
-
-            max_x_center = x_center.max()
-            max_y_center = y_center.max()
-            max_bbox_width = bbox_w.max()
-            max_bbox_height = bbox_h.max()
-
-            bbox_area = pd.DataFrame({'bbox_w': bbox_w, 'bbox_h': bbox_h, 'area': bbox_w * bbox_h})
-            avg_bbox_area = bbox_area['area'].mean()
-            min_bbox_area = bbox_area['area'].min()
-            max_bbox_area = bbox_area['area'].max()
-
-            bbox_area_tiny = bbox_area['area'][(bbox_area['area'] <= 16 * 16)].count()
-            bbox_area_small = bbox_area['area'][(bbox_area['area'] > 16 * 16) & (bbox_area['area'] <= 32 * 32)].count()
-            bbox_area_medium = bbox_area['area'][(bbox_area['area'] > 32 * 32) & (bbox_area['area'] <= 96 * 96)].count()
-            bbox_area_large = bbox_area['area'][(bbox_area['area'] > 96 * 96)].count()
-
-            fraction_tiny_bbox = bbox_area_tiny / examples
-            fraction_small_bbox = bbox_area_small / examples
-            fraction_medium_bbox = bbox_area_medium / examples
-            fraction_large_bbox = bbox_area_large / examples
-
-            avg_rel_x_center = rel_x_center.mean() * 100
-            avg_rel_y_center = rel_y_center.mean() * 100
-            avg_rel_bbox_w = rel_bbox_w.mean() * 100
-            avg_rel_bbox_h = rel_bbox_h.mean() * 100
-
-            class_list.append((class_id, class_name, examples,
-                               bbox_area_tiny, fraction_tiny_bbox,
-                               bbox_area_small, fraction_small_bbox,
-                               bbox_area_medium, fraction_medium_bbox,
-                               bbox_area_large, fraction_large_bbox,
-                               avg_xmin, avg_ymin, avg_xmax, avg_ymax,
-                               min_x_center, min_y_center, min_bbox_width, min_bbox_height,
-                               avg_x_center, avg_y_center, avg_bbox_width, avg_bbox_height,
-                               max_x_center, max_y_center, max_bbox_width, max_bbox_height,
-                               avg_bbox_area, min_bbox_area, max_bbox_area,
-                               avg_rel_x_center, avg_rel_y_center, avg_rel_bbox_w, avg_rel_bbox_h))
-
-        return pd.DataFrame(class_list, columns=class_stats)
+            print_label_stats(self.output_path, self.id2cat, self.excluded_classes, df, set_title='full')
 
     def split(self, sets, set_sizes, shuffle):
         if self.images_split:
@@ -424,7 +289,7 @@ class BaseConverter:
         image_path = os.path.join(self.image_path, self.images[image_set][idx])
         assert os.path.isfile(image_path), "File not found: {}".format(image_path)
 
-        output_path = self._create_dir(os.path.join(self.output_path, image_set))
+        output_path = create_dir(os.path.join(self.output_path, image_set))
 
         if not self.image_src_filetype == self.image_dest_filetype:
             image = Image.open(image_path).convert('RGB')
@@ -438,13 +303,6 @@ class BaseConverter:
 
             if not os.path.isfile(image_out_path):
                 shutil.copyfile(image_path, image_out_path)
-
-    @staticmethod
-    def _create_dir(path):
-        if not os.path.isdir(path):
-            os.makedirs(path)
-
-        return path
 
     def print_class_distribution(self):
         data = dict()
@@ -472,23 +330,4 @@ class BaseConverter:
         print(tabulate(df, headers='keys', tablefmt='psql', showindex=False))
 
         time.sleep(1)
-        self._print_warning_for_empty_classes(data)
-
-    @staticmethod
-    def _print_warning_for_empty_classes(data):
-        emtpy_classes = []
-
-        for i, num_bbox in enumerate(data['#bbox']):
-            if num_bbox == 0:
-                emtpy_classes.append(str(data['class id'][i]))
-
-        print('Recommended to exclude the following class ids with 0 bboxes: {}'.format(' '.join(emtpy_classes)))
-
-    def _warning_not_verfied_label_files(self):
-        if len(self.not_verified_label_files) > 0:
-            print('\nNot verified label files found in folder {}.'.format(
-                os.path.dirname(self.not_verified_label_files[0])))
-
-            print('\tFile list:')
-            for label_file in self.not_verified_label_files:
-                print('\t' + os.path.basename(label_file))
+        print_warning_for_empty_classes(data)

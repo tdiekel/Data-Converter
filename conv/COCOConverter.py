@@ -1,7 +1,7 @@
 import json
 import os
-import time
 import sys
+import time
 import xml.etree.ElementTree as ET
 
 import numpy as np
@@ -9,6 +9,7 @@ from pycocotools import coco as cocoapi
 from tqdm import tqdm
 
 import conv
+from conv.util import create_dir, warning_not_verified_label_files, check_label_names_for_duplicates
 
 
 class COCOConverter(conv.BaseConverter):
@@ -33,7 +34,7 @@ class COCOConverter(conv.BaseConverter):
 
         # Make annotations output dir
         annotations_dir = os.path.join(self.output_path, "annotations")
-        self._create_dir(annotations_dir)
+        create_dir(annotations_dir)
 
         for image_set in self.image_sets:
             time.sleep(0.1)
@@ -42,7 +43,7 @@ class COCOConverter(conv.BaseConverter):
 
             # Make image_set output dir
             image_set_dir = os.path.join(self.output_path, image_set)
-            self._create_dir(image_set_dir)
+            create_dir(image_set_dir)
 
             images, annotations = self._get_images_and_annotations(image_set)
 
@@ -64,7 +65,7 @@ class COCOConverter(conv.BaseConverter):
             annotation_file = os.path.join(self.output_path, "annotations", "instances_" + image_set + ".json")
             self._test_dataset(annotation_file)
 
-        self._warning_not_verfied_label_files()
+        warning_not_verified_label_files(self.not_verified_label_files)
 
     def _test_dataset(self, annotation_file):
         c = cocoapi.COCO(annotation_file)
