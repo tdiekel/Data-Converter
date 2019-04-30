@@ -67,8 +67,18 @@ class COCOConverter(conv.BaseConverter):
 
         warning_not_verified_label_files(self.not_verified_label_files)
 
-    def _test_dataset(self, annotation_file):
-        c = cocoapi.COCO(annotation_file)
+    @staticmethod
+    def _test_dataset(annotation_file):
+        coco = cocoapi.COCO(annotation_file)
+
+        # Load categories from annotation file
+        cats = [cat['name'] for cat in coco.loadCats(coco.getCatIds())]
+        classes = ['__background__'] + cats
+        num_classes = len(classes)
+        _class_to_ind = dict(zip(classes, range(num_classes)))
+        _class_to_coco_ind = dict(zip(cats, coco.getCatIds()))
+        _coco_ind_to_class_ind = dict([(_class_to_coco_ind[cls], _class_to_ind[cls])
+                                       for cls in classes[1:]])
 
     def _get_images_and_annotations(self, image_set):
         images = []
