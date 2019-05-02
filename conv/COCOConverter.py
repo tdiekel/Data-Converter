@@ -9,7 +9,7 @@ from pycocotools import coco as cocoapi
 from tqdm import tqdm
 
 import conv
-from conv.util import create_dir, warning_not_verified_label_files, check_label_names_for_duplicates
+from conv.util import create_dir, warning_not_verified_label_files
 
 
 class COCOConverter(conv.BaseConverter):
@@ -140,7 +140,7 @@ class COCOConverter(conv.BaseConverter):
 
             if category_id not in self.included_ids:
                 print(
-                    'Error: Class ID {} not in label map or not included. Found in label file: {}'.format(
+                    '\nError: Class ID {} not in label map or not included. Found in label file: {}'.format(
                         str(category_id), label_path))
                 sys.exit(-1)
 

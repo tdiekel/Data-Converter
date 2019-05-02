@@ -22,10 +22,10 @@ from label_mapping import mapping_settings
 class BaseConverter:
     def __init__(self, args):
         self.info = {
-            'description': 'IfF 2018 Dataset',
+            'description': 'IfF {} Dataset'.format(args.year),
             'url': 'http://www.iff.tu-bs.de',
             'version': '1.0',
-            'year': 2018,
+            'year': args.year,
             'contributor': 'IfF',
             'date_created': datetime.today().strftime('%Y/%m/%d')
         }
@@ -68,19 +68,6 @@ class BaseConverter:
         if check_label_names_for_duplicates(self.categories):
             print('\nExiting! Please fix label map.')
             sys.exit(-1)
-
-        # Replacing one single label, quick and dirty version
-        # # Labels to replace (increased by one!)
-        # self.label_id_patches = {154: 90}
-        #
-        # categories = []
-        # for cat in self.categories:
-        #     cat_id = cat['id'] + 1
-        #
-        #     if cat_id not in self.label_id_patches:
-        #         categories.append({'id': cat_id, 'name': cat['name']})
-        #
-        # self.categories = categories
 
         self.cat2id = {cat['name']: cat['id'] for cat in self.categories}
         self.id2cat = {cat['id']: cat['name'] for cat in self.categories}

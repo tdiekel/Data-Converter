@@ -3,7 +3,6 @@ import os
 import sys
 
 import conv
-from conv.util import create_dir, validate_match, print_label_stats, print_warning_for_empty_classes
 from label_mapping import mapping_settings
 
 
