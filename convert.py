@@ -115,67 +115,99 @@ def parse_args(args):
     """ Parse the arguments.
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument('--image-path', help='Path to raw image directory.',
-                        type=str, required=True)
-    parser.add_argument('--file-list-path', help='Path to the file lists. '
-                                                 'A file list is a .txt file containing the filenames for each set '
-                                                 'without the file extension. (default: None)',
-                        type=str, default=None)
-    parser.add_argument('--file-lists', help='List of the file list filenames. (default: None)',
-                        type=str, nargs='*', default=None)
-    parser.add_argument('--image-src-filetype', help='Defines the image source filetype (default: png)',
-                        type=str, default="png")
-    parser.add_argument('--image-dest-filetype', help='Defines the image destination filetype,'
-                                                      'when None source type will be used. (default: None)',
-                        type=str, default=None)
-    parser.add_argument('--label-path', help='Path to label directory.',
-                        type=str, required=True)
-    parser.add_argument('--target-format', help='Format to save converted dataset in',
-                        nargs='?', choices=['coco', 'csv', 'tfrecord', 'darknet'], required=True)
-    parser.add_argument('--output-path', help='Path to save converted dataset',
-                        type=str, required=True)
-    parser.add_argument('--rel-output-path', help='Relative path to write in set file list (Darknet only).',
-                        type=str, default=None)
-    parser.add_argument('--dataset-name', help='Name for the dataset. (Darknet only).',
-                        type=str, default=None)
-    parser.add_argument('--label-map', help='Path to label map json file.',
-                        type=str, default='./label_map.json')
-    parser.add_argument('--no-copy', help='Do not copy the images when set',
-                        action='store_const', const=True, default=False)
-    parser.add_argument('--skip-images-without-label',
-                        help='Do not copy the images without label when set. (COCO only)',
-                        action='store_const', const=True, default=False)
-    parser.add_argument('--sets', help='List of subsets to create (e.g. "--sets train val").',
-                        type=str, nargs='*', default=['train', 'val'])
-    parser.add_argument('--set-sizes', help='Sizes of the subsets (e.g. "--sets 0.9 0.1").'
-                                            ' Can be "None" when file list are given. ',
-                        type=float, nargs='*', default=[0.9, 0.1])
-    parser.add_argument('--shuffle', help='Selects images randomly for each sample when set.'
-                                          ' Not possible when using file lists.',
-                        action='store_const', const=True, default=False)
-    parser.add_argument('--exclude', help='List of class IDs to exclude from label file.'
-                                          '(e.g. "--exclude 1 2 3" or "--exclude 1-3" or "--exclude 1 2-3")'
-                                          ' (default: None)',
-                        type=str, nargs='*', default=None)
-    parser.add_argument('--exclude-starts-at-one', help='When set the script counts the class IDs starting at 1, '
-                                                        'when not set counter starts at 0.',
-                        action='store_const', const=True, default=False)
-    parser.add_argument('--include', help='List of class IDs to include from label file.'
-                                          '(e.g. "--include 1 2 3" or "--include 1-3" or "--include 1 2-3")'
-                                          ' (default: None)',
-                        type=str, nargs='*', default=None)
-    parser.add_argument('--include-starts-at-one', help='When set the script counts the class IDs starting at 1, '
-                                                        'when not set counter starts at 0.',
-                        action='store_const', const=True, default=False)
-    parser.add_argument('--remap-labels', help='When set the script will lookup the \'label_mapping.py\' file'
-                                               ' and remap the labels accordingly.',
-                        action='store_const', const=True, default=False)
-    parser.add_argument('--stats', help='Calculate image and label statistics when set.',
-                        action='store_const', const=True, default=False)
-    parser.add_argument('--stats-img', help='Calculate image statistics when set.',
-                        action='store_const', const=True, default=False)
-    parser.add_argument('--stats-label', help='Calculate label statistics when set.',
-                        action='store_const', const=True, default=False)
+
+    # Path settings
+    path_parser = parser.add_argument_group('Path settings')
+    path_parser.add_argument('--image-path', help='Path to raw image directory.',
+                             type=str, required=True)
+    path_parser.add_argument('--label-path', help='Path to label directory.',
+                             type=str, required=True)
+    path_parser.add_argument('--output-path', help='Path to save converted dataset',
+                             type=str, required=True)
+    path_parser.add_argument('--label-map', help='Path to label map json file.',
+                             type=str, default='./label_map.json')
+
+    # Dataset settings
+    dataset_parser = parser.add_argument_group('Dataset settings')
+    dataset_parser.add_argument('--target-format', help='Format to save converted dataset in',
+                                nargs='?', choices=['coco', 'csv', 'tfrecord', 'darknet'], required=True)
+    dataset_parser.add_argument('--sets', help='List of subsets to create (e.g. "--sets train val").',
+                                type=str, nargs='*', default=['train', 'val'])
+    dataset_parser.add_argument('--set-sizes', help='Sizes of the subsets (e.g. "--sets 0.9 0.1").'
+                                                    ' Can be "None" when file list are given. ',
+                                type=float, nargs='*', default=[0.9, 0.1])
+    dataset_parser.add_argument('--shuffle', help='Selects images randomly for each sample when set.'
+                                                  ' Not possible when using file lists.',
+                                action='store_const', const=True, default=False)
+    dataset_parser.add_argument('--year', help='Sets the creation date of the data.',
+                                type=int, default=2018)
+
+    # Image filetypes
+    image_parser = parser.add_argument_group('Image settings')
+    image_parser.add_argument('--image-src-filetype', help='Defines the image source filetype (default: png)',
+                              type=str, default="png")
+    image_parser.add_argument('--image-dest-filetype', help='Defines the image destination filetype, '
+                                                            'when show reqNone source type will be used. '
+                                                            '(default: None)',
+                              type=str, default=None)
+
+    # Optional settings
+    optional_parser = parser.add_argument_group('Optional settings')
+    optional_parser.add_argument('--no-copy', help='Do not copy the images when set',
+                                 action='store_const', const=True, default=False)
+    optional_parser.add_argument('--skip-images-without-label',
+                                 help='Do not copy the images without label when set. (COCO only)',
+                                 action='store_const', const=True, default=False)
+
+    # Optional path settings
+    opt_path_parser = parser.add_argument_group('Optional path settings')
+    opt_path_parser.add_argument('--file-list-path', help='Path to the file lists. '
+                                                          'A file list is a .txt file containing the filenames'
+                                                          ' for each set without the file extension. (default: None)',
+                                 type=str, default=None)
+    opt_path_parser.add_argument('--file-lists', help='List of the file list filenames. (default: None)',
+                                 type=str, nargs='*', default=None)
+
+    # Optional dataset settings
+    opt_dataset_parser = parser.add_argument_group('Optional dataset settings')
+    opt_dataset_parser.add_argument('--remap-labels',
+                                    help='When set the script will lookup the \'label_mapping.py\' file'
+                                         ' and remap the labels accordingly.',
+                                    action='store_const', const=True, default=False)
+    opt_dataset_parser.add_argument('--exclude', help='List of class IDs to exclude from label file.'
+                                                      '(e.g. "--exclude 1 2 3" or "--exclude 1-3" or "--exclude 1 2-3")'
+                                                      ' (default: None)',
+                                    type=str, nargs='*', default=None)
+    opt_dataset_parser.add_argument('--exclude-starts-at-one',
+                                    help='When set the script counts the class IDs starting at 1, '
+                                         'when not set counter starts at 0.',
+                                    action='store_const', const=True, default=False)
+    opt_dataset_parser.add_argument('--include', help='List of class IDs to include from label file.'
+                                                      '(e.g. "--include 1 2 3" or "--include 1-3" or "--include 1 2-3")'
+                                                      ' (default: None)',
+                                    type=str, nargs='*', default=None)
+    opt_dataset_parser.add_argument('--include-starts-at-one',
+                                    help='When set the script counts the class IDs starting at 1, '
+                                         'when not set counter starts at 0.',
+                                    action='store_const', const=True, default=False)
+    opt_dataset_parser.add_argument('--show-not-verified', help='Shows not verified label files.',
+                                    action='store_const', const=True, default=False)
+
+    # Darknet settings
+    darknet_parser = parser.add_argument_group('Darknet settings')
+    darknet_parser.add_argument('--dataset-name', help='Name for the dataset. (Darknet only).',
+                                type=str, default=None)
+    darknet_parser.add_argument('--rel-output-path', help='Relative path to write in set file list (Darknet only).',
+                                type=str, default=None)
+
+    # Statistic settings
+    stat_parser = parser.add_argument_group('Statistic settings')
+    stat_parser.add_argument('--stats', help='Calculate image and label statistics when set.',
+                             action='store_const', const=True, default=False)
+    stat_parser.add_argument('--stats-img', help='Calculate image statistics when set.',
+                             action='store_const', const=True, default=False)
+    stat_parser.add_argument('--stats-label', help='Calculate label statistics when set.',
+                             action='store_const', const=True, default=False)
 
     return check_args(parser.parse_args(args))
 
