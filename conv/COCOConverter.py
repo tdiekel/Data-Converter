@@ -127,6 +127,12 @@ class COCOConverter(conv.BaseConverter):
         height = int(xml_tree.find('size')[1].text)
 
         for member in xml_tree.findall('object'):
+            if not str(member[0].text).isdigit():
+                print(
+                    '\nError: Class ID \'{}\' not convertible to integer. Found in label file: {}'.format(
+                        member[0].text, label_path))
+                sys.exit(-1)
+
             category_id = int(member[0].text) + 1
 
             if category_id in self.excluded_classes:
