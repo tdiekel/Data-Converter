@@ -286,9 +286,12 @@ class BaseConverter:
             file.write("std = [{}, {}, {}]\n".format(self.img_std[0], self.img_std[1], self.img_std[2]))
 
     def calc_label_statistics(self):
-        print("Creating dummy csv dataset ...")
+        time.sleep(0.1)
+        print("\n\nCreating dummy csv dataset ...")
 
         converter = conv.CSVConverter(self.args)
+        converter.images = self.images
+        converter.label = self.label
 
         print("Calculating label statistics ...")
         dataframes = []
