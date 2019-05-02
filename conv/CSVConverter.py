@@ -32,7 +32,8 @@ class CSVConverter(conv.BaseConverter):
         if not self.images_copied:
             self._copy_all_images()
 
-        warning_not_verified_label_files(self.not_verified_label_files)
+        if self.args.show_not_verified:
+            warning_not_verified_label_files(self.not_verified_label_files)
 
     def get_dataframe(self, image_set):
         return self._xml_to_dataframe(image_set)

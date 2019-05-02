@@ -70,7 +70,8 @@ class COCOConverter(conv.BaseConverter):
             annotation_file = os.path.join(self.output_path, "annotations", "instances_" + image_set + ".json")
             self._test_dataset(annotation_file)
 
-        warning_not_verified_label_files(self.not_verified_label_files)
+        if self.args.show_not_verified:
+            warning_not_verified_label_files(self.not_verified_label_files)
 
     @staticmethod
     def _test_dataset(annotation_file):

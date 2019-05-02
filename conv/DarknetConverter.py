@@ -48,7 +48,8 @@ class DarknetConverter(BaseConverter):
         if not self.images_copied:
             self._copy_all_images()
 
-        warning_not_verified_label_files(self.not_verified_label_files)
+        if self.args.show_not_verified:
+            warning_not_verified_label_files(self.not_verified_label_files)
 
     def _create_label_files(self, image_set):
         label_target_folder = create_dir(os.path.join(self.output_path, image_set))
