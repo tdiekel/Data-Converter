@@ -3,6 +3,7 @@ import sys
 import time
 import xml.etree.ElementTree as ET
 
+import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
@@ -78,6 +79,12 @@ class CSVConverter(conv.BaseConverter):
                 ymin = int(member[4][1].text)
                 xmax = int(member[4][2].text)
                 ymax = int(member[4][3].text)
+
+                area = np.float((xmax - xmin) * (ymax - ymin))
+
+                if self.args.exclude_area is not None:
+                    if area <= self.args.exclude_area:
+                        continue
 
                 if class_id in self.gt_boxes:
                     if image_set in self.gt_boxes[class_id]['num_gt_boxes']:

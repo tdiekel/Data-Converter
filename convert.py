@@ -107,6 +107,9 @@ def check_args(args):
     if args.skip_images_without_label and args.target_format == 'coco':
         print('Skipping images without labels works only for COCO datsets.')
 
+    if args.exclude_area is not None:
+        assert args.exclude_area > 0, 'Area to exclude must be greater than 0.'
+
     return args
 
 
@@ -191,6 +194,9 @@ def parse_args(args):
                                     action='store_const', const=True, default=False)
     opt_dataset_parser.add_argument('--show-not-verified', help='Shows not verified label files.',
                                     action='store_const', const=True, default=False)
+    opt_dataset_parser.add_argument('--exclude-area', type=int, default=None,
+                                    help='Excludes all labels with a area less or equal than the given value. '
+                                         '(default: None)')
 
     # Darknet settings
     darknet_parser = parser.add_argument_group('Darknet settings')

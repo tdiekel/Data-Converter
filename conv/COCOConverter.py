@@ -155,6 +155,10 @@ class COCOConverter(conv.BaseConverter):
             bbox = [xmin, ymax, xmax - xmin, ymax - ymin]
             area = np.float(bbox[2] * bbox[3])
 
+            if self.args.exclude_area is not None:
+                if area <= self.args.exclude_area:
+                    continue
+
             annotation_list.append({
                 # https://github.com/facebookresearch/Detectron/issues/48#issuecomment-361028870
                 "segmentation": [],

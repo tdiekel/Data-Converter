@@ -3,6 +3,7 @@ import sys
 import time
 import xml.etree.ElementTree as ET
 
+import numpy as np
 from tqdm import tqdm
 
 from conv.BaseConverter import BaseConverter
@@ -95,6 +96,12 @@ class DarknetConverter(BaseConverter):
                     y_min = int(member[4][1].text)
                     x_max = int(member[4][2].text)
                     y_max = int(member[4][3].text)
+
+                    area = np.float((x_max - x_min) * (y_max - y_min))
+
+                    if self.args.exclude_area is not None:
+                        if area <= self.args.exclude_area:
+                            continue
 
                     if class_id in self.gt_boxes:
                         if image_set in self.gt_boxes[class_id]['num_gt_boxes']:
