@@ -99,9 +99,9 @@ def check_args(args):
         if 'combine_by_id' in mapping_settings and 'combine_by_substring' in mapping_settings:
             assert mapping_settings['combine_by_id'] \
                    is not mapping_settings['combine_by_substring'], 'Please check remap settings' \
-                                                                  ' in \'label_mapping.py\' file.' \
-                                                                  ' It\'s not possible to activate' \
-                                                                  ' combine_by_substring and combine_by_id.'
+                                                                    ' in \'label_mapping.py\' file.' \
+                                                                    ' It\'s not possible to activate' \
+                                                                    ' combine_by_substring and combine_by_id.'
         assert 'new_labels' in mapping_settings, 'No new labels defined in \'label_mapping.py\' file.'
 
     if args.skip_images_without_label and args.target_format == 'coco':
@@ -207,6 +207,11 @@ def parse_args(args):
                              action='store_const', const=True, default=False)
     stat_parser.add_argument('--stats-label', help='Calculate label statistics when set.',
                              action='store_const', const=True, default=False)
+    stat_parser.add_argument('--tablefmt', help="Various plain-text table formats (tablefmt) are supported.",
+                             type=str, nargs='?', default='psql',
+                             choices=['plain', 'simple', 'grid', 'fancy_grid', 'github', 'pipe', 'orgtbl', 'jira',
+                                      'presto', 'psql', 'rst', 'mediawiki', 'moinmoin', 'youtrack', 'html', 'latex',
+                                      'latex_raw', 'latex_booktabs', 'tsv', 'textile'])
 
     return check_args(parser.parse_args(args))
 

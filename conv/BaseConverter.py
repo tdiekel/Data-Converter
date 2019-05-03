@@ -308,11 +308,13 @@ class BaseConverter:
             time.sleep(0.1)
 
             dataframes.append(converter.get_dataframe(s))
-            print_label_stats(self.output_path, self.id2cat, self.excluded_classes, dataframes[i], s)
+            print_label_stats(self.output_path, self.id2cat, self.excluded_classes, dataframes[i], s,
+                              tablefmt=self.args.tablefmt)
 
         if len(dataframes) != 1:
             df = pd.concat(dataframes)
-            print_label_stats(self.output_path, self.id2cat, self.excluded_classes, df, set_title='full')
+            print_label_stats(self.output_path, self.id2cat, self.excluded_classes, df, set_title='full',
+                              tablefmt=self.args.tablefmt)
 
     def split(self, sets, set_sizes, shuffle):
         if self.images_split:
@@ -330,7 +332,7 @@ class BaseConverter:
 
         print('Resulting distribution:', '\n' + tabulate(
             tabular_data=[{'Set': s, 'Fraction [%]': images_per_set[i] / num_images * 100} for i, s in enumerate(sets)],
-            headers='keys', tablefmt='psql', showindex=False, floatfmt=".3f"
+            headers='keys', tablefmt=self.args.tablefmt, showindex=False, floatfmt=".3f"
         ))
 
         if shuffle:
@@ -445,7 +447,7 @@ class BaseConverter:
         df = pd.DataFrame(data=data)
         df.to_csv(os.path.join(self.output_path, 'class_distribution.csv'), index=None)
 
-        print(tabulate(df, headers='keys', tablefmt='psql', showindex=False))
+        print(tabulate(df, headers='keys', tablefmt=self.args.tablefmt, showindex=False, floatfmt=".2f"))
 
         time.sleep(1)
         print_warning_for_empty_classes(data)

@@ -25,7 +25,7 @@ def validate_match(image_sets, images, label):
     return valid
 
 
-def print_label_stats(output_path, id2cat, excluded_classes, df, set_title):
+def print_label_stats(output_path, id2cat, excluded_classes, df, set_title, tablefmt):
     time.sleep(0.1)
 
     # General stats
@@ -34,7 +34,7 @@ def print_label_stats(output_path, id2cat, excluded_classes, df, set_title):
     df_general = _get_general_stats(df)
     df_general.to_csv(os.path.join(output_path, '{}_general_stats.csv'.format(set_title)), index=None)
 
-    print(tabulate(df_general, headers='keys', tablefmt='psql', showindex=False))
+    print(tabulate(df_general, headers='keys', tablefmt=tablefmt, showindex=False))
 
     # Class stats
     print('\nClass stats for \'{}\' set.'.format(set_title))
@@ -49,7 +49,7 @@ def print_label_stats(output_path, id2cat, excluded_classes, df, set_title):
                         'bbox_area_large', 'fraction_large_bbox',
                         'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h']
 
-    print(tabulate(df_class[columns_to_print], headers='keys', tablefmt='psql', showindex=False, floatfmt=".2f"))
+    print(tabulate(df_class[columns_to_print], headers='keys', tablefmt=tablefmt, showindex=False, floatfmt=".2f"))
 
 
 def _get_general_stats(df):
