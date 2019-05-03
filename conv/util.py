@@ -43,10 +43,10 @@ def print_label_stats(output_path, id2cat, excluded_classes, df, set_title, tabl
     df_class.to_csv(os.path.join(output_path, '{}_class_stats.csv'.format(set_title)), index=None)
 
     columns_to_print = ['class_id', 'class', 'examples',
-                        'bbox_area_tiny', 'fraction_tiny_bbox',
-                        'bbox_area_small', 'fraction_small_bbox',
-                        'bbox_area_medium', 'fraction_medium_bbox',
-                        'bbox_area_large', 'fraction_large_bbox',
+                        'bbox_area_tiny', 'fraction_tiny_bbox_%',
+                        'bbox_area_small', 'fraction_small_bbox_%',
+                        'bbox_area_medium', 'fraction_medium_bbox_%',
+                        'bbox_area_large', 'fraction_large_bbox_%',
                         'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h']
 
     print(tabulate(df_class[columns_to_print], headers='keys', tablefmt=tablefmt, showindex=False, floatfmt=".2f"))
@@ -66,10 +66,10 @@ def _get_general_stats(df):
 
 def _get_class_stats(id2cat, excluded_classes, df):
     class_stats = ['class_id', 'class', 'examples',
-                   'bbox_area_tiny', 'fraction_tiny_bbox',
-                   'bbox_area_small', 'fraction_small_bbox',
-                   'bbox_area_medium', 'fraction_medium_bbox',
-                   'bbox_area_large', 'fraction_large_bbox',
+                   'bbox_area_tiny', 'fraction_tiny_bbox_%',
+                   'bbox_area_small', 'fraction_small_bbox_%',
+                   'bbox_area_medium', 'fraction_medium_bbox_%',
+                   'bbox_area_large', 'fraction_large_bbox_%',
                    'avg_xmin', 'avg_ymin', 'avg_xmax', 'avg_ymax',
                    'min_x_center', 'min_y_center', 'min_bbox_w', 'min_bbox_h',
                    'avg_x_center', 'avg_y_center', 'avg_bbox_w', 'avg_bbox_h',
@@ -129,10 +129,10 @@ def _get_class_stats(id2cat, excluded_classes, df):
         bbox_area_medium = bbox_area['area'][(bbox_area['area'] > 32 * 32) & (bbox_area['area'] <= 96 * 96)].count()
         bbox_area_large = bbox_area['area'][(bbox_area['area'] > 96 * 96)].count()
 
-        fraction_tiny_bbox = bbox_area_tiny / examples
-        fraction_small_bbox = bbox_area_small / examples
-        fraction_medium_bbox = bbox_area_medium / examples
-        fraction_large_bbox = bbox_area_large / examples
+        fraction_tiny_bbox = bbox_area_tiny / examples * 100
+        fraction_small_bbox = bbox_area_small / examples * 100
+        fraction_medium_bbox = bbox_area_medium / examples * 100
+        fraction_large_bbox = bbox_area_large / examples * 100
 
         avg_rel_x_center = rel_x_center.mean() * 100
         avg_rel_y_center = rel_y_center.mean() * 100

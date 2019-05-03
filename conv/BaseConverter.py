@@ -434,15 +434,26 @@ class BaseConverter:
         columns = ['#bbox']
 
         for image_set in self.image_sets:
-            column = '#bbox in {}'.format(image_set)
-            columns.append(column)
-            data[column] = []
+            column_num = '#bbox in {}'.format(image_set)
+            columns.append(column_num)
+            data[column_num] = []
+
+            column_frac = 'fraction {} [%]'.format(image_set)
+            columns.append(column_frac)
+            data[column_frac] = []
 
             for i, class_id in enumerate(self.gt_boxes):
                 num = self.gt_boxes[class_id]['num_gt_boxes'].get(image_set, 0)
 
                 data['#bbox'][i] += num
-                data[column].append(num)
+                data[column_num].append(num)
+
+        for image_set in self.image_sets:
+            column_num = '#bbox in {}'.format(image_set)
+            column_frac = 'fraction {} [%]'.format(image_set)
+
+            for i in range(len(data['class id'])):
+                data[column_frac].append(data[column_num][i] / data['#bbox'][i] * 100)
 
         df = pd.DataFrame(data=data)
         df.to_csv(os.path.join(self.output_path, 'class_distribution.csv'), index=None)
