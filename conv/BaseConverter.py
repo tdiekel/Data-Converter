@@ -201,6 +201,21 @@ class BaseConverter:
                         self.label_id_mapping[old_id] = new_id
                         labels_merged_per_id[new_id] += 1
 
+        i = len(self.included_ids) - 1
+        while i >= 0:
+            found = False
+
+            for old_id in self.label_id_mapping:
+                if old_id == self.included_ids[i]:
+                    found = True
+                    break
+
+            if not found:
+                self.excluded_classes.append(self.included_ids[i])
+                del self.included_ids[i]
+
+            i -= 1
+
         print('\tReduced from {} to {} class(es).'.format(len(self.categories), len(new_categories)))
         for label_id in labels_merged_per_id:
             if labels_merged_per_id[label_id] == 0:
@@ -267,7 +282,7 @@ class BaseConverter:
                                                                                 self.img_std[1], self.img_std[2]))
 
         create_dir(self.output_path)
-        with open(os.path.join(self.output_path, "image_stats.txt")) as file:
+        with open(os.path.join(self.output_path, "image_stats.txt"), 'w') as file:
             file.write("Image statistics per RGB Channel")
             file.write("mean = [{}, {}, {}]\n".format(self.img_mean[0], self.img_mean[1], self.img_mean[2]))
             file.write("std = [{}, {}, {}]\n".format(self.img_std[0], self.img_std[1], self.img_std[2]))
@@ -279,6 +294,10 @@ class BaseConverter:
         converter = conv.CSVConverter(self.args)
         converter.images = self.images
         converter.label = self.label
+        converter.id2cat = self.id2cat
+        converter.excluded_classes = self.excluded_classes
+        converter.included_ids = self.included_ids
+        converter.label_id_mapping = self.label_id_mapping
 
         print("Calculating label statistics ...")
         dataframes = []
@@ -354,12 +373,12 @@ class BaseConverter:
         self.image_src_filetype = self.image_dest_filetype
 
     def _shuffle(self):
-        zipped = list(zip(self.images['images'], self.label['label']))
+        zipped = list(zip(self.images['images'], self.label['images']))
 
         random.shuffle(zipped)
 
         images, label = zip(*zipped)
-        self.images['images'], self.label['label'] = list(images), list(label)
+        self.images['images'], self.label['images'] = list(images), list(label)
 
     def _write_file_list(self):
         for s in self.image_sets:
