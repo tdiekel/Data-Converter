@@ -168,6 +168,11 @@ class BaseConverter:
                             labels_merged_per_id[new_id] += 1
                         else:
                             labels_merged_per_id[new_id] = 1
+
+                        if old_id in self.included_ids:
+                            self.included_ids.remove(old_id)
+                            self.excluded_classes.append(old_id)
+
                     else:
                         new_categories.append(old_cat)
 
@@ -201,20 +206,20 @@ class BaseConverter:
                         self.label_id_mapping[old_id] = new_id
                         labels_merged_per_id[new_id] += 1
 
-        i = len(self.included_ids) - 1
-        while i >= 0:
-            found = False
+            i = len(self.included_ids) - 1
+            while i >= 0:
+                found = False
 
-            for old_id in self.label_id_mapping:
-                if old_id == self.included_ids[i]:
-                    found = True
-                    break
+                for old_id in self.label_id_mapping:
+                    if old_id == self.included_ids[i]:
+                        found = True
+                        break
 
-            if not found:
-                self.excluded_classes.append(self.included_ids[i])
-                del self.included_ids[i]
+                if not found:
+                    self.excluded_classes.append(self.included_ids[i])
+                    del self.included_ids[i]
 
-            i -= 1
+                i -= 1
 
         print('\tReduced from {} to {} class(es).'.format(len(self.categories), len(new_categories)))
         for label_id in labels_merged_per_id:
@@ -453,7 +458,10 @@ class BaseConverter:
             column_frac = 'fraction {} [%]'.format(image_set)
 
             for i in range(len(data['class id'])):
-                data[column_frac].append(data[column_num][i] / data['#bbox'][i] * 100)
+                if data['#bbox'][i] == 0:
+                    data[column_frac].append(0)
+                else:
+                    data[column_frac].append(data[column_num][i] / data['#bbox'][i] * 100)
 
         df = pd.DataFrame(data=data)
         df.to_csv(os.path.join(self.output_path, 'class_distribution.csv'), index=None)
