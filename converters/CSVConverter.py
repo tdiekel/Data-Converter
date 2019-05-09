@@ -7,11 +7,11 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
-import conv
-from conv.util import warning_not_verified_label_files
+import converters
+from util.util import warning_not_verified_label_files
 
 
-class CSVConverter(conv.BaseConverter):
+class CSVConverter(converters.BaseConverter):
 
     def __init__(self, args):
         super().__init__(args)

@@ -1,16 +1,16 @@
 import os
 import time
 
-import conv
-from conv.util import warning_not_verified_label_files
+import converters
+from util.util import warning_not_verified_label_files
 
 
-class TFRecordConverter(conv.BaseConverter):
+class TFRecordConverter(converters.BaseConverter):
 
     def __init__(self, args):
         super().__init__(args)
 
-        self.csv_converter = conv.CSVConverter(args)
+        self.csv_converter = converters.CSVConverter(args)
 
     def convert(self):
         time.sleep(0.1)
@@ -21,7 +21,7 @@ class TFRecordConverter(conv.BaseConverter):
         time.sleep(0.1)
         for image_set in self.image_sets:
             print('\nCreating tfrecord files for {} ...'.format(image_set))
-            self.gt_boxes = conv.generate_tfrecord(self.image_path, self.output_path, image_set, self.id2cat, self.gt_boxes)
+            self.gt_boxes = converters.generate_tfrecord(self.image_path, self.output_path, image_set, self.id2cat, self.gt_boxes)
 
         self._create_label_map_pbtxt()
 

@@ -8,11 +8,11 @@ import numpy as np
 from pycocotools import coco as cocoapi
 from tqdm import tqdm
 
-import conv
-from conv.util import create_dir, warning_not_verified_label_files
+import converters
+from util.util import create_dir, warning_not_verified_label_files
 
 
-class COCOConverter(conv.BaseConverter):
+class COCOConverter(converters.BaseConverter):
     def __init__(self, args):
         super().__init__(args)
 

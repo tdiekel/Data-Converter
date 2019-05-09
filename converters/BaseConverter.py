@@ -13,10 +13,11 @@ from PIL import Image
 from tabulate import tabulate
 from tqdm import tqdm
 
-import conv
-from conv.util import create_dir, validate_match, print_label_stats, print_warning_for_empty_classes, write_label_map, \
+import converters
+from util.util import create_dir, validate_match, print_label_stats, print_warning_for_empty_classes, write_label_map, \
     check_label_names_for_duplicates
-from label_mapping import mapping_settings
+
+from shutil import copyfile
 
 
 class BaseConverter:
@@ -51,6 +52,9 @@ class BaseConverter:
         # Create output folder
         create_dir(self.output_path)
 
+        # Copy label map
+        copyfile(self.label_map, os.path.join(self.output_path, self.label_map))
+
         self.categories = json.load(open(self.label_map, 'r')).get('classes')
         self.categories = [{'id': cat['id'] + 1, 'name': cat['name']} for cat in self.categories]
 
@@ -62,6 +66,7 @@ class BaseConverter:
         # Get included ids
         self.included_ids = [cat['id'] for cat in self.categories]
 
+        self.label_id_mapping = {}
         if self.remap_labels:
             self._remap_labels()
 
@@ -130,22 +135,21 @@ class BaseConverter:
 
     def _remap_labels(self):
         print('Remapping labels ...')
-        self.label_id_mapping = {}
         new_categories = []
         new_id2new_cat = {}
         labels_merged_per_id = {}
 
-        if 'combine_by_id' in mapping_settings and mapping_settings['combine_by_id']:
-            if 'ids_from_org_list' not in mapping_settings:
+        if 'combine_by_id' in self.args.mapping and self.args.mapping['combine_by_id']:
+            if 'ids_from_org_list' not in self.args.mapping:
                 use_org_ids = True
             else:
-                use_org_ids = mapping_settings['ids_from_org_list']
+                use_org_ids = self.args.mapping['ids_from_org_list']
 
             for old_cat in self.categories:
                 old_id = old_cat['id']
                 old_name = old_cat['name']
 
-                for new_cat in mapping_settings['new_labels']:
+                for new_cat in self.args.mapping['new_labels']:
                     if use_org_ids:
                         new_id = new_cat['new_id'] + 1
                         new_old_id = new_cat['old_id'] + 1
@@ -162,7 +166,7 @@ class BaseConverter:
                         if len(list(filter(lambda cat: cat['id'] == new_id, new_categories))) == 0:
                             new_categories.append({'id': new_id, 'name': new_name})
 
-                        self.label_id_mapping[old_id] = new_id
+                        self.label_id_self.args.mapping[old_id] = new_id
 
                         if new_id in labels_merged_per_id:
                             labels_merged_per_id[new_id] += 1
@@ -178,11 +182,11 @@ class BaseConverter:
 
             new_id2new_cat = {cat['id']: cat['name'] for cat in new_categories}
 
-        elif 'combine_by_substring' in mapping_settings and mapping_settings['combine_by_substring']:
+        elif 'combine_by_substring' in self.args.mapping and self.args.mapping['combine_by_substring']:
             new_categories = [{'id': new_label['new_id'],
                                'name': new_label['new_name'],
                                'supercategory': new_label['substring'].replace('(', '').replace(')', '')}
-                              for new_label in mapping_settings['new_labels']]
+                              for new_label in self.args.mapping['new_labels']]
             new_id2new_cat = {cat['id']: cat['name'] for cat in new_categories}
 
             labels_merged_per_id = {new_cat['id']: 0 for new_cat in new_categories}
@@ -191,7 +195,7 @@ class BaseConverter:
                 old_id = old_cat['id']
                 old_name = old_cat['name']
 
-                for new_cat in mapping_settings['new_labels']:
+                for new_cat in self.args.mapping['new_labels']:
                     new_id = new_cat['new_id']
                     substring = new_cat['substring']
 
@@ -221,22 +225,23 @@ class BaseConverter:
 
                 i -= 1
 
-        print('\tReduced from {} to {} class(es).'.format(len(self.categories), len(new_categories)))
-        for label_id in labels_merged_per_id:
-            if labels_merged_per_id[label_id] == 0:
-                print('\tNo matching classes found for class {} with id {}. Ignoring class.'.format(
-                    new_id2new_cat[label_id], label_id))
+        if not len(self.categories) == len(new_categories):
+            print('\tReduced from {} to {} class(es).'.format(len(self.categories), len(new_categories)))
+            for label_id in labels_merged_per_id:
+                if labels_merged_per_id[label_id] == 0:
+                    print('\tNo matching classes found for class {} with id {}. Ignoring class.'.format(
+                        new_id2new_cat[label_id], label_id))
 
-                i = len(new_categories) - 1
-                while i >= 0:
-                    if new_categories[i]['id'] == label_id:
-                        del new_categories[i]
-                        break
-                    i -= 1
+                    i = len(new_categories) - 1
+                    while i >= 0:
+                        if new_categories[i]['id'] == label_id:
+                            del new_categories[i]
+                            break
+                        i -= 1
 
-            else:
-                print('\tMapped {} classes to {} with id {}.'.format(labels_merged_per_id[label_id],
-                                                                     new_id2new_cat[label_id], label_id))
+                else:
+                    print('\tMapped {} classes to {} with id {}.'.format(labels_merged_per_id[label_id],
+                                                                         new_id2new_cat[label_id], label_id))
 
         self.categories = new_categories
 
@@ -296,7 +301,7 @@ class BaseConverter:
         time.sleep(0.1)
         print("\n\nCreating dummy csv dataset ...")
 
-        converter = conv.CSVConverter(self.args)
+        converter = converters.CSVConverter(self.args)
         converter.images = self.images
         converter.label = self.label
         converter.id2cat = self.id2cat

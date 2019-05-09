@@ -2,7 +2,7 @@ import argparse
 import os
 import sys
 
-import conv
+import converters
 from label_mapping import mapping_settings
 
 
@@ -96,13 +96,17 @@ def check_args(args):
         args.include = include
 
     if args.remap_labels:
-        if 'combine_by_id' in mapping_settings and 'combine_by_substring' in mapping_settings:
-            assert mapping_settings['combine_by_id'] \
-                   is not mapping_settings['combine_by_substring'], 'Please check remap settings' \
-                                                                    ' in \'label_mapping.py\' file.' \
-                                                                    ' It\'s not possible to activate' \
-                                                                    ' combine_by_substring and combine_by_id.'
-        assert 'new_labels' in mapping_settings, 'No new labels defined in \'label_mapping.py\' file.'
+        assert args.mapping_type is not None, 'Please set a mapping type.'
+
+        args.mapping = mapping_settings[args.mapping_type]
+
+        if 'combine_by_id' in args.mapping and 'combine_by_substring' in args.mapping:
+            assert args.mapping['combine_by_id'] is not args.mapping[
+                'combine_by_substring'], 'Please check remap settings' \
+                                         ' in \'label_mapping.py\' file.' \
+                                         ' It\'s not possible to activate' \
+                                         ' combine_by_substring and combine_by_id.'
+        assert 'new_labels' in args.mapping, 'No new labels defined in \'label_mapping.py\' file.'
 
     if args.skip_images_without_label and args.target_format == 'coco':
         print('Skipping images without labels works only for COCO datsets.')
@@ -176,6 +180,10 @@ def parse_args(args):
                                     help='When set the script will lookup the \'label_mapping.py\' file'
                                          ' and remap the labels accordingly.',
                                     action='store_const', const=True, default=False)
+    opt_dataset_parser.add_argument('--mapping-type',
+                                    help='Set the mapping type. See \'label_mapping.py\' for options.',
+                                    type=int,
+                                    default=None)
     opt_dataset_parser.add_argument('--exclude', help='List of class IDs to exclude from label file.'
                                                       '(e.g. "--exclude 1 2 3" or "--exclude 1-3" or "--exclude 1 2-3")'
                                                       ' (default: None)',
@@ -229,13 +237,13 @@ def main(args=None):
     args = parse_args(args)
 
     if args.target_format == 'coco':
-        converter = conv.COCOConverter(args)
+        converter = converters.COCOConverter(args)
     elif args.target_format == 'csv':
-        converter = conv.CSVConverter(args)
+        converter = converters.CSVConverter(args)
     elif args.target_format == 'tfrecord':
-        converter = conv.TFRecordConverter(args)
+        converter = converters.TFRecordConverter(args)
     elif args.target_format == 'darknet':
-        converter = conv.DarknetConverter(args)
+        converter = converters.DarknetConverter(args)
     else:
         sys.exit(-1)
 

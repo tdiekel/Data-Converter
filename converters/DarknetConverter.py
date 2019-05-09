@@ -6,8 +6,8 @@ import xml.etree.ElementTree as ET
 import numpy as np
 from tqdm import tqdm
 
-from conv.BaseConverter import BaseConverter
-from conv.util import create_dir, warning_not_verified_label_files
+from converters.BaseConverter import BaseConverter
+from util.util import create_dir, warning_not_verified_label_files
 
 
 class DarknetConverter(BaseConverter):
