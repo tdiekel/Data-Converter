@@ -79,8 +79,21 @@ def _get_class_stats(id2cat, excluded_classes, df):
 
     class_list = []
 
-    for class_id in sorted(df['class'].unique()):
+    # TODO
+    #  - über range(classes) iterieren
+    #  - wenn class_id nicht in df['class'].unique() leere zeile mit nur id und namen zurück geben
+
+    unique = df['class'].unique()
+
+    for class_id in range(1, len(id2cat) + 1):
         if class_id in excluded_classes:
+            continue
+
+        if class_id not in unique:
+            row = (class_id, id2cat[class_id], 0,)
+            row += tuple(-1 for _ in range(len(class_stats) - 3))
+
+            class_list.append(row)
             continue
 
         filtered_df = df[df['class'] == class_id]
@@ -197,7 +210,7 @@ def check_label_names_for_duplicates(categories):
         else:
             found_duplicates = True
 
-            print(cat['name'] + 'exists more than once with IDs:')
+            print(cat['name'], 'exists more than once with IDs:')
             for c in categories:
                 if c['name'] == cat['name']:
                     print(c['id'])

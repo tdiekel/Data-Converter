@@ -5,7 +5,7 @@ import shutil
 import sys
 import time
 from datetime import datetime
-
+import copy
 import cv2
 import numpy as np
 import pandas as pd
@@ -133,97 +133,130 @@ class BaseConverter:
             for cat in self.categories:
                 file.write("{}\t: {}\n".format(cat['id'], cat['name']))
 
-    def _remap_labels(self):
-        print('Remapping labels ...')
+    def combine_by_id(self):
         new_categories = []
-        new_id2new_cat = {}
         labels_merged_per_id = {}
 
-        if 'combine_by_id' in self.args.mapping and self.args.mapping['combine_by_id']:
-            if 'ids_from_org_list' not in self.args.mapping:
-                use_org_ids = True
-            else:
-                use_org_ids = self.args.mapping['ids_from_org_list']
+        if 'ids_from_org_list' not in self.args.mapping:
+            use_org_ids = True
+        else:
+            use_org_ids = self.args.mapping['ids_from_org_list']
 
-            for old_cat in self.categories:
-                old_id = old_cat['id']
-                old_name = old_cat['name']
+        for old_cat in self.categories:
+            remapped = False
 
-                for new_cat in self.args.mapping['new_labels']:
-                    if use_org_ids:
-                        new_id = new_cat['new_id'] + 1
-                        new_old_id = new_cat['old_id'] + 1
-                    else:
-                        new_id = new_cat['new_id']
-                        new_old_id = new_cat['old_id']
+            for new_cat in self.args.mapping['new_labels']:
 
-                    if 'name' in new_cat:
-                        new_name = new_cat['name']
-                    else:
-                        new_name = old_name
+                assert isinstance(new_cat['new_id'], int), 'New ID must be int. Got {} of type {}'.format(
+                    new_cat['new_id'], type(new_cat['new_id']))
 
-                    if old_id == new_old_id:
-                        if len(list(filter(lambda cat: cat['id'] == new_id, new_categories))) == 0:
-                            new_categories.append({'id': new_id, 'name': new_name})
+                assert isinstance(new_cat['old_id'], int) \
+                       or isinstance(new_cat['old_id'], list), 'Old ID(s) must be int or list.' \
+                                                               ' Got type {}'.format(type(new_cat['old_id']))
 
-                        self.label_id_self.args.mapping[old_id] = new_id
+                assert 'new_name' in new_cat, 'No new name set for new ID {}.'.format(new_cat['new_id'])
 
-                        if new_id in labels_merged_per_id:
-                            labels_merged_per_id[new_id] += 1
-                        else:
-                            labels_merged_per_id[new_id] = 1
+                if use_org_ids:
+                    new_cat['new_id'] += 1
+                    new_cat['old_id'] = [i + 1 for i in new_cat['old_id']]
 
+                if old_cat['id'] in new_cat['old_id']:
+                    rename = len(new_cat['old_id']) == 1
+
+                    if not rename:
+                        # Avoid double entries
+                        if not len(list(filter(lambda cat: cat['id'] == new_cat['new_id'], new_categories))) == 0:
+                            # Save merging statistics
+                            labels_merged_per_id[new_cat['new_id']] += 1
+
+                            # Avoid entries of merged classes in new_categories
+                            remapped = True
+                            continue
+
+                        new_categories.append({'id': new_cat['new_id'], 'name': new_cat['new_name']})
+
+                    for old_id in new_cat['old_id']:
+                        self.label_id_mapping[old_id] = new_cat['new_id']
+
+                    # Save merging statistics
+                    labels_merged_per_id[new_cat['new_id']] = 1
+
+                    # Remove old ids from included
+                    old_ids = copy.deepcopy(new_cat['old_id'])
+                    if new_cat['new_id'] in old_ids:
+                        old_ids.remove(new_cat['new_id'])
+
+                    for old_id in old_ids:
                         if old_id in self.included_ids:
                             self.included_ids.remove(old_id)
                             self.excluded_classes.append(old_id)
 
-                    else:
-                        new_categories.append(old_cat)
+                    remapped = True
+                    break
 
-            new_id2new_cat = {cat['id']: cat['name'] for cat in new_categories}
+            if not remapped:
+                new_categories.append(old_cat)
 
-        elif 'combine_by_substring' in self.args.mapping and self.args.mapping['combine_by_substring']:
-            new_categories = [{'id': new_label['new_id'],
-                               'name': new_label['new_name'],
-                               'supercategory': new_label['substring'].replace('(', '').replace(')', '')}
-                              for new_label in self.args.mapping['new_labels']]
-            new_id2new_cat = {cat['id']: cat['name'] for cat in new_categories}
+        new_id2new_cat = {cat['id']: cat['name'] for cat in new_categories}
 
-            labels_merged_per_id = {new_cat['id']: 0 for new_cat in new_categories}
+        return new_categories, new_id2new_cat, labels_merged_per_id
 
-            for old_cat in self.categories:
-                old_id = old_cat['id']
-                old_name = old_cat['name']
+    def combine_by_substring(self):
+        assert False, 'Erst überprüfen und überarbeiten!'
 
-                for new_cat in self.args.mapping['new_labels']:
-                    new_id = new_cat['new_id']
-                    substring = new_cat['substring']
+        new_categories = [{'id': new_label['new_id'],
+                           'name': new_label['new_name'],
+                           'supercategory': new_label['substring'].replace('(', '').replace(')', '')}
+                          for new_label in self.args.mapping['new_labels']]
+        new_id2new_cat = {cat['id']: cat['name'] for cat in new_categories}
 
-                    exclude = None
-                    if 'exclude' in new_cat:
-                        exclude = new_cat['exclude']
+        labels_merged_per_id = {new_cat['id']: 0 for new_cat in new_categories}
 
-                    if substring in old_name:
-                        if exclude is not None and exclude in old_cat['name']:
-                            continue
+        for old_cat in self.categories:
+            old_id = old_cat['id']
+            old_name = old_cat['name']
 
-                        self.label_id_mapping[old_id] = new_id
-                        labels_merged_per_id[new_id] += 1
+            for new_cat in self.args.mapping['new_labels']:
+                new_id = new_cat['new_id']
+                substring = new_cat['substring']
 
-            i = len(self.included_ids) - 1
-            while i >= 0:
-                found = False
+                exclude = None
+                if 'exclude' in new_cat:
+                    exclude = new_cat['exclude']
 
-                for old_id in self.label_id_mapping:
-                    if old_id == self.included_ids[i]:
-                        found = True
-                        break
+                if substring in old_name:
+                    if exclude is not None and exclude in old_cat['name']:
+                        continue
 
-                if not found:
-                    self.excluded_classes.append(self.included_ids[i])
-                    del self.included_ids[i]
+                    self.label_id_mapping[old_id] = new_id
+                    labels_merged_per_id[new_id] += 1
 
-                i -= 1
+        i = len(self.included_ids) - 1
+        while i >= 0:
+            found = False
+
+            for old_id in self.label_id_mapping:
+                if old_id == self.included_ids[i]:
+                    found = True
+                    break
+
+            if not found:
+                self.excluded_classes.append(self.included_ids[i])
+                del self.included_ids[i]
+
+            i -= 1
+
+        return new_categories, new_id2new_cat, labels_merged_per_id
+
+    def _remap_labels(self):
+        print('Remapping labels ...')
+
+        if self.args.mapping['type'] == 'combine_by_id':
+            new_categories, new_id2new_cat, labels_merged_per_id = self.combine_by_id()
+        elif self.args.mapping['type'] == 'combine_by_substring':
+            new_categories, new_id2new_cat, labels_merged_per_id = self.combine_by_substring()
+        else:
+            return
 
         if not len(self.categories) == len(new_categories):
             print('\tReduced from {} to {} class(es).'.format(len(self.categories), len(new_categories)))

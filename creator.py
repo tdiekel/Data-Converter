@@ -126,7 +126,7 @@ def main():
     args.image_path = '/home/osm/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/'
     args.label_path = '/home/osm/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/'
     args.label_map = './label_map.json'
-    args.output_path = '/home/osm/Schreibtisch/01_Datasets/2019_Mai/Classification'
+    args.output_path = '/home/osm/Schreibtisch/01_Datasets/2019_Mai/Classification_all'
     args.target_format = 'subfolders'
 
     # Classes with '(danger)' but w/o '(digital)'

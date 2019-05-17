@@ -96,16 +96,14 @@ def check_args(args):
         args.include = include
 
     if args.remap_labels:
-        assert args.mapping_type is not None, 'Please set a mapping type.'
+        assert args.mapping_id is not None, 'Please set a mapping id.'
 
-        args.mapping = mapping_settings[args.mapping_type]
+        args.mapping = mapping_settings[args.mapping_id]
 
-        if 'combine_by_id' in args.mapping and 'combine_by_substring' in args.mapping:
-            assert args.mapping['combine_by_id'] is not args.mapping[
-                'combine_by_substring'], 'Please check remap settings' \
-                                         ' in \'label_mapping.py\' file.' \
-                                         ' It\'s not possible to activate' \
-                                         ' combine_by_substring and combine_by_id.'
+        assert 'type' in args.mapping, 'Please check remap settings' \
+                                       ' in \'label_mapping.py\' file.' \
+                                       ' Mapping \'type\' must be set to' \
+                                       ' either \'combine_by_substring\' and \'combine_by_id\'.'
         assert 'new_labels' in args.mapping, 'No new labels defined in \'label_mapping.py\' file.'
 
     if args.skip_images_without_label and args.target_format == 'coco':
@@ -180,14 +178,18 @@ def parse_args(args):
                                     help='When set the script will lookup the \'label_mapping.py\' file'
                                          ' and remap the labels accordingly.',
                                     action='store_const', const=True, default=False)
-    opt_dataset_parser.add_argument('--mapping-type',
-                                    help='Set the mapping type. See \'label_mapping.py\' for options.',
+    opt_dataset_parser.add_argument('--mapping-id',
+                                    help='Set the mapping id. See \'label_mapping.py\' for options.',
                                     type=int,
                                     default=None)
     opt_dataset_parser.add_argument('--exclude', help='List of class IDs to exclude from label file.'
                                                       '(e.g. "--exclude 1 2 3" or "--exclude 1-3" or "--exclude 1 2-3")'
                                                       ' (default: None)',
                                     type=str, nargs='*', default=None)
+
+    # Exlucde for relevant classes
+    # 1 7 30 31 40 42 43 44 46 47 48 49 50 51 52 55 56 57 63 64 65 67 68 69 71 72 73 76 77 78 79 80 82 83 84 86 87 88 90 94 95 97 98 99 100 101 102 103 104 105 106 107 108 113 114 115 117 120 121 131 134 135 136 137 138 139 140 141 142 143 144 146 147 148 149 150 151 152 153 156 157 174 175 176 177 184 185 190 191 192 196 197 198 201 202 203 204 205 206
+
     opt_dataset_parser.add_argument('--exclude-starts-at-one',
                                     help='When set the script counts the class IDs starting at 1, '
                                          'when not set counter starts at 0.',
@@ -255,8 +257,8 @@ def main(args=None):
 
     if args.stats or args.stats_label:
         converter.calc_label_statistics()
-    if args.stats or args.stats_img:
-        converter.calc_img_statistics()
+    # if args.stats or args.stats_img:
+    # converter.calc_img_statistics()
 
 
 if __name__ == '__main__':
