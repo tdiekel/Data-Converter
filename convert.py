@@ -256,9 +256,9 @@ def main(args=None):
     converter.print_class_distribution()
 
     if args.stats or args.stats_label:
-        converter.calc_label_statistics()
-    # if args.stats or args.stats_img:
-    # converter.calc_img_statistics()
+        converter.calc_label_statistics(max_classes=206)
+    if args.stats or args.stats_img:
+        converter.calc_img_statistics()
 
 
 if __name__ == '__main__':

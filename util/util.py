@@ -25,7 +25,7 @@ def validate_match(image_sets, images, label):
     return valid
 
 
-def print_label_stats(output_path, id2cat, excluded_classes, df, set_title, tablefmt):
+def print_label_stats(output_path, id2cat, max_classes, excluded_classes, df, set_title, tablefmt):
     time.sleep(0.1)
 
     # General stats
@@ -39,7 +39,7 @@ def print_label_stats(output_path, id2cat, excluded_classes, df, set_title, tabl
     # Class stats
     print('\nClass stats for \'{}\' set.'.format(set_title))
 
-    df_class = _get_class_stats(id2cat, excluded_classes, df)
+    df_class = _get_class_stats(id2cat, max_classes, excluded_classes, df)
     df_class.to_csv(os.path.join(output_path, '{}_class_stats.csv'.format(set_title)), index=None)
 
     columns_to_print = ['class_id', 'class', 'examples',
@@ -64,7 +64,7 @@ def _get_general_stats(df):
     return pd.DataFrame(data, columns=general_stats)
 
 
-def _get_class_stats(id2cat, excluded_classes, df):
+def _get_class_stats(id2cat, max_classes, excluded_classes, df):
     class_stats = ['class_id', 'class', 'examples',
                    'bbox_area_tiny', 'fraction_tiny_bbox_%',
                    'bbox_area_small', 'fraction_small_bbox_%',
@@ -79,13 +79,9 @@ def _get_class_stats(id2cat, excluded_classes, df):
 
     class_list = []
 
-    # TODO
-    #  - über range(classes) iterieren
-    #  - wenn class_id nicht in df['class'].unique() leere zeile mit nur id und namen zurück geben
-
     unique = df['class'].unique()
 
-    for class_id in range(1, len(id2cat) + 1):
+    for class_id in range(1, max_classes):
         if class_id in excluded_classes:
             continue
 
