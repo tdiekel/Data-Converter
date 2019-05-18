@@ -135,6 +135,12 @@ class COCOConverter(converters.BaseConverter):
 
             category_id = int(member[0].text) + 1
 
+            if category_id in self.label_id_mapping:
+                category_id = self.label_id_mapping[category_id]
+
+            if category_id in self.label_rearrange_mapping:
+                category_id = self.label_rearrange_mapping[category_id]
+
             if category_id in self.excluded_classes:
                 continue
 
@@ -143,9 +149,6 @@ class COCOConverter(converters.BaseConverter):
                     '\nError: Class ID {} not in label map or not included. Found in label file: {}'.format(
                         str(category_id), label_path))
                 sys.exit(-1)
-
-            if category_id in self.label_id_mapping:
-                category_id = self.label_id_mapping[category_id]
 
             xmin = int(member[4][0].text)
             ymin = int(member[4][1].text)

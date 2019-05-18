@@ -1,4 +1,3 @@
-import json
 import os
 import time
 
@@ -183,18 +182,10 @@ def warning_not_verified_label_files(not_verified_label_files):
         for label_file in not_verified_label_files:
             print('\t' + os.path.basename(label_file))
 
-
-def write_label_map(output_path, categories, label_id_mapping):
-    print('Saving label map and id mapping to output folder.')
-
-    label_map_file = os.path.join(output_path, 'label_map.json')
-    with open(label_map_file, 'w') as f:
-        json.dump({'classes': categories}, f, sort_keys=True, indent=4)
-
-    label_id_mapping_file = os.path.join(output_path, 'label_id_mapping.json')
-    with open(label_id_mapping_file, 'w') as f:
-        json.dump({'old_id_to_new_id': label_id_mapping}, f, sort_keys=True, indent=4)
-
+def find_value(mydict, myvalue):
+    for k, v in mydict.items():
+        if v == myvalue:
+            return k
 
 def check_label_names_for_duplicates(categories):
     found_duplicates = False

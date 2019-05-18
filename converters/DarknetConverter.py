@@ -80,6 +80,12 @@ class DarknetConverter(BaseConverter):
 
                     class_id = int(member[0].text) + 1
 
+                    if class_id in self.label_id_mapping:
+                        class_id = self.label_id_mapping[class_id]
+
+                    if class_id in self.label_rearrange_mapping:
+                        class_id = self.label_rearrange_mapping[class_id]
+
                     if class_id in self.excluded_classes:
                         continue
 
@@ -88,9 +94,6 @@ class DarknetConverter(BaseConverter):
                             'Error: Class ID {} not in label map or not included. Found in label file: {}'.format(
                                 str(class_id), xml_file))
                         sys.exit(-1)
-
-                    if class_id in self.label_id_mapping:
-                        class_id = self.label_id_mapping[class_id]
 
                     x_min = int(member[4][0].text)
                     y_min = int(member[4][1].text)

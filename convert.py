@@ -145,6 +145,8 @@ def parse_args(args):
                                 action='store_const', const=True, default=False)
     dataset_parser.add_argument('--year', help='Sets the creation date of the data.',
                                 type=int, default=2018)
+    dataset_parser.add_argument('--rearrange-ids', help='Rearranges IDs to start from 1 and have a steps size of 1.',
+                                action='store_const', const=True, default=False)
 
     # Image filetypes
     image_parser = parser.add_argument_group('Image settings')
@@ -188,7 +190,7 @@ def parse_args(args):
                                     type=str, nargs='*', default=None)
 
     # Exlucde for relevant classes
-    # 1 7 30 31 40 42 43 44 46 47 48 49 50 51 52 55 56 57 63 64 65 67 68 69 71 72 73 76 77 78 79 80 82 83 84 86 87 88 90 94 95 97 98 99 100 101 102 103 104 105 106 107 108 113 114 115 117 120 121 131 134 135 136 137 138 139 140 141 142 143 144 146 147 148 149 150 151 152 153 156 157 174 175 176 177 184 185 190 191 192 196 197 198 201 202 203 204 205 206
+    # 1 7 30 31 40 42 43 44 46 47 48 49 50 51 52 55 56 57 63 64 65 67 68 69 71 72 73 76 77 78 79 80 82 83 84 86 87 88 90 94 95 97 98 99 100 101 102 103 104 105 106 107 108 113 114 115 117 120 121 131 134 135 136 137 138 139 140 141 142 143 144 146 147 148 149 150 151 152 153 156 157 174 175 176 177 184 185 190 191 192 196 197 201 202 203 204 205 206
 
     opt_dataset_parser.add_argument('--exclude-starts-at-one',
                                     help='When set the script counts the class IDs starting at 1, '

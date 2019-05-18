@@ -1,3 +1,4 @@
+import copy
 import json
 import os
 import random
@@ -5,7 +6,8 @@ import shutil
 import sys
 import time
 from datetime import datetime
-import copy
+from shutil import copyfile
+
 import cv2
 import numpy as np
 import pandas as pd
@@ -14,10 +16,8 @@ from tabulate import tabulate
 from tqdm import tqdm
 
 import converters
-from util.util import create_dir, validate_match, print_label_stats, print_warning_for_empty_classes, write_label_map, \
-    check_label_names_for_duplicates
-
-from shutil import copyfile
+from util.util import create_dir, validate_match, print_label_stats, print_warning_for_empty_classes, \
+    check_label_names_for_duplicates, find_value
 
 
 class BaseConverter:
@@ -57,6 +57,7 @@ class BaseConverter:
 
         self.categories = json.load(open(self.label_map, 'r')).get('classes')
         self.categories = [{'id': cat['id'] + 1, 'name': cat['name']} for cat in self.categories]
+        self.org_categories = copy.deepcopy(self.categories)
 
         if self.included_classes is None:
             self._check_for_excluded_classes()
@@ -67,8 +68,15 @@ class BaseConverter:
         self.included_ids = [cat['id'] for cat in self.categories]
 
         self.label_id_mapping = {}
+        self.label_rearrange_mapping = {}
+
         if self.remap_labels:
             self._remap_labels()
+
+        if self.args.rearrange_ids:
+            self._rearrange_ids()
+
+        self._write_label_map()
 
         if check_label_names_for_duplicates(self.categories):
             print('\nExiting! Please fix label map.')
@@ -142,59 +150,64 @@ class BaseConverter:
         else:
             use_org_ids = self.args.mapping['ids_from_org_list']
 
+        # Get all remapped ids for faster processing
+        remapped_ids = set()
+        for new_labels in self.args.mapping['new_labels']:
+            for old_id in new_labels['old_id']:
+                remapped_ids.add(old_id)
+
+            remapped_ids.add(new_labels['new_id'])
+        remapped_ids = sorted(remapped_ids)
+
         for old_cat in self.categories:
-            remapped = False
 
-            for new_cat in self.args.mapping['new_labels']:
+            if old_cat['id'] in remapped_ids:
+                for new_cat in self.args.mapping['new_labels']:
 
-                assert isinstance(new_cat['new_id'], int), 'New ID must be int. Got {} of type {}'.format(
-                    new_cat['new_id'], type(new_cat['new_id']))
+                    assert isinstance(new_cat['new_id'], int), 'New ID must be int. Got {} of type {}'.format(
+                        new_cat['new_id'], type(new_cat['new_id']))
 
-                assert isinstance(new_cat['old_id'], int) \
-                       or isinstance(new_cat['old_id'], list), 'Old ID(s) must be int or list.' \
-                                                               ' Got type {}'.format(type(new_cat['old_id']))
+                    assert isinstance(new_cat['old_id'], int) \
+                           or isinstance(new_cat['old_id'], list), 'Old ID(s) must be int or list.' \
+                                                                   ' Got type {}'.format(type(new_cat['old_id']))
 
-                assert 'new_name' in new_cat, 'No new name set for new ID {}.'.format(new_cat['new_id'])
+                    assert 'new_name' in new_cat, 'No new name set for new ID {}.'.format(new_cat['new_id'])
 
-                if use_org_ids:
-                    new_cat['new_id'] += 1
-                    new_cat['old_id'] = [i + 1 for i in new_cat['old_id']]
+                    if use_org_ids:
+                        new_cat['new_id'] += 1
+                        new_cat['old_id'] = [i + 1 for i in new_cat['old_id']]
 
-                if old_cat['id'] in new_cat['old_id']:
-                    rename = len(new_cat['old_id']) == 1
+                    if old_cat['id'] in new_cat['old_id']:
+                        rename = len(new_cat['old_id']) == 1
 
-                    if not rename:
-                        # Avoid double entries
-                        if not len(list(filter(lambda cat: cat['id'] == new_cat['new_id'], new_categories))) == 0:
-                            # Save merging statistics
-                            labels_merged_per_id[new_cat['new_id']] += 1
+                        if not rename:
+                            # Avoid double entries
+                            if not len(list(filter(lambda cat: cat['id'] == new_cat['new_id'], new_categories))) == 0:
+                                # Save merging statistics
+                                labels_merged_per_id[new_cat['new_id']] += 1
+                                continue
 
-                            # Avoid entries of merged classes in new_categories
-                            remapped = True
-                            continue
+                            new_categories.append({'id': new_cat['new_id'], 'name': new_cat['new_name']})
 
-                        new_categories.append({'id': new_cat['new_id'], 'name': new_cat['new_name']})
+                        for old_id in new_cat['old_id']:
+                            self.label_id_mapping[old_id] = new_cat['new_id']
 
-                    for old_id in new_cat['old_id']:
-                        self.label_id_mapping[old_id] = new_cat['new_id']
+                        # Save merging statistics
+                        labels_merged_per_id[new_cat['new_id']] = 1
 
-                    # Save merging statistics
-                    labels_merged_per_id[new_cat['new_id']] = 1
+                        # Remove old ids from included
+                        old_ids = copy.deepcopy(new_cat['old_id'])
+                        if new_cat['new_id'] in old_ids:
+                            old_ids.remove(new_cat['new_id'])
 
-                    # Remove old ids from included
-                    old_ids = copy.deepcopy(new_cat['old_id'])
-                    if new_cat['new_id'] in old_ids:
-                        old_ids.remove(new_cat['new_id'])
+                        for old_id in old_ids:
+                            if old_id in self.included_ids:
+                                self.included_ids.remove(old_id)
+                                self.excluded_classes.append(old_id)
 
-                    for old_id in old_ids:
-                        if old_id in self.included_ids:
-                            self.included_ids.remove(old_id)
-                            self.excluded_classes.append(old_id)
+                        break
 
-                    remapped = True
-                    break
-
-            if not remapped:
+            else:
                 new_categories.append(old_cat)
 
         new_id2new_cat = {cat['id']: cat['name'] for cat in new_categories}
@@ -277,8 +290,81 @@ class BaseConverter:
                                                                          new_id2new_cat[label_id], label_id))
 
         self.categories = new_categories
+        self._overwrite_in_and_excluded_classes_files()
+        # Get included ids
+        self.included_ids = [cat['id'] for cat in self.categories]
 
-        write_label_map(self.output_path, self.categories, self.label_id_mapping)
+    def _rearrange_ids(self):
+        old_id2cat = {cat['id']: cat['name'] for cat in self.categories}
+        new_categories = []
+        new_included = []
+
+        for new_id, cat_id in enumerate(sorted([cat['id'] for cat in self.categories]), start=1):
+            self.label_rearrange_mapping[cat_id] = new_id
+            new_categories.append({'id': new_id, 'name': old_id2cat[cat_id]})
+            new_included.append(new_id)
+
+            if new_id in self.excluded_classes:
+                self.excluded_classes.remove(new_id)
+
+        for cat_id in [cat['id'] for cat in self.categories]:
+            if cat_id not in new_included:
+                self.excluded_classes.append(cat_id)
+
+        '''Overwrite lists'''
+        self.categories = new_categories
+        self.included_ids = new_included
+
+        # Remove double entries
+        self.excluded_classes = list(set(self.excluded_classes))
+
+    def _overwrite_in_and_excluded_classes_files(self):
+        id2cat = {cat['id']: cat['name'] for cat in self.org_categories}
+
+        info_str = '###########################################\n' \
+                   '###     File contains old label IDs     ###\n' \
+                   '###########################################\n'
+
+        with open(os.path.join(self.output_path, "excluded_classes.txt"), 'w') as file:
+            file.write(info_str)
+
+            for class_id in self.excluded_classes:
+                if class_id not in self.label_id_mapping:
+                    file.write("{}\t: {}\n".format(class_id, id2cat[class_id]))
+
+        with open(os.path.join(self.output_path, "included_classes.txt"), 'w') as file:
+            file.write(info_str)
+
+            # Get all in sorted list
+            included = [class_id for class_id in self.included_ids]
+            included.extend([class_id for class_id in self.label_id_mapping])
+            included = sorted(included)
+
+            for class_id in included:
+                file.write("{}\t: {}\n".format(class_id, id2cat[class_id]))
+
+    def _write_label_map(self):
+        print('Saving label map and id mapping to output folder.')
+
+        label_map_file = os.path.join(self.output_path, 'label_map.json')
+        with open(label_map_file, 'w') as f:
+            json.dump({'classes': self.categories}, f, sort_keys=True, indent=4)
+
+        label_id_mapping_file = os.path.join(self.output_path, 'label_id_mapping.json')
+
+        label_id_mapping = {}
+        if not len(self.label_rearrange_mapping) == 0:
+            for new_id in self.included_ids:
+                old_id = find_value(self.label_id_mapping, find_value(self.label_rearrange_mapping, new_id))
+                if old_id is None:
+                    old_id = find_value(self.label_rearrange_mapping, new_id)
+
+                label_id_mapping[old_id] = new_id
+        else:
+            label_id_mapping = self.label_id_mapping
+
+        with open(label_id_mapping_file, 'w') as f:
+            json.dump({'old_id_to_new_id': label_id_mapping}, f, sort_keys=True, indent=4)
 
     def _fill_lists(self):
         if self.file_lists is not None:
@@ -330,7 +416,7 @@ class BaseConverter:
             file.write("mean = [{}, {}, {}]\n".format(self.img_mean[0], self.img_mean[1], self.img_mean[2]))
             file.write("std = [{}, {}, {}]\n".format(self.img_std[0], self.img_std[1], self.img_std[2]))
 
-    def calc_label_statistics(self):
+    def calc_label_statistics(self, max_classes=206):
         time.sleep(0.1)
         print("\n\nCreating dummy csv dataset ...")
 
@@ -341,6 +427,7 @@ class BaseConverter:
         converter.excluded_classes = self.excluded_classes
         converter.included_ids = self.included_ids
         converter.label_id_mapping = self.label_id_mapping
+        converter.label_rearrange_mapping = self.label_rearrange_mapping
 
         print("Calculating label statistics ...")
         dataframes = []
@@ -351,12 +438,12 @@ class BaseConverter:
             time.sleep(0.1)
 
             dataframes.append(converter.get_dataframe(s))
-            print_label_stats(self.output_path, self.id2cat, self.excluded_classes, dataframes[i], s,
+            print_label_stats(self.output_path, self.id2cat, max_classes, self.excluded_classes, dataframes[i], s,
                               tablefmt=self.args.tablefmt)
 
         if len(dataframes) != 1:
             df = pd.concat(dataframes)
-            print_label_stats(self.output_path, self.id2cat, self.excluded_classes, df, set_title='full',
+            print_label_stats(self.output_path, self.id2cat, max_classes, self.excluded_classes, df, set_title='full',
                               tablefmt=self.args.tablefmt)
 
     def split(self, sets, set_sizes, shuffle):
@@ -470,9 +557,9 @@ class BaseConverter:
         print('\nPrinting class distribution for image sets...')
 
         data = dict()
-        data['class id'] = [class_id for class_id in self.gt_boxes]
-        data['class'] = [self.gt_boxes[class_id]['name'] for class_id in self.gt_boxes]
-        data['#bbox'] = [0 for class_id in self.gt_boxes]
+        data['class id'] = [class_id for class_id in sorted(self.gt_boxes)]
+        data['class'] = [self.gt_boxes[class_id]['name'] for class_id in sorted(self.gt_boxes)]
+        data['#bbox'] = [0 for _ in self.gt_boxes]
 
         columns = ['#bbox']
 

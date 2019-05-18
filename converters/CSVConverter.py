@@ -63,6 +63,12 @@ class CSVConverter(converters.BaseConverter):
 
                 class_id = int(member[0].text) + 1
 
+                if class_id in self.label_id_mapping:
+                    class_id = self.label_id_mapping[class_id]
+
+                if class_id in self.label_rearrange_mapping:
+                    class_id = self.label_rearrange_mapping[class_id]
+
                 if class_id in self.excluded_classes:
                     continue
 
@@ -71,9 +77,6 @@ class CSVConverter(converters.BaseConverter):
                         'Error: Class ID {} not in label map or not included. Found in label file: {}'.format(
                             str(class_id), xml_file))
                     sys.exit(-1)
-
-                if class_id in self.label_id_mapping:
-                    class_id = self.label_id_mapping[class_id]
 
                 xmin = int(member[4][0].text)
                 ymin = int(member[4][1].text)
