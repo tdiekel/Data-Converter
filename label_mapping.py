@@ -110,8 +110,8 @@ mapping_settings = {
             },
             {
                 'new_name': 'bend double (danger)',
-                'new_id': 52,
-                'old_id': [53, 52]
+                'new_id': 22,
+                'old_id': [22, 53]
             },
             {
                 'new_name': 'highway turn (other)',
@@ -160,8 +160,8 @@ mapping_settings = {
             },
             {
                 'new_name': 'truck (object)',
-                'new_id': 177,
-                'old_id': [177, 178]
+                'new_id': 178,
+                'old_id': [178, 179]
             },
             {
                 'new_name': 'transporter (object)',
