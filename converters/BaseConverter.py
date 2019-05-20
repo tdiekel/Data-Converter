@@ -49,6 +49,31 @@ class BaseConverter:
         self.images_split = False
         self.skip_images_without_label = args.skip_images_without_label
 
+        '''Create class parameter
+        '''
+        self.categories = {}
+        self.org_categories = {}
+
+        self.included_ids = []
+
+        self.label_id_mapping = {}
+        self.label_rearrange_mapping = {}
+
+        self.cat2id = {}
+        self.id2cat = {}
+        self.gt_boxes = {}
+
+        self.images = {}
+        self.label = {}
+        self.image_sets = []
+
+        self.not_verified_label_files = []
+
+        self.img_mean = []
+        self.img_var = []
+        self.img_std = []
+
+    def init(self):
         # Create output folder
         create_dir(self.output_path)
 
@@ -67,9 +92,6 @@ class BaseConverter:
         # Get included ids
         self.included_ids = [cat['id'] for cat in self.categories]
 
-        self.label_id_mapping = {}
-        self.label_rearrange_mapping = {}
-
         if self.remap_labels:
             self._remap_labels()
 
@@ -87,19 +109,9 @@ class BaseConverter:
 
         self.gt_boxes = {cat['id']: {'name': cat['name'], 'num_gt_boxes': {}} for cat in self.categories}
 
-        self.images = {}
-        self.label = {}
-        self.image_sets = []
-
-        self.not_verified_label_files = []
-
         self._fill_lists()
 
         assert validate_match(self.image_sets, self.images, self.label), 'Image and label files do not match.'
-
-        self.img_mean = []
-        self.img_var = []
-        self.img_std = []
 
     def _check_for_excluded_classes(self):
         create_dir(self.output_path)

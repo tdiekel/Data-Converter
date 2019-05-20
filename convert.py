@@ -251,6 +251,8 @@ def main(args=None):
     else:
         sys.exit(-1)
 
+    converter.init()
+
     if args.sets or args.file_lists:
         converter.split(args.sets, args.set_sizes, args.shuffle)
 

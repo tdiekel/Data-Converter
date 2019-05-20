@@ -21,15 +21,16 @@ class COCOConverter(converters.BaseConverter):
                           'url': 'http://www.iff.tu-bs.de'
                           }]
 
+        self.annotation_id = 1
+
+    def convert(self):
+        # Get supercategories
         if 'supercategory' not in self.categories[0]:
             for item in self.categories:
                 name = item.get('name')
                 idx = name.rfind('(')
                 item['supercategory'] = name[idx + 1:-1]
 
-        self.annotation_id = 1
-
-    def convert(self):
         time.sleep(0.1)
         print("\nCreating dataset...")
 
