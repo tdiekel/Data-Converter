@@ -120,13 +120,65 @@ def create_dataset(args):
                 write_cuts_to_subfolder(objects, args)
 
 
+traffic_signs_prohibitory = [
+    # Verwendete Klassen
+    2, 3, 4, 5, 6, 8, 9, 10, 11, 16, 17, 122, 123, 124, 125, 126, 127, 128, 129, 130, 145,
+    # Nicht verwendete Klassen
+    # 1, 46, 48, 51, 55, 56, 57, 98, 100, 101, 102, 103, 104, 131, 136, 137, 138, 139, 140, 141, 176, 177
+]
+traffic_signs_danger = [
+    # Verwendete Klassen
+    12, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 32, 53,
+    # Nicht verwendete Klassen
+    # 30, 31, 99
+]
+traffic_signs_mandatory = [
+    # Verwendete Klassen
+    34, 35, 36, 37, 38, 39, 41, 109, 110, 111, 112,
+    # Nicht verwendete Klassen
+    # 40, 105, 106, 107, 108, 113, 148, 149
+]
+traffic_signs_other = [
+    # Verwendete Klassen
+    13, 14, 15, 18, 33, 45, 54, 58, 59, 60, 61, 74, 85, 89, 91, 92, 93, 96, 116, 118, 119, 132,
+    133, 155,
+    # Nicht verwendete Klassen
+    # 7, 42, 43, 44, 47, 49, 50, 52, 86, 87, 88, 90, 94, 95, 97, 114, 115, 117, 120, 121, 134, 135, 142, 143, 144,
+    # 146, 147, 150, 151, 152, 174, 175
+]
+traffic_signs_digital = [
+    # Verwendete Klassen
+    62, 66, 70, 75, 81,
+    # Nicht verwendete Klassen
+    # 63, 64, 65, 67, 68, 69, 71, 72, 73, 76, 77, 78, 79, 80, 82, 83, 84, 153
+]
+traffic_signals = [
+    # Verwendete Klassen
+    158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173,
+    # Nicht verwendete Klassen
+    # 157
+]
+objects = [
+    # Verwendete Klassen
+    178, 179, 180, 181, 182, 183, 186, 187, 188, 189,
+    # Nicht verwendete Klassen
+    # 184
+]
+roadsurface = [
+    # Verwendete Klassen
+    193, 194, 195, 198, 199, 200,
+    # Nicht verwendete Klassen
+    # 192, 196, 197, 201, 202, 203, 204, 205, 206
+]
+
+
 def main():
     args = SimpleNamespace()
 
     args.image_path = '/home/osm/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/'
     args.label_path = '/home/osm/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/'
     args.label_map = './label_map.json'
-    args.output_path = '/home/osm/Schreibtisch/01_Datasets/2019_Mai/Classification_all'
+    args.output_path = '/home/osm/Schreibtisch/01_Datasets/2019_Mai/Classification_Supercategories_Used/roadsurface'
     args.target_format = 'subfolders'
 
     # Classes with '(danger)' but w/o '(digital)'
@@ -139,7 +191,9 @@ def main():
     # args.include = list(range(155, 173))
 
     # All classes
-    args.include = list(range(206))
+    # args.include = list(range(206))
+
+    args.include = [class_id - 1 for class_id in roadsurface]
 
     args.min_size = 0
 
@@ -149,6 +203,8 @@ def main():
     args.id2cat = {cat['id']: cat['name'] for cat in args.categories}
 
     create_dataset(args)
+
+    print('Written to {}'.format(args.output_path))
 
 
 if __name__ == '__main__':
