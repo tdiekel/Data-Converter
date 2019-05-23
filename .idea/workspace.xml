@@ -1,0 +1,1563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="29f154eb-7d0d-4dda-8c24-d5d220e03141" name="Default Changelist" comment="Initial commit">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/convert.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="129">
+              <caret line="259" column="40" lean-forward="true" selection-start-line="259" selection-start-column="40" selection-end-line="259" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="115" selection-start-line="115" selection-end-line="115" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/label_mapping.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="85" column="37" lean-forward="true" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
+              <folding>
+                <element signature="e#3409#6171#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/label_map.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="341" column="6" lean-forward="true" selection-start-line="341" selection-start-column="6" selection-end-line="341" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/converters/BaseConverter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="52">
+              <caret line="435" column="16" selection-start-line="435" selection-start-column="16" selection-end-line="435" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/converters/CSVConverter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-639">
+              <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="82">
+              <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>json.du</find>
+      <find>label_map.js</find>
+      <find>tabul</find>
+      <find>tabulat</find>
+      <find>patch</find>
+      <find>Wri</find>
+      <find>2018</find>
+      <find>warning_not_verified_label_files(self.not_verified_label_files)</find>
+      <find>while</find>
+      <find>tabulate_formats</find>
+      <find>&quot;</find>
+      <find>tablefmt</find>
+      <find>floatfmt</find>
+      <find>remap</find>
+      <find>Successfully created the TFRecords</find>
+      <find>mapping</find>
+      <find>(danger)</find>
+      <find>label</find>
+      <find>label-map</find>
+      <find>label_id_mapping.j</find>
+      <find>combine_by_substring</find>
+      <find>combine_by_id</find>
+      <find>29</find>
+      <find>90</find>
+      <find>exists more than once with IDs:</find>
+      <find />
+      <find>,</find>
+      <find>Saving label map and id mapping to output folder.</find>
+      <find>traffic jam</find>
+      <find>succes</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>self.</replace>
+      <replace>y</replace>
+      <replace>filtered_df</replace>
+      <replace>_</replace>
+      <replace>max</replace>
+      <replace>print</replace>
+      <replace>create_dir</replace>
+      <replace>warning_not_verfied_label_files</replace>
+      <replace>image_src_filetype</replace>
+      <replace>image_dest_filetype</replace>
+      <replace>warning_not_verfied_label_files(self.not_verified_label_files)</replace>
+      <replace>remap</replace>
+      <replace>print_warning_for_empty_classes</replace>
+      <replace>'</replace>
+      <replace>self.args.mapping</replace>
+      <replace>,</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/utils/Converter.py" />
+        <option value="$PROJECT_DIR$/xml_to_csv.py" />
+        <option value="$PROJECT_DIR$/generate_tfrecord.py" />
+        <option value="$USER_HOME$/miniconda3/envs/mmdet/lib/python3.6/site-packages/mmdet/datasets/coco_custom.py" />
+        <option value="$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/site-packages/pycocotools/coco.py" />
+        <option value="$USER_HOME$/miniconda3/envs/mmdet/lib/python3.6/site-packages/mmdet/datasets/coco.py" />
+        <option value="$USER_HOME$/machine_learning/tensorflow/models/research/object_detection/utils/learning_schedules.py" />
+        <option value="$PROJECT_DIR$/utils/DetectronConverter.py" />
+        <option value="$USER_HOME$/machine_learning/detectron/detectron/detectron/utils/train.py" />
+        <option value="$PROJECT_DIR$/utils/clean_log_file.py" />
+        <option value="$USER_HOME$/machine_learning/darknet/clean_log_file.py" />
+        <option value="$USER_HOME$/machine_learning/darknet/edit_log_file.py" />
+        <option value="$USER_HOME$/machine_learning/darknet/plot_log_file.py" />
+        <option value="$USER_HOME$/machine_learning/darknet/training/plot_log_file.py" />
+        <option value="$PROJECT_DIR$/label_map_new.json" />
+        <option value="$USER_HOME$/machine_learning/detectron/detectron/training/faster_rcnn/Testlauf_1_GN/work_dir/train/tubs_coco_2018_train/generalized_rcnn/train_log_19999.json" />
+        <option value="$USER_HOME$/machine_learning/tensorflow/models/research/object_detection/legacy/trainer.py" />
+        <option value="$PROJECT_DIR$/utils/generate_tfrecord.py" />
+        <option value="$PROJECT_DIR$/utils/DarknetConverter.py" />
+        <option value="$PROJECT_DIR$/utils/COCOConverter.py" />
+        <option value="$PROJECT_DIR$/utils/BaseConverter.py" />
+        <option value="$PROJECT_DIR$/utils/CSVConverter.py" />
+        <option value="$PROJECT_DIR$/utils/TFRecordConverter.py" />
+        <option value="$PROJECT_DIR$/utils/__init__.py" />
+        <option value="$PROJECT_DIR$/label_map_items.json" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
+        <option value="$PROJECT_DIR$/combine_labels.py" />
+        <option value="$PROJECT_DIR$/combine_labels.json" />
+        <option value="$PROJECT_DIR$/dataset_test.py" />
+        <option value="$PROJECT_DIR$/label_patch.py" />
+        <option value="$PROJECT_DIR$/conv/generate_tfrecord.py" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/conv/TFRecordConverter.py" />
+        <option value="$PROJECT_DIR$/conv/CSVConverter.py" />
+        <option value="$PROJECT_DIR$/conv/DarknetConverter.py" />
+        <option value="$PROJECT_DIR$/conv/util.py" />
+        <option value="$USER_HOME$/machine_learning/mmdet_v6/mmdetection/training/2.2_RPN/rpn_r50_fpn_1x.py" />
+        <option value="$PROJECT_DIR$/conv/COCOConverter.py" />
+        <option value="$PROJECT_DIR$/conv/BaseConverter.py" />
+        <option value="$PROJECT_DIR$/converters/CSVConverter.py" />
+        <option value="$PROJECT_DIR$/converters/DarknetConverter.py" />
+        <option value="$PROJECT_DIR$/util/util.py" />
+        <option value="$PROJECT_DIR$/converters/TFRecordConverter.py" />
+        <option value="$PROJECT_DIR$/converters/COCOConverter.py" />
+        <option value="$PROJECT_DIR$/converters/generate_tfrecord.py" />
+        <option value="$PROJECT_DIR$/creator.py" />
+        <option value="$PROJECT_DIR$/label_map.json" />
+        <option value="$PROJECT_DIR$/label_mapping.py" />
+        <option value="$PROJECT_DIR$/converters/BaseConverter.py" />
+        <option value="$PROJECT_DIR$/convert.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="27" />
+    <option name="width" value="960" />
+    <option name="height" value="1053" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="DatasetConverter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DatasetConverter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DatasetConverter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DatasetConverter" type="462c0819:PsiDirectoryNode" />
+              <item name="converters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DatasetConverter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DatasetConverter" type="462c0819:PsiDirectoryNode" />
+              <item name="creators" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DatasetConverter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DatasetConverter" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../09_Classification" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.toDoOptions" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/util" />
+      <recent name="$PROJECT_DIR$/utils" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.convert_2019_Supercategories">
+    <configuration name="convert_2019_75_20_5" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format coco --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/02_COCO/75_20_5 --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Split/75_20_5 --file-lists train2019_file_list.txt val2019_file_list.txt eval2019_file_list.txt --remap-labels --year 2019 --stats-label --tablefmt github --exclude-area 256" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_2019_75_20_5_tf" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format tfrecord --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/03_Tensorflow/75_20_5_Exclude --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Split/75_20_5 --file-lists train2019_file_list.txt val2019_file_list.txt eval2019_file_list.txt --remap-labels --exclude 184 189-205 --year 2019 --stats-label --exclude-area 256" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_2019_Supercategories" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format tfrecord --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/03_Tensorflow/Supercategories --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Split/75_20_5 --file-lists train2019_file_list.txt val2019_file_list.txt eval2019_file_list.txt --remap-labels --mapping-id 2 --no-copy --year 2019 --stats-label --exclude-area 256" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_2019_Supercategories_v2" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format tfrecord --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/03_Tensorflow/Supercategories_v2 --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Split/75_20_5 --file-lists train2019_file_list.txt val2019_file_list.txt eval2019_file_list.txt --remap-labels --no-copy --mapping-id 4 --year 2019 --stats-label --exclude-area 256 --exclude 87 88 97 120 121 146 150 151 152 154 157 174 175 184 185 190 191 192 196 197 201 202 203 204 205 206 --exclude-starts-at-one" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_coco_2019_relevant" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format coco --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/02_COCO/75_20_5_Relevant --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Split/75_20_5 --file-lists train2019_file_list.txt val2019_file_list.txt eval2019_file_list.txt --stats-label --remap-labels --mapping-id 3 --year 2019 --exclude-area 256 --exclude 1 7 30 31 40 42 43 44 46 47 48 49 50 51 52 55 56 57 63 64 65 67 68 69 71 72 73 76 77 78 79 80 82 83 84 86 87 88 90 94 95 97 98 99 100 101 102 103 104 105 106 107 108 113 114 115 117 120 121 131 134 135 136 137 138 139 140 141 142 143 144 146 147 148 149 150 151 152 153 154 156 157 174 175 176 177 184 185 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 --exclude-starts-at-one --rearrange-ids" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_coco_75_20_5_exclude" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format coco --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/02_COCO/75_20_5_Exclude --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/75_20_5 --file-lists train2018_file_list.txt val2018_file_list.txt eval2018_file_list.txt --exclude 184 189-205 --stats-label --remap-labels" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_coco_80_20" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format coco --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/02_COCO/80_20 --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/80_20 --file-lists train2018_file_list.txt val2018_file_list.txt" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_coco_80_20_exclude" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format coco --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/02_COCO/80_20_Exclude --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/80_20 --file-lists train2018_file_list.txt val2018_file_list.txt --exclude 184 189-205" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_darknet_75_20_5_exclude" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format darknet --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/04_Darknet/75_20_5_Exclude --rel-output-path ./data/04_Darknet/75_20_5_Exclude --dataset-name Dez_2018_75_20_5_Exclude --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/75_20_5 --file-lists train2018_file_list.txt val2018_file_list.txt eval2018_file_list.txt --exclude 184 189-205" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_darknet_80_20" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format darknet --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/04_Darknet/80_20 --rel-output-path ./data/04_Darknet/80_20 --dataset-name Dez_2018_80_20 --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/80_20 --file-lists train2018_file_list.txt val2018_file_list.txt" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_darknet_80_20_exclude" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format darknet --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/04_Darknet/80_20_Exclude --rel-output-path ./data/04_Darknet/80_20_Exclude --dataset-name Dez_2018_80_20 --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/80_20 --file-lists train2018_file_list.txt val2018_file_list.txt --exclude 184 189-205" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_stats" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/Stats --stats --no-copy --sets images --set-sizes 1" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_stats_2019" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/Stats --stats --no-copy --sets images --set-sizes 1 --remap-labels --mapping-id 1 --year 2019" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_stats_2019_relevant" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/Stats_Relevant_Classes --stats --no-copy --sets images --set-sizes 1 --remap-labels --mapping-id 3 --year 2019 --exclude 1 7 30 31 40 42 43 44 46 47 48 49 50 51 52 55 56 57 63 64 65 67 68 69 71 72 73 76 77 78 79 80 82 83 84 86 87 88 90 94 95 97 98 99 100 101 102 103 104 105 106 107 108 113 114 115 117 120 121 131 134 135 136 137 138 139 140 141 142 143 144 146 147 148 149 150 151 152 153 156 157 174 175 176 177 184 185 190 191 192 196 197 201 202 203 204 205 206 --exclude-starts-at-one --rearrange-ids" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_stats_75_20_5_exclude" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/Stats_75_20_5_exclude --stats-label --no-copy --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/75_20_5 --file-lists train2018_file_list.txt val2018_file_list.txt eval2018_file_list.txt --exclude 184 189-205" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_test" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/Test --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/80_20 --file-lists train2018_file_list.txt val2018_file_list.txt --no-copy" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_tf_2019_relevant" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format tfrecord --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/03_Tensorflow/75_20_5_Relevant --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Split/75_20_5 --file-lists train2019_file_list.txt val2019_file_list.txt eval2019_file_list.txt --stats-label --remap-labels --no-copy --mapping-id 3 --year 2019 --exclude-area 256 --exclude 1 7 30 31 40 42 43 44 46 47 48 49 50 51 52 55 56 57 63 64 65 67 68 69 71 72 73 76 77 78 79 80 82 83 84 86 87 88 90 94 95 97 98 99 100 101 102 103 104 105 106 107 108 113 114 115 117 120 121 131 134 135 136 137 138 139 140 141 142 143 144 146 147 148 149 150 151 152 153 154 156 157 174 175 176 177 184 185 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 --exclude-starts-at-one --rearrange-ids" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_tfrecord_75_20_5_exclude" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format tfrecord --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/03_Tensorflow/75_20_5_Exclude --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/75_20_5 --file-lists train2018_file_list.txt val2018_file_list.txt eval2018_file_list.txt --exclude 184 189-205" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_tfrecord_80_20" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format tfrecord --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/03_Tensorflow/80_20 --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/80_20 --file-lists train2018_file_list.txt val2018_file_list.txt" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_tfrecord_80_20_exclude" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format tfrecord --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/03_Tensorflow/80_20_Exclude --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/80_20 --file-lists train2018_file_list.txt val2018_file_list.txt --exclude 184 189-205" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_traffic_signals" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format coco --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/traffic_signals --stats-label --include 156-169 --include-starts-at-one --skip-images-without-label --sets --set-sizes" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_traffic_signals_2019" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format coco --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/traffic_signals --stats-label --include 156-169 --include-starts-at-one --skip-images-without-label --sets --set-sizes" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="creator" type="PythonConfigurationType" factoryName="Python" singleton="false">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/creator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dataset_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="scratch_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="show_argparser" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--help" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="split_2019_75_20_5" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Split/75_20_5 --no-copy --set-sizes 75 20 5 --sets train val eval --remap-labels --year 2019 --stats-label --shuffle" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="split_70_20_10" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/70_20_10 --no-copy --set-sizes 70 20 10 --sets train val eval" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="split_70_30" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/70_30 --no-copy --set-sizes 70 30" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="split_75_20_5" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/75_20_5 --no-copy --set-sizes 75 20 5 --sets train val eval" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="split_80_20" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/80_20 --no-copy --set-sizes 80 20" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="stats_2019" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/Stats --remap-labels --year 2019 --stats --no-copy --sets images --set-sizes 1" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_combine_classes" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format coco --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/Test --no-copy --patch-labels --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/75_20_5 --file-lists train2018_file_list.txt val2018_file_list.txt eval2018_file_list.txt" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.convert_2019_75_20_5" />
+      <item itemvalue="Python.convert_2019_75_20_5_tf" />
+      <item itemvalue="Python.convert_2019_Supercategories" />
+      <item itemvalue="Python.convert_2019_Supercategories_v2" />
+      <item itemvalue="Python.convert_coco_75_20_5_exclude" />
+      <item itemvalue="Python.convert_coco_80_20" />
+      <item itemvalue="Python.convert_coco_80_20_exclude" />
+      <item itemvalue="Python.convert_darknet_75_20_5_exclude" />
+      <item itemvalue="Python.convert_darknet_80_20" />
+      <item itemvalue="Python.convert_darknet_80_20_exclude" />
+      <item itemvalue="Python.convert_stats" />
+      <item itemvalue="Python.convert_stats_2019" />
+      <item itemvalue="Python.convert_stats_2019_relevant" />
+      <item itemvalue="Python.convert_tf_2019_relevant" />
+      <item itemvalue="Python.convert_coco_2019_relevant" />
+      <item itemvalue="Python.convert_stats_75_20_5_exclude" />
+      <item itemvalue="Python.convert_test" />
+      <item itemvalue="Python.convert_tfrecord_75_20_5_exclude" />
+      <item itemvalue="Python.convert_tfrecord_80_20" />
+      <item itemvalue="Python.convert_tfrecord_80_20_exclude" />
+      <item itemvalue="Python.convert_traffic_signals" />
+      <item itemvalue="Python.convert_traffic_signals_2019" />
+      <item itemvalue="Python.show_argparser" />
+      <item itemvalue="Python.split_2019_75_20_5" />
+      <item itemvalue="Python.split_70_20_10" />
+      <item itemvalue="Python.split_70_30" />
+      <item itemvalue="Python.split_75_20_5" />
+      <item itemvalue="Python.split_80_20" />
+      <item itemvalue="Python.stats_2019" />
+      <item itemvalue="Python.test_combine_classes" />
+      <item itemvalue="Python.creator" />
+      <item itemvalue="Python.dataset_test" />
+      <item itemvalue="Python.scratch_1" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.dataset_test" />
+        <item itemvalue="Python.scratch_1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="29f154eb-7d0d-4dda-8c24-d5d220e03141" name="Default Changelist" comment="" />
+      <created>1552486635658</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1552486635658</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2245651" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24967235" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.45572355" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.53023756" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.43412527" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32829374" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3286638" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.23326133" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.37688985" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1406053" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297414" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3297414" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.45015106" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3286638" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/converters/DarknetConverter.py</url>
+          <line>177</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/util/util.py</url>
+          <line>87</line>
+          <option name="timeStamp" value="140" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>new_labels = [new_label for new_label in self.args.mapping['new_labels']]
+remapped_ids = [remapped_id for remapped_id in new_labels['new_id']]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>new_label = [new_label for new_label in self.args.mapping['new_labels']]
+remapped_ids = [remapped_id for remapped_id in new_label['new_id']]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>list(filter(lambda cat: cat['id'] == new_cat['new_id'], new_categories))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>filter(lambda cat: cat['id'] == new_cat['new_id'], new_categories)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>lambda cat: cat['id'] == new_cat['new_id']</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>bboxes_greater_than_32px = bbox_area[(bbox_area['bbox_w'] &gt;= 32) &amp; (bbox_area['bbox_h'] &gt;= 32)]
+num_bboxes_greater_than_32px = bbox_area.count()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>for class_id in sorted(df['class'].unique()):
+    print(class_id)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>for class_id in df['class'].unique():
+    print(class_id)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.categories = [{'id': cat['id'] + 1,
+                    'name': cat['name']
+                    } for cat in self.categories]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>self.gt_boxes</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data[column_num]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>num = self.gt_boxes[i]['num_gt_boxes'].get(image_set, 0)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sorted(self.label_id_mapping)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sorted(self.excluded_classes)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.args.mapping['new_labels']</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>old_cat['id']</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>class_id, id2cat[class_id]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>find_value(self.label_id_mapping, class_id)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/typing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="2327" column="8" selection-start-line="2327" selection-start-column="8" selection-end-line="2327" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/machine_learning/detectron/detectron/detectron/utils/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="79" column="13" lean-forward="true" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+    <entry file="file://$PROJECT_DIR$/utils/clean_log_file.py" />
+    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/site-packages/pandas/core/frame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7946" column="4" selection-start-line="7946" selection-start-column="4" selection-end-line="7946" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/machine_learning/darknet/plot_log_file.py" />
+    <entry file="file://$USER_HOME$/machine_learning/darknet/scripts/plot_log_file.py" />
+    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/site-packages/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="1542" selection-start-line="1542" selection-end-line="1542" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/site-packages/pandas/core/indexing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="1485" selection-start-line="1485" selection-end-line="1485" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/label_map_new.json" />
+    <entry file="file://$USER_HOME$/machine_learning/darknet/training/plot_log_file.py" />
+    <entry file="file://$USER_HOME$/machine_learning/detectron/detectron/training/faster_rcnn/Testlauf_1_GN/work_dir/train/tubs_coco_2018_train/generalized_rcnn/train_log_19999.json" />
+    <entry file="file://$USER_HOME$/machine_learning/tensorflow/models/research/object_detection/legacy/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="54" selection-start-line="54" selection-end-line="54" selection-end-column="41" />
+          <folding>
+            <element signature="e#1645#1661#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/functools.pyi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/machine_learning/tensorflow/models/research/object_detection/legacy/trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="311" column="35" lean-forward="true" selection-start-line="311" selection-start-column="35" selection-end-line="311" selection-end-column="35" />
+          <folding>
+            <element signature="e#813#829#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Schreibtisch/Tools_Dennis/DataSetCLI.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/machine_learning/detectron/detectron/training/1.1_Faster_RCNN/work_dir/train/tubs_coco_2018_train_75_20_5_exclude/generalized_rcnn/train_log_59999.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Schreibtisch/Tools_Dennis/DataSetCLI-4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/converters/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="40" lean-forward="true" selection-start-column="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/site-packages/pycocotools/coco.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-277">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/02_COCO/75_20_5_Exclude/annotations/instances_eval2018.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-705">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+          <folding>
+            <element signature="e#21#725220#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="308" selection-start-line="308" selection-end-line="308" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
+    <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/02_COCO/Combined_classes/label_mapping.json" />
+    <entry file="file://$PROJECT_DIR$/label_map_items.json" />
+    <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/02_COCO/Combined_classes/label_map.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/02_COCO/Combined_classes/label_id_mapping.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset_test.py" />
+    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/site-packages/tensorflow/python/lib/io/tf_record.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="62" column="110" lean-forward="true" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="116" />
+          <folding>
+            <element signature="e#6874#8619#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/json/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="178" selection-start-line="178" selection-end-line="178" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/Test/label_map.json" />
+    <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/Test/label_id_mapping.json" />
+    <entry file="file://$PROJECT_DIR$/config.py" />
+    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/site-packages/tabulate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-110">
+          <caret line="337" column="23" selection-start-line="337" selection-start-column="19" selection-end-line="337" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/machine_learning/mmdet_v6/mmdetection/training/2.2_RPN/rpn_r50_fpn_1x.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/shutil.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="113" column="41" lean-forward="true" selection-start-line="113" selection-start-column="41" selection-end-line="113" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///media/osm/ml/01_Datasets/2019_Mai/01_Rawdata/Labels/GOLF-VII_Variant_3F_2018-06-07_19-07-53_00060.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/xml/etree/ElementTree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="1195" selection-start-line="1195" selection-end-line="1195" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2037966368/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="2952" column="8" selection-start-line="2952" selection-start-column="8" selection-end-line="2952" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/converters/DarknetConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="85" column="24" selection-start-line="85" selection-start-column="24" selection-end-line="85" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/converters/TFRecordConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="82" column="19" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/converters/COCOConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="125" column="30" lean-forward="true" selection-start-line="125" selection-start-column="30" selection-end-line="125" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#3677#3819#0" />
+            <element signature="e#3846#3999#0" />
+            <element signature="e#4022#4342#0" />
+            <element signature="e#4367#4526#0" />
+            <element signature="e#4545#4696#0" />
+            <element signature="e#4707#4828#0" />
+            <element signature="e#4843#4984#0" />
+            <element signature="e#5398#5443#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/converters/CSVConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-639">
+          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/label_map.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="341" column="6" lean-forward="true" selection-start-line="341" selection-start-column="6" selection-end-line="341" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/converters/generate_tfrecord.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="281" column="64" lean-forward="true" selection-start-line="281" selection-start-column="64" selection-end-line="281" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/label_mapping.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="85" column="37" lean-forward="true" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
+          <folding>
+            <element signature="e#3409#6171#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/converters/BaseConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="435" column="16" selection-start-line="435" selection-start-column="16" selection-end-line="435" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/convert.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="259" column="40" lean-forward="true" selection-start-line="259" selection-start-column="40" selection-end-line="259" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
