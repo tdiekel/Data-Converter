@@ -199,7 +199,7 @@ class BaseConverter:
                                 labels_merged_per_id[new_cat['new_id']] += 1
                                 continue
 
-                            new_categories.append({'id': new_cat['new_id'], 'name': new_cat['new_name']})
+                        new_categories.append({'id': new_cat['new_id'], 'name': new_cat['new_name']})
 
                         for old_id in new_cat['old_id']:
                             self.label_id_mapping[old_id] = new_cat['new_id']
@@ -217,6 +217,12 @@ class BaseConverter:
                                 self.included_ids.remove(old_id)
                                 self.excluded_classes.append(old_id)
 
+                        new_id = new_cat['new_id']
+                        if new_id not in self.included_ids:
+                            self.included_ids.append(new_cat['new_id'])
+                        if new_id in self.excluded_classes:
+                            self.excluded_classes.remove(new_id)
+
                         break
 
             else:
@@ -227,8 +233,6 @@ class BaseConverter:
         return new_categories, new_id2new_cat, labels_merged_per_id
 
     def combine_by_substring(self):
-        assert False, 'Erst überprüfen und überarbeiten!'
-
         new_categories = [{'id': new_label['new_id'],
                            'name': new_label['new_name'],
                            'supercategory': new_label['substring'].replace('(', '').replace(')', '')}
@@ -255,6 +259,7 @@ class BaseConverter:
 
                     self.label_id_mapping[old_id] = new_id
                     labels_merged_per_id[new_id] += 1
+                    break
 
         i = len(self.included_ids) - 1
         while i >= 0:
@@ -584,7 +589,7 @@ class BaseConverter:
             columns.append(column_frac)
             data[column_frac] = []
 
-            for i, class_id in enumerate(self.gt_boxes):
+            for i, class_id in enumerate(sorted(self.gt_boxes)):
                 num = self.gt_boxes[class_id]['num_gt_boxes'].get(image_set, 0)
 
                 data['#bbox'][i] += num
