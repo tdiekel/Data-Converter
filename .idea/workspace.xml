@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29f154eb-7d0d-4dda-8c24-d5d220e03141" name="Default Changelist" comment="Initial commit">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,81 +11,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/convert.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="259" column="40" lean-forward="true" selection-start-line="259" selection-start-column="40" selection-end-line="259" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="115" selection-start-line="115" selection-end-line="115" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/label_mapping.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="85" column="37" lean-forward="true" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
-              <folding>
-                <element signature="e#3409#6171#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/label_map.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="341" column="6" lean-forward="true" selection-start-line="341" selection-start-column="6" selection-end-line="341" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/converters/BaseConverter.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="435" column="16" selection-start-line="435" selection-start-column="16" selection-end-line="435" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/converters/CSVConverter.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-639">
-              <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/util/util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1935">
+              <caret line="129" column="14" lean-forward="true" selection-start-line="129" selection-start-column="14" selection-end-line="129" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -206,15 +137,16 @@
         <option value="$PROJECT_DIR$/label_map.json" />
         <option value="$PROJECT_DIR$/label_mapping.py" />
         <option value="$PROJECT_DIR$/converters/BaseConverter.py" />
-        <option value="$PROJECT_DIR$/convert.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/convert.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="27" />
-    <option name="width" value="960" />
-    <option name="height" value="1053" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="129" />
+    <option name="y" value="133" />
+    <option name="width" value="1593" />
+    <option name="height" value="865" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -229,21 +161,6 @@
               <item name="DatasetConverter" type="b2602c69:ProjectViewProjectNode" />
               <item name="DatasetConverter" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="DatasetConverter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DatasetConverter" type="462c0819:PsiDirectoryNode" />
-              <item name="converters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DatasetConverter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DatasetConverter" type="462c0819:PsiDirectoryNode" />
-              <item name="creators" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DatasetConverter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DatasetConverter" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -254,7 +171,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../09_Classification" />
+    <property name="last_opened_file_path" value="/media/osm/Seagate Expansion Drive/Object-Detection-Evaluator" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.toDoOptions" />
   </component>
@@ -279,7 +196,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.convert_2019_Supercategories">
+  <component name="RunManager" selected="Python.convert_coco_2019_relevant">
     <configuration name="convert_2019_75_20_5" type="PythonConfigurationType" factoryName="Python">
       <module name="DatasetConverter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -338,7 +255,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
-      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format tfrecord --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/03_Tensorflow/Supercategories --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Split/75_20_5 --file-lists train2019_file_list.txt val2019_file_list.txt eval2019_file_list.txt --remap-labels --mapping-id 2 --no-copy --year 2019 --stats-label --exclude-area 256" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format tfrecord --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/03_Tensorflow/Supercategories --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Split/75_20_5 --file-lists train2019_file_list.txt val2019_file_list.txt eval2019_file_list.txt --remap-labels --mapping-id 2 --no-copy --year 2019 --stats-label --exclude-area 256 --tablefmt github" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -360,7 +277,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
-      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format tfrecord --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/03_Tensorflow/Supercategories_v2 --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Split/75_20_5 --file-lists train2019_file_list.txt val2019_file_list.txt eval2019_file_list.txt --remap-labels --no-copy --mapping-id 4 --year 2019 --stats-label --exclude-area 256 --exclude 87 88 97 120 121 146 150 151 152 154 157 174 175 184 185 190 191 192 196 197 201 202 203 204 205 206 --exclude-starts-at-one" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format tfrecord --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/03_Tensorflow/Supercategories_v2 --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Split/75_20_5 --file-lists train2019_file_list.txt val2019_file_list.txt eval2019_file_list.txt --remap-labels --no-copy --mapping-id 4 --year 2019 --stats-label --exclude-area 256 --exclude 87 88 97 120 121 146 150 151 152 154 157 174 175 184 185 190 191 192 196 197 201 202 203 204 205 206 --exclude-starts-at-one --tablefmt github" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -610,28 +527,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="convert_test" type="PythonConfigurationType" factoryName="Python">
-      <module name="DatasetConverter" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
-      </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
-      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/Test --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/80_20 --file-lists train2018_file_list.txt val2018_file_list.txt --no-copy" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="convert_tf_2019_relevant" type="PythonConfigurationType" factoryName="Python">
       <module name="DatasetConverter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -764,62 +659,43 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="creator" type="PythonConfigurationType" factoryName="Python" singleton="false">
+    <configuration name="convert_traffic_signals_2019_tf" type="PythonConfigurationType" factoryName="Python">
       <module name="DatasetConverter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/creator.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="dataset_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DatasetConverter" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="scratch_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DatasetConverter" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format tfrecord --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/traffic_signals_tf --stats-label --include 156-169 --include-starts-at-one --mapping-id 1 --skip-images-without-label --sets train test --set-sizes 0.9 0.1" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="final_70_30_full_tf" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format coco --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/02_COCO/75_20_5 --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Split/75_20_5 --file-lists train2019_file_list.txt val2019_file_list.txt eval2019_file_list.txt --remap-labels --year 2019 --stats-label --tablefmt github --exclude-area 256" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -981,33 +857,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_combine_classes" type="PythonConfigurationType" factoryName="Python">
-      <module name="DatasetConverter" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
-      </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
-      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Labels/ --target-format coco --output-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/Test --no-copy --patch-labels --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2018_Dez/01_Rawdata/Split/75_20_5 --file-lists train2018_file_list.txt val2018_file_list.txt eval2018_file_list.txt" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
+      <item itemvalue="Python.final_70_30_full_tf" />
       <item itemvalue="Python.convert_2019_75_20_5" />
       <item itemvalue="Python.convert_2019_75_20_5_tf" />
       <item itemvalue="Python.convert_2019_Supercategories" />
       <item itemvalue="Python.convert_2019_Supercategories_v2" />
+      <item itemvalue="Python.convert_coco_2019_relevant" />
       <item itemvalue="Python.convert_coco_75_20_5_exclude" />
       <item itemvalue="Python.convert_coco_80_20" />
       <item itemvalue="Python.convert_coco_80_20_exclude" />
@@ -1017,15 +873,14 @@
       <item itemvalue="Python.convert_stats" />
       <item itemvalue="Python.convert_stats_2019" />
       <item itemvalue="Python.convert_stats_2019_relevant" />
-      <item itemvalue="Python.convert_tf_2019_relevant" />
-      <item itemvalue="Python.convert_coco_2019_relevant" />
       <item itemvalue="Python.convert_stats_75_20_5_exclude" />
-      <item itemvalue="Python.convert_test" />
+      <item itemvalue="Python.convert_tf_2019_relevant" />
       <item itemvalue="Python.convert_tfrecord_75_20_5_exclude" />
       <item itemvalue="Python.convert_tfrecord_80_20" />
       <item itemvalue="Python.convert_tfrecord_80_20_exclude" />
       <item itemvalue="Python.convert_traffic_signals" />
       <item itemvalue="Python.convert_traffic_signals_2019" />
+      <item itemvalue="Python.convert_traffic_signals_2019_tf" />
       <item itemvalue="Python.show_argparser" />
       <item itemvalue="Python.split_2019_75_20_5" />
       <item itemvalue="Python.split_70_20_10" />
@@ -1033,17 +888,7 @@
       <item itemvalue="Python.split_75_20_5" />
       <item itemvalue="Python.split_80_20" />
       <item itemvalue="Python.stats_2019" />
-      <item itemvalue="Python.test_combine_classes" />
-      <item itemvalue="Python.creator" />
-      <item itemvalue="Python.dataset_test" />
-      <item itemvalue="Python.scratch_1" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.dataset_test" />
-        <item itemvalue="Python.scratch_1" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -1068,16 +913,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
-    <editor active="true" />
+    <frame x="129" y="133" width="1593" height="865" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2245651" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30382165" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24967235" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.45572355" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.53023756" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.43412527" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.50108224" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.69438446" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32829374" />
@@ -1133,6 +977,16 @@
           <url>file://$PROJECT_DIR$/util/util.py</url>
           <line>87</line>
           <option name="timeStamp" value="140" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/convert.py</url>
+          <line>253</line>
+          <option name="timeStamp" value="141" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/converters/BaseConverter.py</url>
+          <line>109</line>
+          <option name="timeStamp" value="142" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -1317,25 +1171,9 @@ num_bboxes_greater_than_32px = bbox_area.count()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Schreibtisch/Tools_Dennis/DataSetCLI.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/machine_learning/detectron/detectron/training/1.1_Faster_RCNN/work_dir/train/tubs_coco_2018_train_75_20_5_exclude/generalized_rcnn/train_log_59999.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Schreibtisch/Tools_Dennis/DataSetCLI-4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Schreibtisch/Tools_Dennis/DataSetCLI.py" />
+    <entry file="file://$USER_HOME$/machine_learning/detectron/detectron/training/1.1_Faster_RCNN/work_dir/train/tubs_coco_2018_train_75_20_5_exclude/generalized_rcnn/train_log_59999.json" />
+    <entry file="file://$USER_HOME$/Schreibtisch/Tools_Dennis/DataSetCLI-4.py" />
     <entry file="file://$PROJECT_DIR$/converters/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1350,16 +1188,7 @@ num_bboxes_greater_than_32px = bbox_area.count()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/02_COCO/75_20_5_Exclude/annotations/instances_eval2018.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-705">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-          <folding>
-            <element signature="e#21#725220#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/02_COCO/75_20_5_Exclude/annotations/instances_eval2018.json" />
     <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
@@ -1370,16 +1199,8 @@ num_bboxes_greater_than_32px = bbox_area.count()</expression-string>
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
     <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/02_COCO/Combined_classes/label_mapping.json" />
     <entry file="file://$PROJECT_DIR$/label_map_items.json" />
-    <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/02_COCO/Combined_classes/label_map.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/02_COCO/Combined_classes/label_id_mapping.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/02_COCO/Combined_classes/label_map.json" />
+    <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/02_COCO/Combined_classes/label_id_mapping.json" />
     <entry file="file://$PROJECT_DIR$/dataset_test.py" />
     <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/site-packages/tensorflow/python/lib/io/tf_record.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -1408,13 +1229,7 @@ num_bboxes_greater_than_32px = bbox_area.count()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/machine_learning/mmdet_v6/mmdetection/training/2.2_RPN/rpn_r50_fpn_1x.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/machine_learning/mmdet_v6/mmdetection/training/2.2_RPN/rpn_r50_fpn_1x.py" />
     <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/shutil.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -1453,23 +1268,6 @@ num_bboxes_greater_than_32px = bbox_area.count()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/converters/TFRecordConverter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="82" column="19" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/converters/COCOConverter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/creator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
@@ -1488,23 +1286,6 @@ num_bboxes_greater_than_32px = bbox_area.count()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/converters/CSVConverter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-639">
-          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/label_map.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="341" column="6" lean-forward="true" selection-start-line="341" selection-start-column="6" selection-end-line="341" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/converters/generate_tfrecord.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -1512,50 +1293,81 @@ num_bboxes_greater_than_32px = bbox_area.count()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/label_mapping.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="85" column="37" lean-forward="true" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
-          <folding>
-            <element signature="e#3409#6171#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/util/util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+        <state relative-caret-position="330">
+          <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/converters/BaseConverter.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="435" column="16" selection-start-line="435" selection-start-column="16" selection-end-line="435" selection-end-column="16" />
+        <state relative-caret-position="541">
+          <caret line="105" column="5" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/converters/COCOConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/converters/BaseConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="109" column="105" selection-start-line="109" selection-start-column="105" selection-end-line="109" selection-end-column="105" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/label_map.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/convert.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="259" column="40" lean-forward="true" selection-start-line="259" selection-start-column="40" selection-end-line="259" selection-end-column="40" />
+        <state relative-caret-position="123">
+          <caret line="193" selection-start-line="193" selection-end-line="193" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/converters/TFRecordConverter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
+        <state relative-caret-position="195">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/converters/CSVConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/label_mapping.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1935">
+          <caret line="129" column="14" lean-forward="true" selection-start-line="129" selection-start-column="14" selection-end-line="129" selection-end-column="14" />
         </state>
       </provider>
     </entry>
