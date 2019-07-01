@@ -589,21 +589,33 @@ class BaseConverter:
             columns.append(column_frac)
             data[column_frac] = []
 
+            column_targ = 'target delta {} [%]'.format(image_set)
+            columns.append(column_targ)
+            data[column_targ] = []
+
             for i, class_id in enumerate(sorted(self.gt_boxes)):
                 num = self.gt_boxes[class_id]['num_gt_boxes'].get(image_set, 0)
 
                 data['#bbox'][i] += num
                 data[column_num].append(num)
 
-        for image_set in self.image_sets:
+        for s, image_set in enumerate(self.image_sets):
             column_num = '#bbox in {}'.format(image_set)
             column_frac = 'fraction {} [%]'.format(image_set)
+            column_targ = 'target delta {} [%]'.format(image_set)
 
             for i in range(len(data['class id'])):
                 if data['#bbox'][i] == 0:
                     data[column_frac].append(0)
+                    data[column_targ].append(0)
                 else:
-                    data[column_frac].append(data[column_num][i] / data['#bbox'][i] * 100)
+                    fraction = data[column_num][i] / data['#bbox'][i] * 100
+
+                    target_fraction = self.args.set_sizes[s]
+                    fraction_delta = target_fraction - fraction
+
+                    data[column_frac].append(fraction)
+                    data[column_targ].append(fraction_delta)
 
         df = pd.DataFrame(data=data)
         df.to_csv(os.path.join(self.output_path, 'class_distribution.csv'), index=None)
