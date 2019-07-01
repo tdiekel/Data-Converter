@@ -77,6 +77,10 @@ class BaseConverter:
         # Create output folder
         create_dir(self.output_path)
 
+        # Save settings
+        with open(os.path.join(self.output_path,'args.txt'), 'w') as outfile:
+            json.dump(vars(self.args), outfile, sort_keys=True, indent=4)
+
         # Copy label map
         copyfile(self.label_map, os.path.join(self.output_path, self.label_map))
 
