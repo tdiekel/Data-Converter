@@ -628,3 +628,7 @@ class BaseConverter:
 
         time.sleep(1)
         print_warning_for_empty_classes(data)
+
+        time.sleep(1)
+        print('Classes with 100 or more label.')
+        print(tabulate(df[df['#bbox'] >= 100], headers='keys', tablefmt=self.args.tablefmt, showindex=False, floatfmt=".2f"))
