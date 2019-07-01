@@ -293,7 +293,7 @@ class BaseConverter:
             return
 
         if not len(self.categories) == len(new_categories):
-            print('\tReduced from {} to {} class(es).'.format(len(self.categories), len(new_categories)))
+            print('\tReduced from {} to {} classes.'.format(len(self.categories), len(new_categories)))
             for label_id in labels_merged_per_id:
                 if labels_merged_per_id[label_id] == 0:
                     print('\tNo matching classes found for class {} with id {}. Ignoring class.'.format(
