@@ -175,10 +175,10 @@ roadsurface = [
 def main():
     args = SimpleNamespace()
 
-    args.image_path = '/home/osm/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/'
-    args.label_path = '/home/osm/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/'
+    args.image_path = '/home/osm/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Images/'
+    args.label_path = '/home/osm/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Labels/'
     args.label_map = './label_map.json'
-    args.output_path = '/home/osm/Schreibtisch/01_Datasets/2019_Mai/Classification_Supercategories_Used/roadsurface'
+    args.output_path = '/home/osm/Schreibtisch/01_Datasets/traffic_signs_danger'
     args.target_format = 'subfolders'
 
     # Classes with '(danger)' but w/o '(digital)'
@@ -193,9 +193,9 @@ def main():
     # All classes
     # args.include = list(range(206))
 
-    args.include = [class_id - 1 for class_id in roadsurface]
+    args.include = [class_id - 1 for class_id in traffic_signs_danger]
 
-    args.min_size = 0
+    args.min_size = 1024
 
     categories = json.load(open(args.label_map, 'r')).get('classes')
     args.categories = [{'id': cat['id'], 'name': cat['name']} for cat in categories]

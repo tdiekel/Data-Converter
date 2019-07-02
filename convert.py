@@ -48,27 +48,30 @@ def check_args(args):
                 and args.include is not None), "Please don't use the flags --exclude and --include at the same time."
 
     if args.exclude is not None:
-        exclude = []
+        if isinstance(args.exclude, list):
+            args.exclude = [int(class_id) for class_id in args.exclude]
+        else:
+            exclude = []
 
-        for item in args.exclude:
-            if "-" in item:
-                start, end = item.split('-')
+            for item in args.exclude:
+                if "-" in item:
+                    start, end = item.split('-')
 
-                try:
-                    for i in range(int(start), int(end) + 1):
-                        exclude.append(i)
-                except ValueError:
-                    RuntimeError('ValueError while parsing IDs to exclude. Unknown value in: {}'.format(item))
-            else:
-                try:
-                    exclude.append(int(item))
-                except ValueError:
-                    RuntimeError('ValueError while parsing IDs to exclude. Unknown value in: {}'.format(item))
+                    try:
+                        for i in range(int(start), int(end) + 1):
+                            exclude.append(i)
+                    except ValueError:
+                        RuntimeError('ValueError while parsing IDs to exclude. Unknown value in: {}'.format(item))
+                else:
+                    try:
+                        exclude.append(int(item))
+                    except ValueError:
+                        RuntimeError('ValueError while parsing IDs to exclude. Unknown value in: {}'.format(item))
 
-        if not args.exclude_starts_at_one:
-            exclude = [excluded_id + 1 for excluded_id in exclude]
+            if not args.exclude_starts_at_one:
+                exclude = [excluded_id + 1 for excluded_id in exclude]
 
-        args.exclude = exclude
+            args.exclude = exclude
     else:
         args.exclude = []
 
@@ -238,7 +241,9 @@ def main(args=None):
     # parse arguments
     if args is None:
         args = sys.argv[1:]
-    args = parse_args(args)
+        args = parse_args(args)
+    else:
+        check_args(args)
 
     if args.target_format == 'coco':
         converter = converters.COCOConverter(args)
@@ -257,13 +262,15 @@ def main(args=None):
         converter.split(args.sets, args.set_sizes, args.shuffle)
 
     converter.convert()
-    converter.print_class_distribution()
+    # converter.print_class_distribution()
+    max_delta = converter.print_class_distribution()
 
     if args.stats or args.stats_label:
         converter.calc_label_statistics(max_classes=206)
     if args.stats or args.stats_img:
         converter.calc_img_statistics()
 
+    return max_delta
 
 if __name__ == '__main__':
     main()

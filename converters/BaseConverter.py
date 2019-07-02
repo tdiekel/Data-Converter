@@ -78,7 +78,7 @@ class BaseConverter:
         create_dir(self.output_path)
 
         # Save settings
-        with open(os.path.join(self.output_path,'args.txt'), 'w') as outfile:
+        with open(os.path.join(self.output_path, 'args.txt'), 'w') as outfile:
             json.dump(vars(self.args), outfile, sort_keys=True, indent=4)
 
         # Copy label map
@@ -528,6 +528,10 @@ class BaseConverter:
     def _shuffle(self):
         zipped = list(zip(self.images['images'], self.label['images']))
 
+        seed = random.randint(1, 9999)
+        print('Seed:', seed)
+        random.seed(seed)
+
         random.shuffle(zipped)
 
         images, label = zip(*zipped)
@@ -539,7 +543,7 @@ class BaseConverter:
                 file.write("Set={}\n".format(s))
 
                 for filename in self.images[s]:
-                    file.write(filename[:-4] + '\n')
+                    file.write(os.path.splitext(filename)[0] + '\n')
 
     def _copy_all_images(self):
         time.sleep(0.1)
@@ -626,9 +630,19 @@ class BaseConverter:
 
         print(tabulate(df, headers='keys', tablefmt=self.args.tablefmt, showindex=False, floatfmt=".2f"))
 
-        time.sleep(1)
         print_warning_for_empty_classes(data)
 
-        time.sleep(1)
-        print('Classes with 100 or more label.')
-        print(tabulate(df[df['#bbox'] >= 100], headers='keys', tablefmt=self.args.tablefmt, showindex=False, floatfmt=".2f"))
+        print('\nClasses with less than 100 label.')
+        df_reduced = df[df['#bbox'] < 100]
+        print([class_id for class_id in df_reduced['class id']])
+
+        print('\nClasses with 75 or more label.')
+        df_reduced = df[df['#bbox'] >= 75]
+        print(tabulate(df_reduced, headers='keys', tablefmt=self.args.tablefmt, showindex=False, floatfmt=".2f"))
+
+        max_delta = df_reduced.ix[df_reduced['target delta train2019 [%]'].abs().idxmax()]['target delta train2019 [%]']
+        print('\nMax train delta:', max_delta)
+
+
+
+        return max_delta

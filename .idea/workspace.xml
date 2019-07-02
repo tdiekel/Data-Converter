@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29f154eb-7d0d-4dda-8c24-d5d220e03141" name="Default Changelist" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/find_best_split.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convert.py" beforeDir="false" afterPath="$PROJECT_DIR$/convert.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/converters/BaseConverter.py" beforeDir="false" afterPath="$PROJECT_DIR$/converters/BaseConverter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/creator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/label_mapping.py" beforeDir="false" afterPath="$PROJECT_DIR$/label_mapping.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,12 +16,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/convert.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
-              <caret line="259" column="21" lean-forward="true" selection-start-line="259" selection-start-column="21" selection-end-line="259" selection-end-column="21" />
+            <state relative-caret-position="164">
+              <caret line="127" column="81" lean-forward="true" selection-start-line="127" selection-start-column="81" selection-end-line="127" selection-end-column="81" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -26,11 +29,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/label_mapping.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/converters/BaseConverter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="57" column="51" lean-forward="true" selection-start-line="57" selection-start-column="51" selection-end-line="57" selection-end-column="51" />
+            <state relative-caret-position="109">
+              <caret line="355" column="87" lean-forward="true" selection-start-line="355" selection-start-column="87" selection-end-line="355" selection-end-column="87" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,11 +52,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>label_map.js</find>
-      <find>tabul</find>
-      <find>tabulat</find>
-      <find>patch</find>
-      <find>Wri</find>
       <find>2018</find>
       <find>warning_not_verified_label_files(self.not_verified_label_files)</find>
       <find>while</find>
@@ -76,6 +77,11 @@
       <find>traffic jam</find>
       <find>succes</find>
       <find>json.dump</find>
+      <find>9.</find>
+      <find>8.</find>
+      <find>6.</find>
+      <find>shuff</find>
+      <find>-9.7</find>
     </findStrings>
     <replaceStrings>
       <replace>self.</replace>
@@ -102,9 +108,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/utils/Converter.py" />
-        <option value="$PROJECT_DIR$/xml_to_csv.py" />
-        <option value="$PROJECT_DIR$/generate_tfrecord.py" />
         <option value="$USER_HOME$/miniconda3/envs/mmdet/lib/python3.6/site-packages/mmdet/datasets/coco_custom.py" />
         <option value="$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/site-packages/pycocotools/coco.py" />
         <option value="$USER_HOME$/miniconda3/envs/mmdet/lib/python3.6/site-packages/mmdet/datasets/coco.py" />
@@ -147,20 +150,23 @@
         <option value="$PROJECT_DIR$/converters/TFRecordConverter.py" />
         <option value="$PROJECT_DIR$/converters/COCOConverter.py" />
         <option value="$PROJECT_DIR$/converters/generate_tfrecord.py" />
-        <option value="$PROJECT_DIR$/creator.py" />
         <option value="$PROJECT_DIR$/label_map.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/convert.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+        <option value="$PROJECT_DIR$/stratified.py" />
+        <option value="$PROJECT_DIR$/creator.py" />
         <option value="$PROJECT_DIR$/converters/BaseConverter.py" />
+        <option value="$PROJECT_DIR$/find_best_split.py" />
+        <option value="$PROJECT_DIR$/convert.py" />
         <option value="$PROJECT_DIR$/label_mapping.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="264" />
-    <option name="y" value="25" />
-    <option name="width" value="1656" />
-    <option name="height" value="1055" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="79" />
+    <option name="y" value="30" />
+    <option name="width" value="1717" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -223,7 +229,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.step1_split">
+  <component name="RunManager" selected="Python.step1_data_coco">
     <configuration default="true" type="CompoundRunConfigurationType">
       <toRun name="step1.4_data_darknet" type="PythonConfigurationType" />
       <toRun name="step1.3_data_coco" type="PythonConfigurationType" />
@@ -715,6 +721,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="creator" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/creator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="final_70_30_full_tf" type="PythonConfigurationType" factoryName="Python">
       <module name="DatasetConverter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -730,6 +757,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
       <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format coco --output-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/02_COCO/75_20_5 --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Split/75_20_5 --file-lists train2019_file_list.txt val2019_file_list.txt eval2019_file_list.txt --remap-labels --year 2019 --stats-label --tablefmt github --exclude-area 256" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="find_best_split" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/find_best_split.py" />
+      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -905,7 +954,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
-      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/00_split_70_30 --file-lists train2019_file_list.txt val2019_file_list.txt --output-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/coco_01_all_classes --target-format coco --year 2019 --set-sizes 70 30 --remap-labels --mapping-id 1" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Labels/ --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/00_split_70_30 --file-lists train2019_file_list.txt val2019_file_list.txt --output-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/coco_01_all_classes --target-format coco --year 2019 --set-sizes 70 30 --remap-labels --mapping-id 1" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -927,29 +976,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
-      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/00_split_70_30 --file-lists train2019_file_list.txt val2019_file_list.txt --output-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/darknet_01_all_classes --target-format darknet --year 2019 --rel-output-path ./data/Master_Diekel/darknet_01_all_classes --dataset-name 2019_all_classes --set-sizes 70 30 --remap-labels --mapping-id 1" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="step1_data_tf" type="PythonConfigurationType" factoryName="Python">
-      <module name="DatasetConverter" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
-      </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
-      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/00_split_70_30 --file-lists train2019_file_list.txt val2019_file_list.txt --output-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/tf_01_all_classes --target-format tfrecord --year 2019 --no-copy --set-sizes 70 30 --remap-labels --mapping-id 1" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Labels/ --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/00_split_70_30 --file-lists train2019_file_list.txt val2019_file_list.txt --output-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/darknet_01_all_classes --target-format darknet --year 2019 --rel-output-path ./data/Master_Diekel/darknet_01_all_classes --dataset-name 2019_Juli_all_classes --set-sizes 70 30 --remap-labels --mapping-id 1" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -971,7 +998,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
-      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Mai/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/00_split_70_30 --year 2019 --no-copy --set-sizes 70 30 --remap-labels --mapping-id 1" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/00_split_70_30 --year 2019 --no-copy --shuffle --set-sizes 70 30 --remap-labels --mapping-id 1" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -979,7 +1006,73 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="step_1" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="step1_split_reduced" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Labels/ --target-format csv --output-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/00_split_70_30_reduced --year 2019 --no-copy --shuffle --set-sizes 70 30 --remap-labels --mapping-id 3 --exclude-area 256 --exclude 1 7 30 31 42 43 44 46 47 48 49 50 51 52 57 63 64 65 67 68 69 71 72 73 76 77 78 79 80 82 83 84 86 88 90 94 95 97 98 99 100 101 102 103 104 105 106 107 108 113 114 115 117 120 121 131 136 137 138 139 140 141 142 143 144 146 147 148 149 150 151 152 153 156 176 177 185 191 196 197 201 202 204 205 206 --exclude-starts-at-one" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="step2_data_reduced_tf" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Labels/ --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/00_split_70_30 --file-lists train2019_file_list.txt val2019_file_list.txt --output-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/tf_01_reduced_classes --target-format tfrecord --year 2019 --no-copy --set-sizes 70 30 --remap-labels --mapping-id 3 --exclude-area 256 --exclude 1 7 30 31 42 43 44 46 47 48 49 50 51 52 57 63 64 65 67 68 69 71 72 73 76 77 78 79 80 82 83 84 86 88 90 94 95 97 98 99 100 101 102 103 104 105 106 107 108 113 114 115 117 120 121 131 136 137 138 139 140 141 142 143 144 146 147 148 149 150 151 152 153 154 156 176 177 185 191 196 197 201 202 204 205 206 --exclude-starts-at-one --rearrange-ids" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="step2_data_tf" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Labels/ --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/00_split_70_30 --file-lists train2019_file_list.txt val2019_file_list.txt --output-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/tf_01_all_classes --target-format tfrecord --year 2019 --no-copy --set-sizes 70 30 --remap-labels --mapping-id 1" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="step_1_data" type="PythonConfigurationType" factoryName="Python">
       <module name="DatasetConverter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -999,16 +1092,41 @@
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2">
-        <option name="RunConfigurationTask" enabled="true" run_configuration_name="step1_split" run_configuration_type="PythonConfigurationType" />
         <option name="RunConfigurationTask" enabled="true" run_configuration_name="step1_data_tf" run_configuration_type="PythonConfigurationType" />
         <option name="RunConfigurationTask" enabled="true" run_configuration_name="step1_data_coco" run_configuration_type="PythonConfigurationType" />
         <option name="RunConfigurationTask" enabled="true" run_configuration_name="step1_data_darknet" run_configuration_type="PythonConfigurationType" />
       </method>
     </configuration>
+    <configuration name="test_best_split" type="PythonConfigurationType" factoryName="Python">
+      <module name="DatasetConverter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="TENSORFLOW_PATH" value="$USER_HOME$/machine_learning/tensorflow" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/tensorflow/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/convert.py" />
+      <option name="PARAMETERS" value="--image-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Images/ --label-path $USER_HOME$/Schreibtisch/01_Datasets/2019_Juli/01_Rawdata/Labels/ --file-lists train2019_file_list.txt val2019_file_list.txt --output-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/coco_01_all_classes --target-format csv --no-copy --year 2019 --set-sizes 70 30 --remap-labels --mapping-id 3 --exclude-area 256 --file-list-path $USER_HOME$/Schreibtisch/01_Datasets/Master_Diekel/00_split_70_30_reduced(8.46)" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.step_1" />
+      <item itemvalue="Python.find_best_split" />
+      <item itemvalue="Python.test_best_split" />
+      <item itemvalue="Python.step_1_data" />
       <item itemvalue="Python.step1_split" />
-      <item itemvalue="Python.step1_data_tf" />
+      <item itemvalue="Python.step1_split_reduced" />
+      <item itemvalue="Python.step2_data_tf" />
+      <item itemvalue="Python.step2_data_reduced_tf" />
       <item itemvalue="Python.step1_data_coco" />
       <item itemvalue="Python.step1_data_darknet" />
       <item itemvalue="Python.convert_2019_75_20_5" />
@@ -1041,7 +1159,13 @@
       <item itemvalue="Python.split_75_20_5" />
       <item itemvalue="Python.split_80_20" />
       <item itemvalue="Python.stats_2019" />
+      <item itemvalue="Python.creator" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.creator" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -1066,15 +1190,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="264" y="25" width="1656" height="1055" extended-state="4" />
+    <frame x="79" y="30" width="1717" height="1050" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.61420697" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18713105" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24967235" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.31929347" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.9557235" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.49352053" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.6807818" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5418024" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32829374" />
@@ -1130,6 +1254,11 @@
           <url>file://$PROJECT_DIR$/util/util.py</url>
           <line>87</line>
           <option name="timeStamp" value="140" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/convert.py</url>
+          <line>50</line>
+          <option name="timeStamp" value="162" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -1198,69 +1327,53 @@ num_bboxes_greater_than_32px = bbox_area.count()</expression-string>
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>print(df)</expression-string>
+        <expression-string>id2cat[class_id]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>print(tabulate(df[df['#bbox'] &gt;= 100], headers='keys', tablefmt=self.args.tablefmt, showindex=False, floatfmt=&quot;.2f&quot;))</expression-string>
+        <expression-string>[class_id for class_id in df_reduced['class id']]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df[df['#bbox'] &gt;= 100]</expression-string>
+        <expression-string>df_reduced['class id']</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>vars(self.args)</expression-string>
+        <expression-string>np.zeros(len(included_ids))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>target_fraction - fraction</expression-string>
+        <expression-string>np.array(y)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>target_fraction - 10</expression-string>
+        <expression-string>print(len(X),len(y))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>fraction &lt;= target_fraction - 10</expression-string>
+        <expression-string>len(y#)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.args.set_sizes[0]</expression-string>
+        <expression-string>len(y)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.args.set_sizes[i]</expression-string>
+        <expression-string>print([combination for row in get_combination_wise_output_matrix(y, order=2) for combination in row])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/typing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="2327" column="8" selection-start-line="2327" selection-start-column="8" selection-end-line="2327" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/machine_learning/detectron/detectron/detectron/utils/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="79" column="13" lean-forward="true" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
-    <entry file="file://$PROJECT_DIR$/utils/clean_log_file.py" />
     <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/site-packages/pandas/core/frame.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1332,13 +1445,6 @@ num_bboxes_greater_than_32px = bbox_area.count()</expression-string>
       </provider>
     </entry>
     <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/02_COCO/75_20_5_Exclude/annotations/instances_eval2018.json" />
-    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="308" selection-start-line="308" selection-end-line="308" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
     <entry file="file:///media/osm/ml/01_Datasets/2018_Dez/02_COCO/Combined_classes/label_mapping.json" />
     <entry file="file://$PROJECT_DIR$/label_map_items.json" />
@@ -1394,37 +1500,12 @@ num_bboxes_greater_than_32px = bbox_area.count()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2037966368/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="2952" column="8" selection-start-line="2952" selection-start-column="8" selection-end-line="2952" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/converters/DarknetConverter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="85" column="24" selection-start-line="85" selection-start-column="24" selection-end-line="85" selection-end-column="24" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/creator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="125" column="30" lean-forward="true" selection-start-line="125" selection-start-column="30" selection-end-line="125" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#3677#3819#0" />
-            <element signature="e#3846#3999#0" />
-            <element signature="e#4022#4342#0" />
-            <element signature="e#4367#4526#0" />
-            <element signature="e#4545#4696#0" />
-            <element signature="e#4707#4828#0" />
-            <element signature="e#4843#4984#0" />
-            <element signature="e#5398#5443#0" />
           </folding>
         </state>
       </provider>
@@ -1467,50 +1548,102 @@ num_bboxes_greater_than_32px = bbox_area.count()</expression-string>
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/types.pyi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="81" column="8" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-2037966368/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="507" column="53" lean-forward="true" selection-start-line="507" selection-start-column="53" selection-end-line="507" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/util/util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+        <state relative-caret-position="118">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/converters/BaseConverter.py">
+    <entry file="file://$USER_HOME$/miniconda3/envs/tensorflow/lib/python3.6/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="599" column="64" lean-forward="true" selection-start-line="599" selection-start-column="64" selection-end-line="599" selection-end-column="64" />
+        <state relative-caret-position="167">
+          <caret line="308" selection-start-line="308" selection-end-line="308" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stratified.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="97" column="41" lean-forward="true" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="177" column="87" lean-forward="true" selection-start-line="177" selection-start-column="87" selection-end-line="177" selection-end-column="87" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/converters/CSVConverter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+        <state relative-caret-position="45">
+          <caret line="39" column="48" lean-forward="true" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/convert.py">
+    <entry file="file://$PROJECT_DIR$/find_best_split.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="259" column="21" lean-forward="true" selection-start-line="259" selection-start-column="21" selection-end-line="259" selection-end-column="21" />
+        <state relative-caret-position="210">
+          <caret line="50" column="115" lean-forward="true" selection-start-line="50" selection-start-column="115" selection-end-line="50" selection-end-column="115" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/label_mapping.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="57" column="51" lean-forward="true" selection-start-line="57" selection-start-column="51" selection-end-line="57" selection-end-column="51" />
+        <state relative-caret-position="125">
+          <caret line="200" column="85" selection-start-line="200" selection-start-column="85" selection-end-line="200" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/converters/BaseConverter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="355" column="87" lean-forward="true" selection-start-line="355" selection-start-column="87" selection-end-line="355" selection-end-column="87" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/convert.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="127" column="81" lean-forward="true" selection-start-line="127" selection-start-column="81" selection-end-line="127" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

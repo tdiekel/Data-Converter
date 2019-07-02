@@ -183,11 +183,11 @@ mapping_settings = {
                 'new_id': 199,
                 'old_id': [199, 200]
             },
-            {
-                'new_name': 'restriction ends 100 (other)',
-                'new_id': 90,
-                'old_id': [90, 154]
-            },
+            # {
+            #     'new_name': 'restriction ends 100 (other)',
+            #     'new_id': 90,
+            #     'old_id': [90, 154]
+            # },
         ]
     },
     # INFO Supercategories by id
