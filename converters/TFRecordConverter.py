@@ -85,4 +85,5 @@ class TFRecordConverter(converters.BaseConverter):
         with open(label_map_file, 'w') as f:
             for cat_id in self.id2cat:
                 f.write(item.format(cat_id, self.id2cat[cat_id]))
+            f.write("\n")
         print('\nCreated label map file.')

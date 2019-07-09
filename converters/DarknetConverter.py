@@ -153,7 +153,7 @@ class DarknetConverter(BaseConverter):
         data_str = "classes = {class_num}\n" \
                    "{sets}" \
                    "names = {rel_path}/{dataset_name}.names\n" \
-                   "backup = ./training/{dataset_name}/"
+                   "backup = ./training_diekel/{dataset_name}"
 
         if len(self.image_sets) == 1:
             image_sets = "train = {rel_path}/{set}.txt\n".format(rel_path=self.rel_output_path, set=self.image_sets[0])

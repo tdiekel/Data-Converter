@@ -370,6 +370,7 @@ class BaseConverter:
         label_map_file = os.path.join(self.output_path, 'label_map.json')
         with open(label_map_file, 'w') as f:
             json.dump({'classes': self.categories}, f, sort_keys=True, indent=4)
+            f.write("\n")
 
         label_id_mapping_file = os.path.join(self.output_path, 'label_id_mapping.json')
 
@@ -386,6 +387,7 @@ class BaseConverter:
 
         with open(label_id_mapping_file, 'w') as f:
             json.dump({'old_id_to_new_id': label_id_mapping}, f, sort_keys=True, indent=4)
+            f.write("\n")
 
     def _fill_lists(self):
         if self.file_lists is not None:
