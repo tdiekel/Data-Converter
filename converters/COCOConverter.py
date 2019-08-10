@@ -139,8 +139,11 @@ class COCOConverter(converters.BaseConverter):
             if category_id in self.label_id_mapping:
                 category_id = self.label_id_mapping[category_id]
 
-            if category_id in self.label_rearrange_mapping:
-                category_id = self.label_rearrange_mapping[category_id]
+            if self.args.rearrange_ids:
+                if category_id in self.label_rearrange_mapping:
+                    category_id = self.label_rearrange_mapping[category_id]
+                else:
+                    continue
 
             if category_id in self.excluded_classes:
                 continue

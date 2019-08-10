@@ -83,8 +83,11 @@ class DarknetConverter(BaseConverter):
                     if class_id in self.label_id_mapping:
                         class_id = self.label_id_mapping[class_id]
 
-                    if class_id in self.label_rearrange_mapping:
-                        class_id = self.label_rearrange_mapping[class_id]
+                    if self.args.rearrange_ids:
+                        if class_id in self.label_rearrange_mapping:
+                            class_id = self.label_rearrange_mapping[class_id]
+                        else:
+                            continue
 
                     if class_id in self.excluded_classes:
                         continue
