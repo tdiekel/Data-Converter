@@ -21,8 +21,7 @@ class TFRecordConverter(converters.BaseConverter):
         time.sleep(0.1)
         for image_set in self.image_sets:
             print('\nCreating tfrecord files for {} ...'.format(image_set))
-            self.gt_boxes = converters.generate_tfrecord(self.image_path, self.output_path, image_set,
-                                                         self.id2cat, self.gt_boxes)
+            converters.generate_tfrecord(self.image_path, self.output_path, image_set, self.id2cat)
 
         self._create_label_map_pbtxt()
 
@@ -33,6 +32,8 @@ class TFRecordConverter(converters.BaseConverter):
             warning_not_verified_label_files(self.not_verified_label_files)
 
     def _copy_values_to_csv_converter(self):
+        self.csv_converter.args = self.args
+
         self.csv_converter.images_copied = self.images_copied
         self.csv_converter.images_split = self.images_split
 
